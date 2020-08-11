@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'country.dart';
 
 class CountryListView extends StatefulWidget {
+  /// Called when a country is select.
+  ///
+  /// The country picker passes the new value to the callback.
   final ValueChanged<Country> onSelect;
   const CountryListView({Key key, @required this.onSelect})
       : assert(onSelect != null),
