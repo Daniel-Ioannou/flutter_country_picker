@@ -1,4 +1,4 @@
-List<Map> countryCodes = [
+List<Map<String, dynamic>> countryCodes = [
   {
     "e164_cc": "93",
     "iso2_cc": "AF",

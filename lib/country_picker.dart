@@ -1,3 +1,3 @@
 library country_picker;
 
-export 'src/countries_list_view.dart';
+export 'src/country_list_bottom_sheet.dart';

@@ -33,7 +33,16 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: CountriesListView(),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            showCountryListBottomSheet(
+              context: context,
+            );
+          },
+          child: const Text('Show action sheet'),
+        ),
+      ),
     );
   }
 }
