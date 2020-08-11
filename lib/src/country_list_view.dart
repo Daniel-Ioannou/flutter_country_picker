@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'country.dart';
 
-class CountriesListView extends StatefulWidget {
-  const CountriesListView({Key key}) : super(key: key);
+class CountryListView extends StatefulWidget {
+  final ValueChanged<Country> onSelect;
+  const CountryListView({Key key, @required this.onSelect})
+      : assert(onSelect != null),
+        super(key: key);
 
   @override
-  _CountriesListViewState createState() => _CountriesListViewState();
+  _CountryListViewState createState() => _CountryListViewState();
 }
 
-class _CountriesListViewState extends State<CountriesListView> {
+class _CountryListViewState extends State<CountryListView> {
   List<Country> countryList;
   @override
   void initState() {
@@ -28,23 +31,31 @@ class _CountriesListViewState extends State<CountriesListView> {
   }
 
   Widget listRow(Country country) {
-    return InkWell(
-      onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5.0),
-        child: Row(
-          children: <Widget>[
-            const SizedBox(width: 20),
-            Text(
-              Utils.countryCodeToEmoji(country.countryCode),
-              style: const TextStyle(fontSize: 25),
-            ),
-            const SizedBox(width: 15),
-            Text(
-              country.name,
-              style: const TextStyle(fontSize: 16),
-            )
-          ],
+    return Material(
+      // Add Material Widget with transparent color
+      // so the ripple effect of InkWell will show on tap
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          widget.onSelect(country);
+          Navigator.pop(context);
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          child: Row(
+            children: <Widget>[
+              const SizedBox(width: 20),
+              Text(
+                Utils.countryCodeToEmoji(country.countryCode),
+                style: const TextStyle(fontSize: 25),
+              ),
+              const SizedBox(width: 15),
+              Text(
+                country.name,
+                style: const TextStyle(fontSize: 16),
+              )
+            ],
+          ),
         ),
       ),
     );
