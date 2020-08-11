@@ -50,9 +50,11 @@ class _CountryListViewState extends State<CountryListView> {
                 style: const TextStyle(fontSize: 25),
               ),
               const SizedBox(width: 15),
-              Text(
-                country.name,
-                style: const TextStyle(fontSize: 16),
+              Expanded(
+                child: Text(
+                  country.name,
+                  style: const TextStyle(fontSize: 16),
+                ),
               )
             ],
           ),
