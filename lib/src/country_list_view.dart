@@ -1,8 +1,8 @@
-import 'package:country_picker/res/country_codes.dart';
 import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
+import 'res/country_codes.dart';
 
 class CountryListView extends StatefulWidget {
   /// Called when a country is select.
