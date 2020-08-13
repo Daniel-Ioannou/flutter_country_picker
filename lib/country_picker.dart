@@ -13,14 +13,22 @@ export 'src/country.dart';
 /// The function called with parameter the country that the user has selected.
 /// If the user cancels the bottom sheet, the function is not call.
 ///
+/// An optional [exclude] argument can be used to exclude(remove) one ore more
+/// country from the countries list. It takes a list of country code(iso2).
+///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
 void showCountryPicker({
   @required BuildContext context,
   @required ValueChanged<Country> onSelect,
+  List<String> exclude,
 }) {
   assert(context != null);
   assert(onSelect != null);
-  showCountryListBottomSheet(context: context, onSelect: onSelect);
+  showCountryListBottomSheet(
+    context: context,
+    onSelect: onSelect,
+    exclude: exclude,
+  );
 }

@@ -31,6 +31,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             showCountryPicker(
               context: context,
+              exclude: <String>['KN', 'MF'],
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },

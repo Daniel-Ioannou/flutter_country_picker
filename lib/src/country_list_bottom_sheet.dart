@@ -6,6 +6,7 @@ import 'country_list_view.dart';
 void showCountryListBottomSheet({
   @required BuildContext context,
   @required ValueChanged<Country> onSelect,
+  List<String> exclude,
 }) {
   assert(context != null);
   assert(onSelect != null);
@@ -13,11 +14,15 @@ void showCountryListBottomSheet({
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) => _builder(context, onSelect),
+    builder: (_) => _builder(context, onSelect, exclude),
   );
 }
 
-Widget _builder(BuildContext context, ValueChanged<Country> onSelect) {
+Widget _builder(
+  BuildContext context,
+  ValueChanged<Country> onSelect,
+  List<String> exclude,
+) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
@@ -40,6 +45,6 @@ Widget _builder(BuildContext context, ValueChanged<Country> onSelect) {
         topRight: Radius.circular(40.0),
       ),
     ),
-    child: CountryListView(onSelect: onSelect),
+    child: CountryListView(onSelect: onSelect, exclude: exclude),
   );
 }

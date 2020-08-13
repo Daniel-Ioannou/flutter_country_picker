@@ -5,11 +5,14 @@ import 'country.dart';
 import 'res/country_codes.dart';
 
 class CountryListView extends StatefulWidget {
+  final List<String> exclude;
+
   /// Called when a country is select.
   ///
   /// The country picker passes the new value to the callback.
   final ValueChanged<Country> onSelect;
-  const CountryListView({Key key, @required this.onSelect})
+
+  const CountryListView({Key key, @required this.onSelect, this.exclude})
       : assert(onSelect != null),
         super(key: key);
 
@@ -22,8 +25,14 @@ class _CountryListViewState extends State<CountryListView> {
   @override
   void initState() {
     super.initState();
+
     countryList =
         countryCodes.map((country) => Country.from(json: country)).toList();
+
+    if (widget.exclude != null) {
+      countryList.removeWhere(
+          (element) => widget.exclude.contains(element.countryCode));
+    }
   }
 
   @override
