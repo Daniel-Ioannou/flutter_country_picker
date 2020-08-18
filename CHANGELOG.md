@@ -1,5 +1,5 @@
 
-## [1.0.2] - 14 Aug 2020
+## [1.0.2] - 18 Aug 2020
 
 * Add exclude countries option.
 
