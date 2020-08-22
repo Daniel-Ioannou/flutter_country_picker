@@ -1,3 +1,6 @@
+## [1.0.3] - 22 Aug 2020
+
+* Add show phone code option.
 
 ## [1.0.2] - 18 Aug 2020
 

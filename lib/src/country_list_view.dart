@@ -5,15 +5,24 @@ import 'country.dart';
 import 'res/country_codes.dart';
 
 class CountryListView extends StatefulWidget {
-  final List<String> exclude;
-
   /// Called when a country is select.
   ///
   /// The country picker passes the new value to the callback.
   final ValueChanged<Country> onSelect;
 
-  const CountryListView({Key key, @required this.onSelect, this.exclude})
-      : assert(onSelect != null),
+  /// An optional [showPhoneCode] argument can be used to show phone code.
+  final bool showPhoneCode;
+
+  /// An optional [exclude] argument can be used to exclude(remove) one ore more
+  /// country from the countries list. It takes a list of country code(iso2).
+  final List<String> exclude;
+
+  const CountryListView({
+    Key key,
+    @required this.onSelect,
+    this.exclude,
+    this.showPhoneCode = false,
+  })  : assert(onSelect != null),
         super(key: key);
 
   @override
@@ -61,7 +70,18 @@ class _CountryListViewState extends State<CountryListView> {
                 Utils.countryCodeToEmoji(country.countryCode),
                 style: const TextStyle(fontSize: 25),
               ),
-              const SizedBox(width: 15),
+              if (widget.showPhoneCode) ...[
+                const SizedBox(width: 15),
+                Container(
+                  width: 45,
+                  child: Text(
+                    '+${country.phoneCode}',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(width: 5),
+              ] else
+                const SizedBox(width: 15),
               Expanded(
                 child: Text(
                   country.name,
