@@ -16,6 +16,8 @@ export 'src/country.dart';
 /// An optional [exclude] argument can be used to exclude(remove) one ore more
 /// country from the countries list. It takes a list of country code(iso2).
 ///
+/// An optional [showPhoneCode] argument can be used to show phone code.
+///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
@@ -23,6 +25,7 @@ void showCountryPicker({
   @required BuildContext context,
   @required ValueChanged<Country> onSelect,
   List<String> exclude,
+  bool showPhoneCode = false,
 }) {
   assert(context != null);
   assert(onSelect != null);
@@ -30,5 +33,6 @@ void showCountryPicker({
     context: context,
     onSelect: onSelect,
     exclude: exclude,
+    showPhoneCode: showPhoneCode,
   );
 }
