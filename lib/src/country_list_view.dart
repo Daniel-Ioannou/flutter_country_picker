@@ -132,15 +132,7 @@ class _CountryListViewState extends State<CountryListView> {
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
     } else {
-      _searchResult =
-          _countryList.where((country) => country.contains(query)).toList();
-//      // ignore: avoid_function_literals_in_foreach_calls
-//
-//      _countryList.forEach((Country country) {
-//        if () {
-//          _searchResult.add(country);
-//        }
-//      });
+      _searchResult = _countryList.where((c) => c.contains(query)).toList();
     }
 
     setState(() => _filteredList = _searchResult);
