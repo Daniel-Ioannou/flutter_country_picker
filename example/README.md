@@ -1,16 +1,46 @@
-# example
+# Country picker
 
-A example application for country picker package.
+[![pub package](https://img.shields.io/pub/v/country_picker.svg)](https://pub.dev/packages/country_picker)
+
+A flutter package to select a country from a list of countries. 
+
+<img height="600" alt="n1" src="https://raw.githubusercontent.com/Daniel-Ioannou/flutter_country_picker/master/assets/ReadMe%20Screenshot.png">
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+ Add the package to your pubspec.yaml:
 
-A few resources to get you started if this is your first Flutter project:
+ ```yaml
+ country_picker: ^1.0.4
+ ```
+ 
+ In your dart file, import the library:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+ ```Dart
+ import 'package:country_picker/country_picker.dart';
+ ``` 
+  Show country picker using `showCountryPicker`:
+```Dart
+showCountryPicker(
+   context: context,
+   showPhoneCode: true, // optional. Shows phone code before the country name.
+   onSelect: (Country country) {
+      print('Select country: ${country.displayName}');
+   },
+);
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Parameters:
+* `onSelect`: Called when a country is select. The country picker passes the new value to the callback (required)
+* `showPhoneCode`: Can be used to to show phone code before the country name.
+* `exclude`: Can be used to exclude(remove) one ore more country from the countries list (optional). 
+```Dart
+showCountryPicker(
+   context: context,
+   exclude: <String>['KN', 'MF'], //It takes a list of country code(iso2).
+   onSelect: (Country country) => print('Select country: ${country.displayName}'),
+);
+```
+
+## Contributions
+Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.
