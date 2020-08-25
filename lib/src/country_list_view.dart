@@ -30,28 +30,59 @@ class CountryListView extends StatefulWidget {
 }
 
 class _CountryListViewState extends State<CountryListView> {
-  List<Country> countryList;
+  List<Country> _countryList;
+  List<Country> _filteredList;
+  TextEditingController _searchController;
   @override
   void initState() {
     super.initState();
-
-    countryList =
+    _searchController = TextEditingController();
+    _countryList =
         countryCodes.map((country) => Country.from(json: country)).toList();
 
     if (widget.exclude != null) {
-      countryList.removeWhere(
+      _countryList.removeWhere(
           (element) => widget.exclude.contains(element.countryCode));
     }
+
+    _filteredList = <Country>[];
+    _filteredList.addAll(_countryList);
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: countryList.map<Widget>((country) => listRow(country)).toList(),
+    return Column(
+      children: <Widget>[
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          child: TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              labelText: "Search",
+              hintText: "Search",
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: const Color(0xFF8C98A8).withOpacity(0.2),
+                ),
+              ),
+            ),
+            onChanged: _filterSearchResults,
+          ),
+        ),
+        Expanded(
+          child: ListView(
+            children: _filteredList
+                .map<Widget>((country) => _listRow(country))
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 
-  Widget listRow(Country country) {
+  Widget _listRow(Country country) {
     return Material(
       // Add Material Widget with transparent color
       // so the ripple effect of InkWell will show on tap
@@ -93,5 +124,25 @@ class _CountryListViewState extends State<CountryListView> {
         ),
       ),
     );
+  }
+
+  void _filterSearchResults(String query) {
+    List<Country> _searchResult = <Country>[];
+
+    if (query.isEmpty) {
+      _searchResult.addAll(_countryList);
+    } else {
+      _searchResult =
+          _countryList.where((country) => country.contains(query)).toList();
+//      // ignore: avoid_function_literals_in_foreach_calls
+//
+//      _countryList.forEach((Country country) {
+//        if () {
+//          _searchResult.add(country);
+//        }
+//      });
+    }
+
+    setState(() => _filteredList = _searchResult);
   }
 }
