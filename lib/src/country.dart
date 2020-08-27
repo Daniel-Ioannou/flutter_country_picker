@@ -53,4 +53,11 @@ class Country {
     data['e164_key'] = e164Key;
     return data;
   }
+
+  bool contains(String query) =>
+      name.toLowerCase().contains(query.toLowerCase()) ||
+      countryCode.toLowerCase().contains(query.toLowerCase());
+
+  @override
+  String toString() => 'Country(countryCode: $countryCode, name: $name)';
 }

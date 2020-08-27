@@ -1,4 +1,4 @@
-# Country picker (Developers Preview)
+# Country picker
 
 [![pub package](https://img.shields.io/pub/v/country_picker.svg)](https://pub.dev/packages/country_picker)
 
@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^1.0.3
+ country_picker: ^1.0.4
  ```
  
  In your dart file, import the library:
