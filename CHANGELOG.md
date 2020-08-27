@@ -1,3 +1,7 @@
+## [1.0.4] - 27 Aug 2020
+
+* Implement search.
+
 ## [1.0.3] - 22 Aug 2020
 
 * Add show phone code option.
