@@ -1,13 +1,28 @@
+///The country Model that has all the country
+///information needed from the [country_picker]
 class Country {
+  ///The country phone code
   final String phoneCode;
+
+  ///The country code, ISO (alpha-2)
   final String countryCode;
   final int e164Sc;
   final bool geographic;
   final int level;
+
+  ///The country name in English
   final String name;
+
+  ///An example of a telephone number without the phone code
   final String example;
+
+  ///Country name (country code) [phone code]
   final String displayName;
+
+  ///An example of a telephone number with the phone code and plus sign
   final String fullExampleWithPlusSign;
+
+  ///Country name (country code)
   final String displayNameNoE164Cc;
   final String e164Key;
 
