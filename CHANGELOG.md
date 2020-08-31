@@ -1,3 +1,7 @@
+## [1.0.5] - 31 Aug 2020
+
+* Update documentation.
+
 ## [1.0.4] - 27 Aug 2020
 
 * Implement search.
