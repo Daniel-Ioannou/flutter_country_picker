@@ -23,8 +23,13 @@ class Country {
   final String fullExampleWithPlusSign;
 
   ///Country name (country code)
-  final String displayNameNoE164Cc;
+
+  final String displayNameNoCountryCode;
   final String e164Key;
+
+  @Deprecated('The modern term is displayNameNoCountryCode. '
+      'This feature was deprecated after v1.0.6.')
+  String get displayNameNoE164Cc => displayNameNoCountryCode;
 
   Country({
     this.phoneCode,
@@ -36,7 +41,7 @@ class Country {
     this.example,
     this.displayName,
     this.fullExampleWithPlusSign,
-    this.displayNameNoE164Cc,
+    this.displayNameNoCountryCode,
     this.e164Key,
   });
 
@@ -50,7 +55,7 @@ class Country {
         example = json['example'] as String,
         displayName = json['display_name'] as String,
         fullExampleWithPlusSign = json['full_example_with_plus_sign'] as String,
-        displayNameNoE164Cc = json['display_name_no_e164_cc'] as String,
+        displayNameNoCountryCode = json['display_name_no_e164_cc'] as String,
         e164Key = json['e164_key'] as String;
 
   Map<String, dynamic> toJson() {
@@ -64,7 +69,7 @@ class Country {
     data['example'] = example;
     data['display_name'] = displayName;
     data['full_example_with_plus_sign'] = fullExampleWithPlusSign;
-    data['display_name_no_e164_cc'] = displayNameNoE164Cc;
+    data['display_name_no_e164_cc'] = displayNameNoCountryCode;
     data['e164_key'] = e164Key;
     return data;
   }
