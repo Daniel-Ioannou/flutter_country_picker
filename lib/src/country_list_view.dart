@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -115,7 +116,9 @@ class _CountryListViewState extends State<CountryListView> {
                 const SizedBox(width: 15),
               Expanded(
                 child: Text(
-                  country.name,
+                  CountryLocalizations.of(context)
+                          ?.countryName(countryCode: country.countryCode) ??
+                      country.name,
                   style: const TextStyle(fontSize: 16),
                 ),
               )
