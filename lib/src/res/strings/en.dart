@@ -116,7 +116,6 @@ Map<String, String> en = {
   "KE": "Kenya",
   "KI": "Kiribati",
   "XK": "Kosovo",
-  "XK": "Kosovo",
   "KW": "Kuwait",
   "KG": "Kyrgyzstan",
   "LA": "Laos",
