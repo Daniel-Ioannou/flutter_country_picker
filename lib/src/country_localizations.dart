@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
+import 'res/strings/tw.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -22,12 +23,16 @@ class CountryLocalizations {
     switch (locale.languageCode) {
       case 'zh':
         switch (locale.scriptCode) {
+          case 'Hant':
+            return tw[countryCode];
           case 'Hans':
-            return cn['countryCode'];
+          default:
+            return cn[countryCode];
         }
+        break;
       case 'en':
       default:
-        return en['countryCode'];
+        return en[countryCode];
     }
   }
 }
@@ -40,6 +45,7 @@ class _CountryLocalizationsDelegate
   bool isSupported(Locale locale) {
     return [
       'en',
+      'zh',
     ].contains(locale.languageCode);
   }
 
