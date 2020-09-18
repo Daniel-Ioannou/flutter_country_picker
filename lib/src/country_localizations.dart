@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 
 class CountryLocalizations {
@@ -19,6 +20,11 @@ class CountryLocalizations {
 
   String countryName({String countryCode}) {
     switch (locale.languageCode) {
+      case 'zh':
+        switch (locale.scriptCode) {
+          case 'Hans':
+            return cn['countryCode'];
+        }
       case 'en':
       default:
         return en['countryCode'];
