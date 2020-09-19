@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^1.0.5
+ country_picker: ^1.1.0
  ```
  
  In your dart file, import the library:
@@ -28,6 +28,24 @@ showCountryPicker(
       print('Select country: ${country.displayName}');
    },
 );
+```
+
+### For localization: 
+Add the `CountryLocalizations.delegate` in the list of your app delegates.
+```Dart
+MaterialApp(
+      supportedLocales: [
+        const Locale('en'),
+        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+      ],
+      localizationsDelegates: [
+        CountryLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      home: HomePage(),
+ );
 ```
 
 ### Parameters:
