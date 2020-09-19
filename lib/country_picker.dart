@@ -6,6 +6,7 @@ import 'src/country.dart';
 import 'src/country_list_bottom_sheet.dart';
 
 export 'src/country.dart';
+export 'src/country_localizations.dart';
 
 /// Shows a bottom sheet containing a list of countries to select one.
 ///

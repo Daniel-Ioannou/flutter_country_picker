@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,7 @@ class _CountryListViewState extends State<CountryListView> {
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+
     _countryList =
         countryCodes.map((country) => Country.from(json: country)).toList();
 
@@ -61,7 +63,7 @@ class _CountryListViewState extends State<CountryListView> {
             decoration: InputDecoration(
               labelText: "Search",
               hintText: "Search",
-              prefixIcon: Icon(Icons.search),
+              prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: const Color(0xFF8C98A8).withOpacity(0.2),
@@ -115,7 +117,9 @@ class _CountryListViewState extends State<CountryListView> {
                 const SizedBox(width: 15),
               Expanded(
                 child: Text(
-                  country.name,
+                  CountryLocalizations.of(context)
+                          ?.countryName(countryCode: country.countryCode) ??
+                      country.name,
                   style: const TextStyle(fontSize: 16),
                 ),
               )
