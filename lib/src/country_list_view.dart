@@ -38,6 +38,7 @@ class _CountryListViewState extends State<CountryListView> {
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+
     _countryList =
         countryCodes.map((country) => Country.from(json: country)).toList();
 
