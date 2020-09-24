@@ -1,3 +1,7 @@
+## [1.1.1] - 24 Sep 2020
+
+* Search on localizations.
+
 ## [1.1.0] - 19 Sep 2020
 
 ### Implement localization. 
