@@ -132,11 +132,13 @@ class _CountryListViewState extends State<CountryListView> {
 
   void _filterSearchResults(String query) {
     List<Country> _searchResult = <Country>[];
+    final CountryLocalizations localizations = CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
     } else {
-      _searchResult = _countryList.where((c) => c.contains(query)).toList();
+      _searchResult =
+          _countryList.where((c) => c.contains(query, localizations)).toList();
     }
 
     setState(() => _filteredList = _searchResult);

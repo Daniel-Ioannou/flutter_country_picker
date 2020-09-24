@@ -1,3 +1,5 @@
+import 'country_localizations.dart';
+
 ///The country Model that has all the country
 ///information needed from the [country_picker]
 class Country {
@@ -74,9 +76,14 @@ class Country {
     return data;
   }
 
-  bool contains(String query) =>
+  bool contains(String query, CountryLocalizations localizations) =>
       name.toLowerCase().contains(query.toLowerCase()) ||
-      countryCode.toLowerCase().contains(query.toLowerCase());
+      countryCode.toLowerCase().contains(query.toLowerCase()) ||
+      (localizations
+              ?.countryName(countryCode: countryCode)
+              ?.toLowerCase()
+              ?.contains(query.toLowerCase()) ??
+          false);
 
   @override
   String toString() => 'Country(countryCode: $countryCode, name: $name)';
