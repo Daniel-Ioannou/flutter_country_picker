@@ -137,8 +137,9 @@ class _CountryListViewState extends State<CountryListView> {
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
     } else {
-      _searchResult =
-          _countryList.where((c) => c.contains(query, localizations)).toList();
+      _searchResult = _countryList
+          .where((c) => c.startsWith(query, localizations))
+          .toList();
     }
 
     setState(() => _filteredList = _searchResult);

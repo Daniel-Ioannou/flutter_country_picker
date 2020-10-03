@@ -76,13 +76,13 @@ class Country {
     return data;
   }
 
-  bool contains(String query, CountryLocalizations localizations) =>
-      name.toLowerCase().contains(query.toLowerCase()) ||
-      countryCode.toLowerCase().contains(query.toLowerCase()) ||
+  bool startsWith(String query, CountryLocalizations localizations) =>
+      name.toLowerCase().startsWith(query.toLowerCase()) ||
+      countryCode.toLowerCase().startsWith(query.toLowerCase()) ||
       (localizations
               ?.countryName(countryCode: countryCode)
               ?.toLowerCase()
-              ?.contains(query.toLowerCase()) ??
+              ?.startsWith(query.toLowerCase()) ??
           false);
 
   @override
