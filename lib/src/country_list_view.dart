@@ -18,12 +18,19 @@ class CountryListView extends StatefulWidget {
   /// country from the countries list. It takes a list of country code(iso2).
   final List<String> exclude;
 
+  /// An optional [countryFilter] argument can be used to filter the
+  /// list of countries. It takes a list of country code(iso2).
+  final List<String> countryFilter;
+
   const CountryListView({
     Key key,
     @required this.onSelect,
     this.exclude,
+    this.countryFilter,
     this.showPhoneCode = false,
   })  : assert(onSelect != null),
+        assert(exclude == null || countryFilter == null,
+            'Cannot provide both exclude and countryFilter'),
         super(key: key);
 
   @override
@@ -45,6 +52,10 @@ class _CountryListViewState extends State<CountryListView> {
     if (widget.exclude != null) {
       _countryList.removeWhere(
           (element) => widget.exclude.contains(element.countryCode));
+    }
+    if (widget.countryFilter != null) {
+      _countryList.removeWhere(
+          (element) => !widget.countryFilter.contains(element.countryCode));
     }
 
     _filteredList = <Country>[];

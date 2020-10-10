@@ -26,14 +26,18 @@ void showCountryPicker({
   @required BuildContext context,
   @required ValueChanged<Country> onSelect,
   List<String> exclude,
+  List<String> countryFilter,
   bool showPhoneCode = false,
 }) {
   assert(context != null);
   assert(onSelect != null);
+  assert(exclude == null || countryFilter == null,
+      'Cannot provide both exclude and countryFilter');
   showCountryListBottomSheet(
     context: context,
     onSelect: onSelect,
     exclude: exclude,
+    countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
   );
 }

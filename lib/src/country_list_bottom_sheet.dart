@@ -7,6 +7,7 @@ void showCountryListBottomSheet({
   @required BuildContext context,
   @required ValueChanged<Country> onSelect,
   List<String> exclude,
+  List<String> countryFilter,
   bool showPhoneCode = false,
 }) {
   assert(context != null);
@@ -15,7 +16,8 @@ void showCountryListBottomSheet({
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) => _builder(context, onSelect, exclude, showPhoneCode),
+    builder: (_) =>
+        _builder(context, onSelect, exclude, countryFilter, showPhoneCode),
   );
 }
 
@@ -23,6 +25,7 @@ Widget _builder(
   BuildContext context,
   ValueChanged<Country> onSelect,
   List<String> exclude,
+  List<String> countryFilter,
   bool showPhoneCode,
 ) {
   final device = MediaQuery.of(context).size.height;
@@ -50,6 +53,7 @@ Widget _builder(
     child: CountryListView(
       onSelect: onSelect,
       exclude: exclude,
+      countryFilter: countryFilter,
       showPhoneCode: showPhoneCode,
     ),
   );
