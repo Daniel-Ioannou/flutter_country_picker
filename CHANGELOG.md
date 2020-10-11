@@ -1,4 +1,4 @@
-## [1.1.1] - 11 Oct 2020
+## [1.1.2] - 11 Oct 2020
 
 * Add support for Greek localization.
 * At search change contains to startsWith.
