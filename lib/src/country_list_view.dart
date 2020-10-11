@@ -16,14 +16,23 @@ class CountryListView extends StatefulWidget {
 
   /// An optional [exclude] argument can be used to exclude(remove) one ore more
   /// country from the countries list. It takes a list of country code(iso2).
+  /// Note: Can't provide both [exclude] and [countryFilter]
   final List<String> exclude;
+
+  /// An optional [countryFilter] argument can be used to filter the
+  /// list of countries. It takes a list of country code(iso2).
+  /// Note: Can't provide both [countryFilter] and [exclude]
+  final List<String> countryFilter;
 
   const CountryListView({
     Key key,
     @required this.onSelect,
     this.exclude,
+    this.countryFilter,
     this.showPhoneCode = false,
   })  : assert(onSelect != null),
+        assert(exclude == null || countryFilter == null,
+            'Cannot provide both exclude and countryFilter'),
         super(key: key);
 
   @override
@@ -45,6 +54,10 @@ class _CountryListViewState extends State<CountryListView> {
     if (widget.exclude != null) {
       _countryList.removeWhere(
           (element) => widget.exclude.contains(element.countryCode));
+    }
+    if (widget.countryFilter != null) {
+      _countryList.removeWhere(
+          (element) => !widget.countryFilter.contains(element.countryCode));
     }
 
     _filteredList = <Country>[];
@@ -137,8 +150,9 @@ class _CountryListViewState extends State<CountryListView> {
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
     } else {
-      _searchResult =
-          _countryList.where((c) => c.contains(query, localizations)).toList();
+      _searchResult = _countryList
+          .where((c) => c.startsWith(query, localizations))
+          .toList();
     }
 
     setState(() => _filteredList = _searchResult);

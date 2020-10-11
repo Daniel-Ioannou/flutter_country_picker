@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       ),
       supportedLocales: [
         const Locale('en'),
+        const Locale('el'),
         const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
         const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
@@ -34,9 +35,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Demo for country picker'),
-      ),
+      appBar: AppBar(title: Text('Demo for country picker')),
       body: Center(
         child: RaisedButton(
           onPressed: () {
