@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^1.1.1
+ country_picker: ^1.1.2
  ```
  
  In your dart file, import the library:
@@ -36,6 +36,7 @@ Add the `CountryLocalizations.delegate` in the list of your app delegates.
 MaterialApp(
       supportedLocales: [
         const Locale('en'),
+        const Locale('el'),
         const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
         const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
@@ -51,7 +52,7 @@ MaterialApp(
 ### Parameters:
 * `onSelect`: Called when a country is select. The country picker passes the new value to the callback (required)
 * `showPhoneCode`: Can be used to to show phone code before the country name.
-* `exclude`: Can be used to exclude(remove) one ore more country from the countries list (optional). 
+* `exclude`: Can be used to exclude(remove) one or more country from the countries list (optional). 
 ```Dart
 showCountryPicker(
    context: context,
@@ -59,6 +60,9 @@ showCountryPicker(
    onSelect: (Country country) => print('Select country: ${country.displayName}'),
 );
 ```
+* `countryFilter`: Can be used to 	uses filter the countries list (optional). 
+  - It takes a list of country code(iso2). 
+  - Can't provide both exclude and countryFilter
 
 ## Contributions
 Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.

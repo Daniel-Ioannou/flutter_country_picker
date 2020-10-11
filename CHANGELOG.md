@@ -1,3 +1,19 @@
+## [1.1.1] - 11 Oct 2020
+
+* Add support for Greek localization.
+* At search change contains to startsWith.
+* Add country filter option.  
+  - Can be used to uses filter the countries list (optional). 
+  - It takes a list of country code(iso2).
+  - Can't provide both exclude and countryFilter
+```Dart
+showCountryPicker(
+   context: context,
+   countryFilter: <String>['AT', 'GB', 'DK', 'DE', 'FR', 'GR'], //It takes a list of country code(iso2).
+   onSelect: (Country country) => print('Select country: ${country.displayName}'),
+);
+```
+
 ## [1.1.1] - 24 Sep 2020
 
 * Search on localizations.
