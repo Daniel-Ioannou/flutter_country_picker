@@ -16,12 +16,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         const Locale('en'),
         const Locale('el'),
-        const Locale.fromSubtags(
-            languageCode: 'zh',
-            scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
-        const Locale.fromSubtags(
-            languageCode: 'zh',
-            scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
@@ -39,22 +35,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Demo for country picker'),
-      ),
+      appBar: AppBar(title: Text('Demo for country picker')),
       body: Center(
         child: RaisedButton(
           onPressed: () {
             showCountryPicker(
               context: context,
               //Optional.  Can be used to exclude(remove) one ore more country from the countries list (optional).
-              // exclude: <String>['KN', 'MF'],
+              exclude: <String>['KN', 'MF'],
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
-              countryFilter: <String>['KN', 'MF', 'CY'],
             );
           },
           child: const Text('Show country picker'),

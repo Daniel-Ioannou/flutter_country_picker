@@ -16,10 +16,12 @@ class CountryListView extends StatefulWidget {
 
   /// An optional [exclude] argument can be used to exclude(remove) one ore more
   /// country from the countries list. It takes a list of country code(iso2).
+  /// Note: Can't provide both [exclude] and [countryFilter]
   final List<String> exclude;
 
   /// An optional [countryFilter] argument can be used to filter the
   /// list of countries. It takes a list of country code(iso2).
+  /// Note: Can't provide both [countryFilter] and [exclude]
   final List<String> countryFilter;
 
   const CountryListView({
