@@ -245,4 +245,5 @@ Map<String, String> tw = {
   "YE": "葉門",
   "ZM": "尚比亞",
   "ZW": "辛巴威",
+  "search": "搜索",
 };
