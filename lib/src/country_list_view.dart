@@ -66,6 +66,10 @@ class _CountryListViewState extends State<CountryListView> {
 
   @override
   Widget build(BuildContext context) {
+    final String searchLabel =
+        CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
+            'Search';
+
     return Column(
       children: <Widget>[
         const SizedBox(height: 12),
@@ -74,8 +78,8 @@ class _CountryListViewState extends State<CountryListView> {
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              labelText: "Search",
-              hintText: "Search",
+              labelText: searchLabel,
+              hintText: searchLabel,
               prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
