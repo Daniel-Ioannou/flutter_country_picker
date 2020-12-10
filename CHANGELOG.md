@@ -1,3 +1,7 @@
+## [1.1.3] - 10 Dec 2020
+
+  * Localize label and hint of search text field
+
 ## [1.1.2] - 11 Oct 2020
   * Add support for Greek localization.
   * At search change contains to startsWith.
