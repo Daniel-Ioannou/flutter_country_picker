@@ -48,9 +48,21 @@ class _CountryListViewState extends State<CountryListView> {
     super.initState();
     _searchController = TextEditingController();
 
-    _countryList =
-        countryCodes.map((country) => Country.from(json: country)).toList();
-
+    _countryList = [];
+	
+	List<String> _tmpCodeList = [];
+	
+	countryCodes.forEach((country) {
+		if (!widget.showPhoneCode) {
+			if (!_tmpCodeList.contains(country['iso2_cc'])) {
+				_tmpCodeList.add(country['iso2_cc']);
+				_countryList.add(Country.from(json: country));
+			}
+		} else {
+			_countryList.add(Country.from(json: country));
+		}
+	});
+	
     if (widget.exclude != null) {
       _countryList.removeWhere(
           (element) => widget.exclude.contains(element.countryCode));
