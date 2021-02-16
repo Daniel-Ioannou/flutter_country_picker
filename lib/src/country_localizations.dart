@@ -4,6 +4,8 @@ import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/tw.dart';
+import 'res/strings/es.dart';
+import 'res/strings/pt.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -48,6 +50,10 @@ class CountryLocalizations {
         break;
       case 'el':
         return gr[countryCode];
+      case 'es':
+        return es[countryCode];		
+	  case 'pt':
+        return pt[countryCode];	
       case 'en':
       default:
         return en[countryCode];
@@ -65,6 +71,8 @@ class _CountryLocalizationsDelegate
       'en',
       'zh',
       'el',
+	  'es',
+	  'pt',
     ].contains(locale.languageCode);
   }
 
