@@ -1,3 +1,7 @@
+## [1.1.4] - 18 OcFebt 2021
+  * Add support for Spanish and Portuguese localization.
+  * If `showPhoneCode` is false remove duplicates country 
+
 ## [1.1.3] - 10 Dec 2020
 
   * Localize label and hint of search text field
