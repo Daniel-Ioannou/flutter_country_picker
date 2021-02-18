@@ -87,4 +87,16 @@ class Country {
 
   @override
   String toString() => 'Country(countryCode: $countryCode, name: $name)';
+
+  @override
+  bool operator ==(Object other) {
+    if (other is Country) {
+      return other.countryCode == countryCode;
+    }
+
+    return super == other;
+  }
+
+  @override
+  int get hashCode => super.hashCode;
 }
