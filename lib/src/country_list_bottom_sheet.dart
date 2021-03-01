@@ -9,6 +9,7 @@ void showCountryListBottomSheet({
   List<String> exclude,
   List<String> countryFilter,
   bool showPhoneCode = false,
+  Color backgroundColor,
 }) {
   assert(context != null);
   assert(onSelect != null);
@@ -16,8 +17,14 @@ void showCountryListBottomSheet({
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) =>
-        _builder(context, onSelect, exclude, countryFilter, showPhoneCode),
+    builder: (_) => _builder(
+      context,
+      onSelect,
+      exclude,
+      countryFilter,
+      showPhoneCode,
+      backgroundColor,
+    ),
   );
 }
 
@@ -27,24 +34,26 @@ Widget _builder(
   List<String> exclude,
   List<String> countryFilter,
   bool showPhoneCode,
+  Color backgroundColor,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
 
-  Color backgroundColor = Theme.of(context).bottomSheetTheme.backgroundColor;
-  if (backgroundColor == null) {
+  Color _backgroundColor =
+      backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
+  if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
-      backgroundColor = Colors.white;
+      _backgroundColor = Colors.white;
     } else {
-      backgroundColor = Colors.black;
+      _backgroundColor = Colors.black;
     }
   }
 
   return Container(
     height: height,
     decoration: BoxDecoration(
-      color: backgroundColor,
+      color: _backgroundColor,
       borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(40.0),
         topRight: Radius.circular(40.0),

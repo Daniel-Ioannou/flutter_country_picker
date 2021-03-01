@@ -28,6 +28,7 @@ void showCountryPicker({
   List<String> exclude,
   List<String> countryFilter,
   bool showPhoneCode = false,
+  Color backgroundColor,
 }) {
   assert(context != null);
   assert(onSelect != null);
@@ -39,5 +40,6 @@ void showCountryPicker({
     exclude: exclude,
     countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
+    backgroundColor: backgroundColor,
   );
 }
