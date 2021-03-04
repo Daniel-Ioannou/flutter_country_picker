@@ -1,9 +1,9 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
 import 'res/country_codes.dart';
+import 'utils.dart';
 
 class CountryListView extends StatefulWidget {
   /// Called when a country is select.
@@ -24,12 +24,15 @@ class CountryListView extends StatefulWidget {
   /// Note: Can't provide both [countryFilter] and [exclude]
   final List<String> countryFilter;
 
+  final CountryListThemeData countryListTheme;
+
   const CountryListView({
     Key key,
     @required this.onSelect,
     this.exclude,
     this.countryFilter,
     this.showPhoneCode = false,
+    this.countryListTheme,
   })  : assert(onSelect != null),
         assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
@@ -124,7 +127,7 @@ class _CountryListViewState extends State<CountryListView> {
               const SizedBox(width: 20),
               Text(
                 Utils.countryCodeToEmoji(country.countryCode),
-                style: const TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 25),
               ),
               if (widget.showPhoneCode) ...[
                 const SizedBox(width: 15),
@@ -143,7 +146,8 @@ class _CountryListViewState extends State<CountryListView> {
                   CountryLocalizations.of(context)
                           ?.countryName(countryCode: country.countryCode) ??
                       country.name,
-                  style: const TextStyle(fontSize: 16),
+                  style: widget.countryListTheme?.countryNameStyle ??
+                      const TextStyle(fontSize: 16),
                 ),
               )
             ],

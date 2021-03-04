@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'src/country.dart';
 import 'src/country_list_bottom_sheet.dart';
+import 'src/country_list_theme_data.dart';
 
 export 'src/country.dart';
+export 'src/country_list_theme_data.dart';
 export 'src/country_localizations.dart';
 
 /// Shows a bottom sheet containing a list of countries to select one.
@@ -19,6 +21,8 @@ export 'src/country_localizations.dart';
 ///
 /// An optional [showPhoneCode] argument can be used to show phone code.
 ///
+///  A theme for customizing the backgroundColor, text style.
+///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
@@ -28,7 +32,7 @@ void showCountryPicker({
   List<String> exclude,
   List<String> countryFilter,
   bool showPhoneCode = false,
-  Color backgroundColor,
+  CountryListThemeData countryListTheme,
 }) {
   assert(context != null);
   assert(onSelect != null);
@@ -40,6 +44,6 @@ void showCountryPicker({
     exclude: exclude,
     countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
-    backgroundColor: backgroundColor,
+    countryListTheme: countryListTheme,
   );
 }

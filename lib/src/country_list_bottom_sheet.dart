@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'country.dart';
+import 'country_list_theme_data.dart';
 import 'country_list_view.dart';
 
 void showCountryListBottomSheet({
@@ -9,7 +10,7 @@ void showCountryListBottomSheet({
   List<String> exclude,
   List<String> countryFilter,
   bool showPhoneCode = false,
-  Color backgroundColor,
+  CountryListThemeData countryListTheme,
 }) {
   assert(context != null);
   assert(onSelect != null);
@@ -23,7 +24,7 @@ void showCountryListBottomSheet({
       exclude,
       countryFilter,
       showPhoneCode,
-      backgroundColor,
+      countryListTheme,
     ),
   );
 }
@@ -34,14 +35,14 @@ Widget _builder(
   List<String> exclude,
   List<String> countryFilter,
   bool showPhoneCode,
-  Color backgroundColor,
+  CountryListThemeData countryListTheme,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
 
-  Color _backgroundColor =
-      backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
+  Color _backgroundColor = countryListTheme?.backgroundColor ??
+      Theme.of(context).bottomSheetTheme.backgroundColor;
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
       _backgroundColor = Colors.white;
@@ -64,6 +65,7 @@ Widget _builder(
       exclude: exclude,
       countryFilter: countryFilter,
       showPhoneCode: showPhoneCode,
+      countryListTheme: countryListTheme,
     ),
   );
 }
