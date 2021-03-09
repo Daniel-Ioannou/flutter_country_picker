@@ -23,14 +23,12 @@ export 'src/country_localizations.dart';
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
 void showCountryPicker({
-  @required BuildContext context,
-  @required ValueChanged<Country> onSelect,
-  List<String> exclude,
-  List<String> countryFilter,
+  required BuildContext context,
+  required ValueChanged<Country> onSelect,
+  List<String>? exclude,
+  List<String>? countryFilter,
   bool showPhoneCode = false,
 }) {
-  assert(context != null);
-  assert(onSelect != null);
   assert(exclude == null || countryFilter == null,
       'Cannot provide both exclude and countryFilter');
   showCountryListBottomSheet(

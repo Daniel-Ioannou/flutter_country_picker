@@ -24,7 +24,7 @@ class CountryLocalizations {
   /// ```dart
   /// CountryLocalizations.of(context).countryName(countryCode: country.countryCode),
   /// ```
-  static CountryLocalizations of(BuildContext context) {
+  static CountryLocalizations? of(BuildContext context) {
     return Localizations.of<CountryLocalizations>(
       context,
       CountryLocalizations,
@@ -37,7 +37,7 @@ class CountryLocalizations {
       _CountryLocalizationsDelegate();
 
   /// The localized country name for the given country code.
-  String countryName({String countryCode}) {
+  String? countryName({required String countryCode}) {
     switch (locale.languageCode) {
       case 'zh':
         switch (locale.scriptCode) {
@@ -47,7 +47,6 @@ class CountryLocalizations {
           default:
             return cn[countryCode];
         }
-        break;
       case 'el':
         return gr[countryCode];
       case 'es':

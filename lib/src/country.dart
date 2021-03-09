@@ -34,20 +34,20 @@ class Country {
   String get displayNameNoE164Cc => displayNameNoCountryCode;
 
   Country({
-    this.phoneCode,
-    this.countryCode,
-    this.e164Sc,
-    this.geographic,
-    this.level,
-    this.name,
-    this.example,
-    this.displayName,
-    this.fullExampleWithPlusSign,
-    this.displayNameNoCountryCode,
-    this.e164Key,
+    required this.phoneCode,
+    required this.countryCode,
+    required this.e164Sc,
+    required this.geographic,
+    required this.level,
+    required this.name,
+    required this.example,
+    required this.displayName,
+    required this.fullExampleWithPlusSign,
+    required this.displayNameNoCountryCode,
+    required this.e164Key,
   });
 
-  Country.from({Map<String, dynamic> json})
+  Country.from({required Map<String, dynamic> json})
       : phoneCode = json['e164_cc'] as String,
         countryCode = json['iso2_cc'] as String,
         e164Sc = json['e164_sc'] as int,
@@ -76,13 +76,13 @@ class Country {
     return data;
   }
 
-  bool startsWith(String query, CountryLocalizations localizations) =>
+  bool startsWith(String query, CountryLocalizations? localizations) =>
       name.toLowerCase().startsWith(query.toLowerCase()) ||
       countryCode.toLowerCase().startsWith(query.toLowerCase()) ||
       (localizations
               ?.countryName(countryCode: countryCode)
               ?.toLowerCase()
-              ?.startsWith(query.toLowerCase()) ??
+              .startsWith(query.toLowerCase()) ??
           false);
 
   @override
