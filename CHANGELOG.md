@@ -1,4 +1,7 @@
-## [1.1.4] - 18 OcFebt 2021
+## [2.0.0] - 09 Mar 2021 
+  * Migrated to null safety
+
+## [1.1.4] - 18 Feb 2021
   * Add support for Spanish and Portuguese localization.
   * If `showPhoneCode` is false remove duplicates country 
 
