@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Demo for country picker')),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             showCountryPicker(
               context: context,
