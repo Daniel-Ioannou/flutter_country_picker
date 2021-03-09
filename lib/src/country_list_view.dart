@@ -47,10 +47,8 @@ class _CountryListViewState extends State<CountryListView> {
     super.initState();
     _searchController = TextEditingController();
 
-    _countryList = countryCodes.map((country) {
-      print('country: $country');
-      return Country.from(json: country);
-    }).toList();
+    _countryList =
+        countryCodes.map((country) => Country.from(json: country)).toList();
 
     //Remove duplicates country if not use phone code
     if (!widget.showPhoneCode) {
