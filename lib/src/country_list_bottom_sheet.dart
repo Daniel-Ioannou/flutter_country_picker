@@ -5,15 +5,13 @@ import 'country_list_theme_data.dart';
 import 'country_list_view.dart';
 
 void showCountryListBottomSheet({
-  @required BuildContext context,
-  @required ValueChanged<Country> onSelect,
-  List<String> exclude,
-  List<String> countryFilter,
+  required BuildContext context,
+  required ValueChanged<Country> onSelect,
+  List<String>? exclude,
+  List<String>? countryFilter,
   bool showPhoneCode = false,
-  CountryListThemeData countryListTheme,
+  CountryListThemeData? countryListTheme,
 }) {
-  assert(context != null);
-  assert(onSelect != null);
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -32,16 +30,16 @@ void showCountryListBottomSheet({
 Widget _builder(
   BuildContext context,
   ValueChanged<Country> onSelect,
-  List<String> exclude,
-  List<String> countryFilter,
+  List<String>? exclude,
+  List<String>? countryFilter,
   bool showPhoneCode,
-  CountryListThemeData countryListTheme,
+  CountryListThemeData? countryListTheme,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
 
-  Color _backgroundColor = countryListTheme?.backgroundColor ??
+  Color? _backgroundColor = countryListTheme?.backgroundColor ??
       Theme.of(context).bottomSheetTheme.backgroundColor;
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {

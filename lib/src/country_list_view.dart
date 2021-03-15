@@ -17,24 +17,23 @@ class CountryListView extends StatefulWidget {
   /// An optional [exclude] argument can be used to exclude(remove) one ore more
   /// country from the countries list. It takes a list of country code(iso2).
   /// Note: Can't provide both [exclude] and [countryFilter]
-  final List<String> exclude;
+  final List<String>? exclude;
 
   /// An optional [countryFilter] argument can be used to filter the
   /// list of countries. It takes a list of country code(iso2).
   /// Note: Can't provide both [countryFilter] and [exclude]
-  final List<String> countryFilter;
+  final List<String>? countryFilter;
 
-  final CountryListThemeData countryListTheme;
+  final CountryListThemeData? countryListTheme;
 
   const CountryListView({
-    Key key,
-    @required this.onSelect,
+    Key? key,
+    required this.onSelect,
     this.exclude,
     this.countryFilter,
     this.showPhoneCode = false,
     this.countryListTheme,
-  })  : assert(onSelect != null),
-        assert(exclude == null || countryFilter == null,
+  })  : assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
         super(key: key);
 
@@ -43,9 +42,9 @@ class CountryListView extends StatefulWidget {
 }
 
 class _CountryListViewState extends State<CountryListView> {
-  List<Country> _countryList;
-  List<Country> _filteredList;
-  TextEditingController _searchController;
+  late List<Country> _countryList;
+  late List<Country> _filteredList;
+  late TextEditingController _searchController;
   @override
   void initState() {
     super.initState();
@@ -62,11 +61,11 @@ class _CountryListViewState extends State<CountryListView> {
 
     if (widget.exclude != null) {
       _countryList.removeWhere(
-          (element) => widget.exclude.contains(element.countryCode));
+          (element) => widget.exclude!.contains(element.countryCode));
     }
     if (widget.countryFilter != null) {
       _countryList.removeWhere(
-          (element) => !widget.countryFilter.contains(element.countryCode));
+          (element) => !widget.countryFilter!.contains(element.countryCode));
     }
 
     _filteredList = <Country>[];
@@ -127,11 +126,11 @@ class _CountryListViewState extends State<CountryListView> {
               const SizedBox(width: 20),
               Text(
                 Utils.countryCodeToEmoji(country.countryCode),
-                style: TextStyle(fontSize: 25),
+                style: const TextStyle(fontSize: 25),
               ),
               if (widget.showPhoneCode) ...[
                 const SizedBox(width: 15),
-                Container(
+                SizedBox(
                   width: 45,
                   child: Text(
                     '+${country.phoneCode}',
@@ -159,7 +158,8 @@ class _CountryListViewState extends State<CountryListView> {
 
   void _filterSearchResults(String query) {
     List<Country> _searchResult = <Country>[];
-    final CountryLocalizations localizations = CountryLocalizations.of(context);
+    final CountryLocalizations? localizations =
+        CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);

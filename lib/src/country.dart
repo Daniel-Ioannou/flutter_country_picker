@@ -22,7 +22,7 @@ class Country {
   final String displayName;
 
   ///An example of a telephone number with the phone code and plus sign
-  final String fullExampleWithPlusSign;
+  final String? fullExampleWithPlusSign;
 
   ///Country name (country code)
 
@@ -34,31 +34,31 @@ class Country {
   String get displayNameNoE164Cc => displayNameNoCountryCode;
 
   Country({
-    this.phoneCode,
-    this.countryCode,
-    this.e164Sc,
-    this.geographic,
-    this.level,
-    this.name,
-    this.example,
-    this.displayName,
+    required this.phoneCode,
+    required this.countryCode,
+    required this.e164Sc,
+    required this.geographic,
+    required this.level,
+    required this.name,
+    required this.example,
+    required this.displayName,
+    required this.displayNameNoCountryCode,
+    required this.e164Key,
     this.fullExampleWithPlusSign,
-    this.displayNameNoCountryCode,
-    this.e164Key,
   });
 
-  Country.from({Map<String, dynamic> json})
-      : phoneCode = json['e164_cc'] as String,
-        countryCode = json['iso2_cc'] as String,
-        e164Sc = json['e164_sc'] as int,
-        geographic = json['geographic'] as bool,
-        level = json['level'] as int,
-        name = json['name'] as String,
-        example = json['example'] as String,
-        displayName = json['display_name'] as String,
-        fullExampleWithPlusSign = json['full_example_with_plus_sign'] as String,
-        displayNameNoCountryCode = json['display_name_no_e164_cc'] as String,
-        e164Key = json['e164_key'] as String;
+  Country.from({required Map<String, dynamic> json})
+      : phoneCode = json['e164_cc'],
+        countryCode = json['iso2_cc'],
+        e164Sc = json['e164_sc'],
+        geographic = json['geographic'],
+        level = json['level'],
+        name = json['name'],
+        example = json['example'],
+        displayName = json['display_name'],
+        fullExampleWithPlusSign = json['full_example_with_plus_sign'],
+        displayNameNoCountryCode = json['display_name_no_e164_cc'],
+        e164Key = json['e164_key'];
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -76,13 +76,13 @@ class Country {
     return data;
   }
 
-  bool startsWith(String query, CountryLocalizations localizations) =>
+  bool startsWith(String query, CountryLocalizations? localizations) =>
       name.toLowerCase().startsWith(query.toLowerCase()) ||
       countryCode.toLowerCase().startsWith(query.toLowerCase()) ||
       (localizations
               ?.countryName(countryCode: countryCode)
               ?.toLowerCase()
-              ?.startsWith(query.toLowerCase()) ??
+              .startsWith(query.toLowerCase()) ??
           false);
 
   @override
