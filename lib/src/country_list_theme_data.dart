@@ -9,7 +9,12 @@ class CountryListThemeData {
   ///The style to use for country name text.
   ///
   /// If null, the style will be set to [TextStyle(fontSize: 16)]
-  final TextStyle? countryNameStyle;
+  final TextStyle? textStyle;
 
-  CountryListThemeData({this.backgroundColor, this.countryNameStyle});
+  ///The flag size.
+  ///
+  /// If null, set to 25
+  final double? flagSize;
+
+  CountryListThemeData({this.backgroundColor, this.textStyle, this.flagSize});
 }

@@ -21,7 +21,7 @@ export 'src/country_localizations.dart';
 ///
 /// An optional [showPhoneCode] argument can be used to show phone code.
 ///
-///  A theme for customizing the backgroundColor, text style.
+/// [countryListTheme] is the theme for customizing the country list bottom sheet.
 ///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
