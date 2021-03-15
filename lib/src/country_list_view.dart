@@ -1,9 +1,9 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
 import 'res/country_codes.dart';
+import 'utils.dart';
 
 class CountryListView extends StatefulWidget {
   /// Called when a country is select.
@@ -24,12 +24,17 @@ class CountryListView extends StatefulWidget {
   /// Note: Can't provide both [countryFilter] and [exclude]
   final List<String>? countryFilter;
 
+  /// An optional argument for for customizing the
+  /// country list bottom sheet.
+  final CountryListThemeData? countryListTheme;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
     this.exclude,
     this.countryFilter,
     this.showPhoneCode = false,
+    this.countryListTheme,
   })  : assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
         super(key: key);
@@ -107,6 +112,9 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _listRow(Country country) {
+    final TextStyle _textStyle =
+        widget.countryListTheme?.textStyle ?? _defaultTextStyle;
+
     return Material(
       // Add Material Widget with transparent color
       // so the ripple effect of InkWell will show on tap
@@ -123,7 +131,9 @@ class _CountryListViewState extends State<CountryListView> {
               const SizedBox(width: 20),
               Text(
                 Utils.countryCodeToEmoji(country.countryCode),
-                style: const TextStyle(fontSize: 25),
+                style: TextStyle(
+                  fontSize: widget.countryListTheme?.flagSize ?? 25,
+                ),
               ),
               if (widget.showPhoneCode) ...[
                 const SizedBox(width: 15),
@@ -131,7 +141,7 @@ class _CountryListViewState extends State<CountryListView> {
                   width: 45,
                   child: Text(
                     '+${country.phoneCode}',
-                    style: const TextStyle(fontSize: 16),
+                    style: _textStyle,
                   ),
                 ),
                 const SizedBox(width: 5),
@@ -142,7 +152,7 @@ class _CountryListViewState extends State<CountryListView> {
                   CountryLocalizations.of(context)
                           ?.countryName(countryCode: country.countryCode) ??
                       country.name,
-                  style: const TextStyle(fontSize: 16),
+                  style: _textStyle,
                 ),
               )
             ],
@@ -167,4 +177,6 @@ class _CountryListViewState extends State<CountryListView> {
 
     setState(() => _filteredList = _searchResult);
   }
+
+  get _defaultTextStyle => const TextStyle(fontSize: 16);
 }
