@@ -1,3 +1,16 @@
+## [2.0.1] - 15 Mar 2021 
+  * Implemented country list theme
+    ```Dart
+    showCountryPicker(
+      context: context,
+      countryListTheme: CountryListThemeData(
+        flagSize: 25,
+        backgroundColor: Colors.white,
+        textStyle: TextStyle(fontSize: 16, color: Colors.blueGrey),
+      ),
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
 ## [2.0.0] - 09 Mar 2021 
   * Migrated to null safety
 
