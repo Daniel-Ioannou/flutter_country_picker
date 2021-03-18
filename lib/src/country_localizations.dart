@@ -55,7 +55,6 @@ class CountryLocalizations {
         return es[countryCode];
       case 'pt':
         return pt[countryCode];
-      case 'no':
       case 'nb':
         return nb[countryCode];
       case 'nn':
@@ -79,7 +78,6 @@ class _CountryLocalizationsDelegate
       'el',
       'es',
       'pt',
-      'no',
       'nb',
       'nn',
     ].contains(locale.languageCode);
