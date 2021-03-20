@@ -4,6 +4,8 @@ import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/gr.dart';
+import 'res/strings/nb.dart';
+import 'res/strings/nn.dart';
 import 'res/strings/pt.dart';
 import 'res/strings/tw.dart';
 
@@ -53,6 +55,10 @@ class CountryLocalizations {
         return es[countryCode];
       case 'pt':
         return pt[countryCode];
+      case 'nb':
+        return nb[countryCode];
+      case 'nn':
+        return nn[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -72,6 +78,8 @@ class _CountryLocalizationsDelegate
       'el',
       'es',
       'pt',
+      'nb',
+      'nn',
     ].contains(locale.languageCode);
   }
 
