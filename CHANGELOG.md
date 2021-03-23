@@ -1,3 +1,6 @@
+## [2.0.2] - 23 Mar 2021 
+  * Add support for Norwegian localization 
+
 ## [2.0.1] - 15 Mar 2021 
   * Implemented country list theme
     ```Dart
