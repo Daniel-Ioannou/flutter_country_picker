@@ -9,6 +9,7 @@ import 'src/country_list_theme_data.dart';
 export 'src/country.dart';
 export 'src/country_list_theme_data.dart';
 export 'src/country_localizations.dart';
+export 'src/country_parser.dart';
 
 /// Shows a bottom sheet containing a list of countries to select one.
 ///
