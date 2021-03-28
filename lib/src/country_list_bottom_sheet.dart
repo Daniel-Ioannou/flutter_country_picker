@@ -7,6 +7,7 @@ import 'country_list_view.dart';
 void showCountryListBottomSheet({
   required BuildContext context,
   required ValueChanged<Country> onSelect,
+  VoidCallback? onClosed,
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
@@ -24,7 +25,9 @@ void showCountryListBottomSheet({
       showPhoneCode,
       countryListTheme,
     ),
-  );
+  ).whenComplete(() {
+    if (onClosed != null) onClosed();
+  });
 }
 
 Widget _builder(
