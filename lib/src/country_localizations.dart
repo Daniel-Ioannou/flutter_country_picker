@@ -43,7 +43,6 @@ class CountryLocalizations {
 
   /// The localized country name for the given country code.
   String? countryName({required String countryCode}) {
-    print('${locale.languageCode}');
     switch (locale.languageCode) {
       case 'zh':
         switch (locale.scriptCode) {
@@ -92,7 +91,7 @@ class _CountryLocalizationsDelegate
       'nb',
       'nn',
       'ru',
-      'uk'
+      'uk',
     ].contains(locale.languageCode);
   }
 
