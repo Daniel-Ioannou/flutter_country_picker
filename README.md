@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^2.0.2
+ country_picker: ^2.0.3
  ```
  
  In your dart file, import the library:
@@ -51,6 +51,7 @@ MaterialApp(
 
 ### Parameters:
 * `onSelect`: Called when a country is select. The country picker passes the new value to the callback (required)
+* `onClosed`: Called when CountryPicker is dismiss, whether a country is selected or not (optional).
 * `showPhoneCode`: Can be used to to show phone code before the country name.
 * `countryListTheme`: Can be used to customizing the country list bottom sheet. (optional). 
   ```Dart
