@@ -23,6 +23,9 @@ export 'src/country_localizations.dart';
 ///
 /// [countryListTheme] can be used to customizing the country list bottom sheet.
 ///
+/// [onClosed] callback which is called when CountryPicker is dismiss,
+/// whether a country is selected or not.
+///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
