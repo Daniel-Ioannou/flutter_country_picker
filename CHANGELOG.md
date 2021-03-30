@@ -1,3 +1,7 @@
+## [2.0.3] - 30 Mar 2021 
+  * Add Ukrainian, Russian, and Polish translations
+  * Add `onClosed` callback
+
 ## [2.0.2] - 23 Mar 2021 
   * Add support for Norwegian localization 
 
