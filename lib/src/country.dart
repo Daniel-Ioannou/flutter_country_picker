@@ -1,3 +1,6 @@
+import 'package:country_picker/src/country_parser.dart';
+import 'package:flutter/material.dart';
+
 import 'country_localizations.dart';
 
 ///The country Model that has all the country
@@ -33,6 +36,11 @@ class Country {
       'This feature was deprecated after v1.0.6.')
   String get displayNameNoE164Cc => displayNameNoCountryCode;
 
+  String? getTranslatedName(BuildContext context) {
+    return CountryLocalizations.of(context)
+        ?.countryName(countryCode: countryCode);
+  }
+
   Country({
     required this.phoneCode,
     required this.countryCode,
@@ -59,6 +67,14 @@ class Country {
         fullExampleWithPlusSign = json['full_example_with_plus_sign'],
         displayNameNoCountryCode = json['display_name_no_e164_cc'],
         e164Key = json['e164_key'];
+
+  static Country parse(String country) {
+    return CountryParser.parse(country);
+  }
+
+  static Country? tryParse(String country) {
+    return CountryParser.tryParse(country);
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
