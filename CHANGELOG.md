@@ -1,3 +1,6 @@
+## [2.0.4] - 12 Apr 2021 
+  * Add 'CountryParser'
+
 ## [2.0.3] - 30 Mar 2021 
   * Add Ukrainian, Russian, and Polish translations
   * Add `onClosed` callback
