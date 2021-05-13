@@ -28,6 +28,10 @@ class CountryListView extends StatefulWidget {
   /// country list bottom sheet.
   final CountryListThemeData? countryListTheme;
 
+  /// An optional argument for inject list of countries
+  /// with customized codes.
+  final List<Map<String, dynamic>> countryList;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -35,6 +39,7 @@ class CountryListView extends StatefulWidget {
     this.countryFilter,
     this.showPhoneCode = false,
     this.countryListTheme,
+    this.countryList = countryCodes,
   })  : assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
         super(key: key);
@@ -53,7 +58,7 @@ class _CountryListViewState extends State<CountryListView> {
     _searchController = TextEditingController();
 
     _countryList =
-        countryCodes.map((country) => Country.from(json: country)).toList();
+        widget.countryList.map((country) => Country.from(json: country)).toList();
 
     //Remove duplicates country if not use phone code
     if (!widget.showPhoneCode) {
@@ -178,5 +183,5 @@ class _CountryListViewState extends State<CountryListView> {
     setState(() => _filteredList = _searchResult);
   }
 
-  get _defaultTextStyle => const TextStyle(fontSize: 16);
+  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
 }

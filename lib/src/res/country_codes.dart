@@ -1,4 +1,4 @@
-final List<Map<String, dynamic>> countryCodes = [
+const List<Map<String, dynamic>> countryCodes = [
   {
     "e164_cc": "93",
     "iso2_cc": "AF",
