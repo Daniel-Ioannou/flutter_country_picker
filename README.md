@@ -73,7 +73,7 @@ MaterialApp(
     onSelect: (Country country) => print('Select country: ${country.displayName}'),
   );
   ```
-* `countryFilter`: Can be used to used filter the countries list (optional). 
+* `countryFilter`: Can be used to filter the countries list (optional). 
   - It takes a list of country code(iso2). 
   - Can't provide both exclude and countryFilter
 
