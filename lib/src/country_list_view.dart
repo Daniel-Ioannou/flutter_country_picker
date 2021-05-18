@@ -24,9 +24,12 @@ class CountryListView extends StatefulWidget {
   /// Note: Can't provide both [countryFilter] and [exclude]
   final List<String>? countryFilter;
 
-  /// An optional argument for for customizing the
+  /// An optional argument for customizing the
   /// country list bottom sheet.
   final CountryListThemeData? countryListTheme;
+
+  /// An optional argument for styling the search field.
+  final InputDecoration? inputDecoration;
 
   const CountryListView({
     Key? key,
@@ -35,6 +38,7 @@ class CountryListView extends StatefulWidget {
     this.countryFilter,
     this.showPhoneCode = false,
     this.countryListTheme,
+    this.inputDecoration,
   })  : assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
         super(key: key);
@@ -87,16 +91,17 @@ class _CountryListViewState extends State<CountryListView> {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           child: TextField(
             controller: _searchController,
-            decoration: InputDecoration(
-              labelText: searchLabel,
-              hintText: searchLabel,
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: const Color(0xFF8C98A8).withOpacity(0.2),
+            decoration: widget.inputDecoration ??
+                InputDecoration(
+                  labelText: searchLabel,
+                  hintText: searchLabel,
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: const Color(0xFF8C98A8).withOpacity(0.2),
+                    ),
+                  ),
                 ),
-              ),
-            ),
             onChanged: _filterSearchResults,
           ),
         ),

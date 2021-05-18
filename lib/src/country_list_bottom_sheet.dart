@@ -12,6 +12,11 @@ void showCountryListBottomSheet({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
+  InputDecoration? inputDecoration,
+  BorderRadius? borderRadius = const BorderRadius.only(
+    topLeft: Radius.circular(40.0),
+    topRight: Radius.circular(40.0),
+  ),
 }) {
   showModalBottomSheet(
     context: context,
@@ -24,6 +29,8 @@ void showCountryListBottomSheet({
       countryFilter,
       showPhoneCode,
       countryListTheme,
+      inputDecoration,
+      borderRadius,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -37,6 +44,8 @@ Widget _builder(
   List<String>? countryFilter,
   bool showPhoneCode,
   CountryListThemeData? countryListTheme,
+  InputDecoration? inputDecoration,
+  BorderRadius? borderRadius,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -56,10 +65,7 @@ Widget _builder(
     height: height,
     decoration: BoxDecoration(
       color: _backgroundColor,
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(40.0),
-        topRight: Radius.circular(40.0),
-      ),
+      borderRadius: borderRadius,
     ),
     child: CountryListView(
       onSelect: onSelect,
@@ -67,6 +73,7 @@ Widget _builder(
       countryFilter: countryFilter,
       showPhoneCode: showPhoneCode,
       countryListTheme: countryListTheme,
+      inputDecoration: inputDecoration,
     ),
   );
 }

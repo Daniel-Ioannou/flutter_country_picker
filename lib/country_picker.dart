@@ -38,6 +38,12 @@ void showCountryPicker({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
+  InputDecoration? inputDecoration,
+  BorderRadius? borderRadius = const BorderRadius.only(
+    topLeft: Radius.circular(40.0),
+    topRight: Radius.circular(40.0),
+  ),
+  // InputDecoration? inputDecoration
 }) {
   assert(exclude == null || countryFilter == null,
       'Cannot provide both exclude and countryFilter');
@@ -49,5 +55,7 @@ void showCountryPicker({
     countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
     countryListTheme: countryListTheme,
+    borderRadius: borderRadius,
+    inputDecoration: inputDecoration,
   );
 }

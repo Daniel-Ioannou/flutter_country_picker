@@ -23,8 +23,12 @@ class MyApp extends StatelessWidget {
         const Locale('pt'),
         const Locale('ru'),
         const Locale('uk'),
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+        const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+        const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
@@ -55,6 +59,22 @@ class HomePage extends StatelessWidget {
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
+              //Optional. Styles the search field.
+              inputDecoration: InputDecoration(
+                labelText: 'Filter',
+                hintText: 'Start typing to filter',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: const Color(0xFF8C98A8).withOpacity(0.2),
+                  ),
+                ),
+              ),
+              //Optional. Sets the border radius for the bottomsheet.
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+              ),
             );
           },
           child: const Text('Show country picker'),
