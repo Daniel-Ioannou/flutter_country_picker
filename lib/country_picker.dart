@@ -37,7 +37,7 @@ void showCountryPicker({
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
-  CountryListThemeData? countryListTheme,
+  CountryListThemeData? countryListTheme = const CountryListThemeData(),
   // InputDecoration? inputDecoration
 }) {
   assert(exclude == null || countryFilter == null,

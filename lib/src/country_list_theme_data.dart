@@ -26,7 +26,7 @@ class CountryListThemeData {
   /// It defaults to 40 for the top-left and top-right values.
   final BorderRadius? borderRadius;
 
-  CountryListThemeData({
+  const CountryListThemeData({
     this.backgroundColor,
     this.textStyle,
     this.flagSize,
