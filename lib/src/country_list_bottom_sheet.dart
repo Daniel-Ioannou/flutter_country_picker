@@ -12,11 +12,6 @@ void showCountryListBottomSheet({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
-  InputDecoration? inputDecoration,
-  BorderRadius? borderRadius = const BorderRadius.only(
-    topLeft: Radius.circular(40.0),
-    topRight: Radius.circular(40.0),
-  ),
 }) {
   showModalBottomSheet(
     context: context,
@@ -29,8 +24,6 @@ void showCountryListBottomSheet({
       countryFilter,
       showPhoneCode,
       countryListTheme,
-      inputDecoration,
-      borderRadius,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -38,15 +31,12 @@ void showCountryListBottomSheet({
 }
 
 Widget _builder(
-  BuildContext context,
-  ValueChanged<Country> onSelect,
-  List<String>? exclude,
-  List<String>? countryFilter,
-  bool showPhoneCode,
-  CountryListThemeData? countryListTheme,
-  InputDecoration? inputDecoration,
-  BorderRadius? borderRadius,
-) {
+    BuildContext context,
+    ValueChanged<Country> onSelect,
+    List<String>? exclude,
+    List<String>? countryFilter,
+    bool showPhoneCode,
+    CountryListThemeData? countryListTheme) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
@@ -65,7 +55,7 @@ Widget _builder(
     height: height,
     decoration: BoxDecoration(
       color: _backgroundColor,
-      borderRadius: borderRadius,
+      borderRadius: countryListTheme?.borderRadius,
     ),
     child: CountryListView(
       onSelect: onSelect,
@@ -73,7 +63,6 @@ Widget _builder(
       countryFilter: countryFilter,
       showPhoneCode: showPhoneCode,
       countryListTheme: countryListTheme,
-      inputDecoration: inputDecoration,
     ),
   );
 }
