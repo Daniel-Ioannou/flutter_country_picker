@@ -53,7 +53,7 @@ MaterialApp(
 * `onSelect`: Called when a country is selected. The country picker passes the new value to the callback (required)
 * `onClosed`: Called when CountryPicker is dismissed, whether a country is selected or not (optional).
 * `showPhoneCode`: Can be used to show phone code before the country name.
-* `countryListTheme`: Can be used to customize the country list's bottom sheet. (optional). 
+* `countryListTheme`: Can be used to customize the country list's bottom sheet and widgets that lie within it. (optional). 
   ```Dart
   showCountryPicker(
     context: context,
@@ -61,6 +61,22 @@ MaterialApp(
       flagSize: 25,
       backgroundColor: Colors.white,
       textStyle: TextStyle(fontSize: 16, color: Colors.blueGrey),
+      //Optional. Sets the border radius for the bottomsheet.
+        borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20.0),
+        topRight: Radius.circular(20.0),
+      ),
+      //Optional. Styles the search field.
+      inputDecoration: InputDecoration(
+        labelText: 'Search',
+        hintText: 'Start typing to search',
+        prefixIcon: const Icon(Icons.search),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: const Color(0xFF8C98A8).withOpacity(0.2),
+          ),
+        ),
+      ),
     ),
     onSelect: (Country country) => print('Select country: ${country.displayName}'),
   );
@@ -77,40 +93,6 @@ MaterialApp(
   - It takes a list of country code(iso2). 
   - Can't provide both exclude and countryFilter
 
-* `borderRadius`: Can be used to set the bottom sheet's border radius. (optional).
-  ```Dart
-  showCountryPicker(
-    context: context,
-    onSelect: (Country country) {
-      print('Select country: ${country.displayName}');
-    },
-    //Optional. Sets the border radius for the bottomsheet.
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(20.0),
-      topRight: Radius.circular(20.0),
-    ),
-  );
-  ```
-* `inputDecoration`: Can be used to customize the search field. (optional). 
-  ```Dart
-  showCountryPicker(
-    context: context,
-    onSelect: (Country country) {
-      print('Select country: ${country.displayName}');
-    },
-    //Optional. Styles the search field.
-    inputDecoration: InputDecoration(
-      labelText: 'Search',
-      hintText: 'Start typing to search',
-      prefixIcon: const Icon(Icons.search),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: const Color(0xFF8C98A8).withOpacity(0.2),
-        ),
-      ),
-    ),
-  );
-  ```
 
 ## Contributions
 Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.
