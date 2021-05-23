@@ -22,11 +22,11 @@ A flutter package to select a country from a list of countries.
   Show country picker using `showCountryPicker`:
 ```Dart
 showCountryPicker(
-   context: context,
-   showPhoneCode: true, // optional. Shows phone code before the country name.
-   onSelect: (Country country) {
-      print('Select country: ${country.displayName}');
-   },
+  context: context,
+  showPhoneCode: true, // optional. Shows phone code before the country name.
+  onSelect: (Country country) {
+    print('Select country: ${country.displayName}');
+  },
 );
 ```
 
@@ -50,10 +50,10 @@ MaterialApp(
 ```
 
 ### Parameters:
-* `onSelect`: Called when a country is select. The country picker passes the new value to the callback (required)
-* `onClosed`: Called when CountryPicker is dismiss, whether a country is selected or not (optional).
-* `showPhoneCode`: Can be used to to show phone code before the country name.
-* `countryListTheme`: Can be used to customizing the country list bottom sheet. (optional). 
+* `onSelect`: Called when a country is selected. The country picker passes the new value to the callback (required)
+* `onClosed`: Called when CountryPicker is dismissed, whether a country is selected or not (optional).
+* `showPhoneCode`: Can be used to show phone code before the country name.
+* `countryListTheme`: Can be used to customize the country list's bottom sheet and widgets that lie within it. (optional). 
   ```Dart
   showCountryPicker(
     context: context,
@@ -61,6 +61,22 @@ MaterialApp(
       flagSize: 25,
       backgroundColor: Colors.white,
       textStyle: TextStyle(fontSize: 16, color: Colors.blueGrey),
+      //Optional. Sets the border radius for the bottomsheet.
+        borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20.0),
+        topRight: Radius.circular(20.0),
+      ),
+      //Optional. Styles the search field.
+      inputDecoration: InputDecoration(
+        labelText: 'Search',
+        hintText: 'Start typing to search',
+        prefixIcon: const Icon(Icons.search),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: const Color(0xFF8C98A8).withOpacity(0.2),
+          ),
+        ),
+      ),
     ),
     onSelect: (Country country) => print('Select country: ${country.displayName}'),
   );
@@ -73,9 +89,10 @@ MaterialApp(
     onSelect: (Country country) => print('Select country: ${country.displayName}'),
   );
   ```
-* `countryFilter`: Can be used to 	uses filter the countries list (optional). 
+* `countryFilter`: Can be used to filter the countries list (optional). 
   - It takes a list of country code(iso2). 
   - Can't provide both exclude and countryFilter
+
 
 ## Contributions
 Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.
