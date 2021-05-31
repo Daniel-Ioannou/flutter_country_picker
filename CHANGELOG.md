@@ -1,3 +1,30 @@
+## [2.0.5] - 31 May 2021 
+  * Add styling options for the border-radius and the search field.
+    ```Dart
+    showCountryPicker(
+      context: context,
+      countryListTheme: CountryListThemeData(
+        // Optional. Sets the border radius for the bottomsheet.
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40.0),
+          topRight: Radius.circular(40.0),
+        ),
+        // Optional. Styles the search field.
+        inputDecoration: InputDecoration(
+          labelText: 'Search',
+          hintText: 'Start typing to search',
+          prefixIcon: const Icon(Icons.search),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: const Color(0xFF8C98A8).withOpacity(0.2),
+            ),
+          ),
+        ),
+      ),
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
+
 ## [2.0.4] - 12 Apr 2021 
   * Add `CountryParser`
 

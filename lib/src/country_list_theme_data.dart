@@ -31,9 +31,6 @@ class CountryListThemeData {
     this.textStyle,
     this.flagSize,
     this.inputDecoration,
-    this.borderRadius = const BorderRadius.only(
-      topLeft: Radius.circular(40.0),
-      topRight: Radius.circular(40.0),
-    ),
+    this.borderRadius,
   });
 }
