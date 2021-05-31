@@ -1,5 +1,5 @@
 ## [2.0.5] - 31 May 2021 
-  * Added styling options for the border-radius and the search field.
+  * Add styling options for the border-radius and the search field.
     ```Dart
     showCountryPicker(
       context: context,
