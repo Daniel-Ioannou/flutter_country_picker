@@ -59,14 +59,14 @@ class HomePage extends StatelessWidget {
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
-              //Optional. Sets the theme for the country list picker.
+              // Optional. Sets the theme for the country list picker.
               countryListTheme: CountryListThemeData(
-                //Optional. Sets the border radius for the bottomsheet.
+                // Optional. Sets the border radius for the bottomsheet.
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
+                  topLeft: Radius.circular(40.0),
+                  topRight: Radius.circular(40.0),
                 ),
-                //Optional. Styles the search field.
+                // Optional. Styles the search field.
                 inputDecoration: InputDecoration(
                   labelText: 'Search',
                   hintText: 'Start typing to search',

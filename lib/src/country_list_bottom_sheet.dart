@@ -31,12 +31,13 @@ void showCountryListBottomSheet({
 }
 
 Widget _builder(
-    BuildContext context,
-    ValueChanged<Country> onSelect,
-    List<String>? exclude,
-    List<String>? countryFilter,
-    bool showPhoneCode,
-    CountryListThemeData? countryListTheme) {
+  BuildContext context,
+  ValueChanged<Country> onSelect,
+  List<String>? exclude,
+  List<String>? countryFilter,
+  bool showPhoneCode,
+  CountryListThemeData? countryListTheme,
+) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
@@ -51,11 +52,18 @@ Widget _builder(
     }
   }
 
+  final BorderRadius _borderRadius = countryListTheme?.borderRadius ??
+      const BorderRadius.only(
+        topLeft: Radius.circular(40.0),
+        topRight: Radius.circular(40.0),
+      );
+
+  print('countryListTheme: $countryListTheme');
   return Container(
     height: height,
     decoration: BoxDecoration(
       color: _backgroundColor,
-      borderRadius: countryListTheme?.borderRadius,
+      borderRadius: _borderRadius,
     ),
     child: CountryListView(
       onSelect: onSelect,
