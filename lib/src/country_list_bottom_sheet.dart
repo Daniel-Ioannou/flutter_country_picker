@@ -58,7 +58,6 @@ Widget _builder(
         topRight: Radius.circular(40.0),
       );
 
-  print('countryListTheme: $countryListTheme');
   return Container(
     height: height,
     decoration: BoxDecoration(

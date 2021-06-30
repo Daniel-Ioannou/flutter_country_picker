@@ -6,6 +6,7 @@ import 'res/strings/es.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
+import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
 import 'res/strings/ru.dart';
@@ -68,6 +69,9 @@ class CountryLocalizations {
         return pl[countryCode];
       case 'ru':
         return ru[countryCode];
+      case 'hi':
+      case 'ne':
+        return np[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -92,6 +96,8 @@ class _CountryLocalizationsDelegate
       'nn',
       'ru',
       'uk',
+      'hi',
+      'ne',
     ].contains(locale.languageCode);
   }
 
