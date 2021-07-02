@@ -9,8 +9,12 @@ import 'res/strings/es.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
+import 'res/strings/np.dart';
+import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
+import 'res/strings/ru.dart';
 import 'res/strings/tw.dart';
+import 'res/strings/uk.dart';
 
 /// Used to parse simple string representations of countries, commonly used in
 /// databases and other forms of storage, to a Country object.
@@ -184,6 +188,15 @@ class CountryParser {
         return nb;
       case 'nn':
         return nn;
+      case 'uk':
+        return uk;
+      case 'pl':
+        return pl;
+      case 'ru':
+        return ru;
+      case 'hi':
+      case 'ne':
+        return np;
       case 'en':
       default:
         return en;
@@ -197,14 +210,19 @@ class CountryParser {
     List<Locale> exclude = const <Locale>[],
   }) {
     return <Locale>[
-      const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
-      const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
-      const Locale('el'),
+      const Locale('en'),
       const Locale('es'),
-      const Locale('pt'),
+      const Locale('el'),
       const Locale('nb'),
       const Locale('nn'),
-      const Locale('en'),
+      const Locale('pl'),
+      const Locale('pt'),
+      const Locale('ru'),
+      const Locale('hi'),
+      const Locale('ne'),
+      const Locale('uk'),
+      const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
+      const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));
   }
 }
