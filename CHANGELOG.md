@@ -1,3 +1,6 @@
+## [2.0.6] - 02 Jul 2021 
+  * Add support for Nepali and Hindi localization 
+
 ## [2.0.5] - 31 May 2021 
   * Add styling options for the border-radius and the search field.
     ```Dart
