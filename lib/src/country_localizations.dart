@@ -12,6 +12,7 @@ import 'res/strings/pt.dart';
 import 'res/strings/ru.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
+import 'res/strings/tr.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -67,6 +68,8 @@ class CountryLocalizations {
         return uk[countryCode];
       case 'pl':
         return pl[countryCode];
+      case 'tr':
+        return tr[countryCode];
       case 'ru':
         return ru[countryCode];
       case 'hi':
@@ -98,6 +101,7 @@ class _CountryLocalizationsDelegate
       'uk',
       'hi',
       'ne',
+      'tr',
     ].contains(locale.languageCode);
   }
 
