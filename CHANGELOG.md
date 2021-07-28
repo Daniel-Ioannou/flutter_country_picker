@@ -1,3 +1,6 @@
+## [2.0.7] - 28 Jul 2021 
+  * Add support for Turkish localization 
+
 ## [2.0.6] - 02 Jul 2021 
   * Add support for Nepali and Hindi localization 
 
