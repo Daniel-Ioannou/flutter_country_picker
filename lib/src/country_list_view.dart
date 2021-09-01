@@ -116,6 +116,8 @@ class _CountryListViewState extends State<CountryListView> {
     final TextStyle _textStyle =
         widget.countryListTheme?.textStyle ?? _defaultTextStyle;
 
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return Material(
       // Add Material Widget with transparent color
       // so the ripple effect of InkWell will show on tap
@@ -130,10 +132,13 @@ class _CountryListViewState extends State<CountryListView> {
           child: Row(
             children: <Widget>[
               const SizedBox(width: 20),
-              Text(
-                Utils.countryCodeToEmoji(country.countryCode),
-                style: TextStyle(
-                  fontSize: widget.countryListTheme?.flagSize ?? 25,
+              SizedBox(
+                width: isRtl ? 50 : null,
+                child: Text(
+                  Utils.countryCodeToEmoji(country.countryCode),
+                  style: TextStyle(
+                    fontSize: widget.countryListTheme?.flagSize ?? 25,
+                  ),
                 ),
               ),
               if (widget.showPhoneCode) ...[
@@ -141,7 +146,7 @@ class _CountryListViewState extends State<CountryListView> {
                 SizedBox(
                   width: 45,
                   child: Text(
-                    '+${country.phoneCode}',
+                    '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
                     style: _textStyle,
                   ),
                 ),
@@ -151,7 +156,8 @@ class _CountryListViewState extends State<CountryListView> {
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
-                          ?.countryName(countryCode: country.countryCode) ??
+                          ?.countryName(countryCode: country.countryCode)
+                          ?.replaceAll(RegExp(r"\s+"), "") ??
                       country.name,
                   style: _textStyle,
                 ),
