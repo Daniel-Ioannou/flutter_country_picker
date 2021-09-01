@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      locale: Locale('ar'),
       supportedLocales: [
         const Locale('en'),
         const Locale('ar'),
