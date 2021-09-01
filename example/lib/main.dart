@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      locale: Locale('ar'),
       supportedLocales: [
         const Locale('en'),
+        const Locale('ar'),
         const Locale('es'),
         const Locale('el'),
         const Locale('nb'),
@@ -26,8 +28,12 @@ class MyApp extends StatelessWidget {
         const Locale('ne'),
         const Locale('uk'),
         const Locale('tr'),
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+        const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+        const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
