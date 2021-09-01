@@ -133,6 +133,7 @@ class _CountryListViewState extends State<CountryListView> {
             children: <Widget>[
               const SizedBox(width: 20),
               SizedBox(
+                // the conditional 50 prevents irregularities caused by the flags in RTL mode
                 width: isRtl ? 50 : null,
                 child: Text(
                   Utils.countryCodeToEmoji(country.countryCode),
