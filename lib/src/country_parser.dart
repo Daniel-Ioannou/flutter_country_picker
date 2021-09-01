@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:country_picker/src/res/strings/ar.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
@@ -181,6 +182,8 @@ class CountryParser {
         }
       case 'el':
         return gr;
+      case 'ar':
+        return ar;
       case 'es':
         return es;
       case 'pt':
@@ -214,6 +217,7 @@ class CountryParser {
   }) {
     return <Locale>[
       const Locale('en'),
+      const Locale('ar'),
       const Locale('es'),
       const Locale('el'),
       const Locale('nb'),
