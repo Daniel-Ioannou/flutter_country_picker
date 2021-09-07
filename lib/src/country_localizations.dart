@@ -1,3 +1,4 @@
+import 'package:country_picker/src/res/strings/ar.dart';
 import 'package:flutter/material.dart';
 
 import 'res/strings/cn.dart';
@@ -10,9 +11,9 @@ import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
 import 'res/strings/ru.dart';
+import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
-import 'res/strings/tr.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -75,6 +76,8 @@ class CountryLocalizations {
       case 'hi':
       case 'ne':
         return np[countryCode];
+      case 'ar':
+        return ar[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -90,6 +93,7 @@ class _CountryLocalizationsDelegate
   bool isSupported(Locale locale) {
     return [
       'en',
+      'ar',
       'zh',
       'el',
       'es',
