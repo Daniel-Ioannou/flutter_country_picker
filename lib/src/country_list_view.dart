@@ -28,6 +28,9 @@ class CountryListView extends StatefulWidget {
   /// country list bottom sheet.
   final CountryListThemeData? countryListTheme;
 
+  /// An optional argument for initially expanding virtual keyboard
+  final bool searchAutofocus;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -35,6 +38,7 @@ class CountryListView extends StatefulWidget {
     this.countryFilter,
     this.showPhoneCode = false,
     this.countryListTheme,
+    this.searchAutofocus = false,
   })  : assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
         super(key: key);
@@ -47,6 +51,7 @@ class _CountryListViewState extends State<CountryListView> {
   late List<Country> _countryList;
   late List<Country> _filteredList;
   late TextEditingController _searchController;
+  late bool _searchAutofocus;
   @override
   void initState() {
     super.initState();
@@ -72,6 +77,8 @@ class _CountryListViewState extends State<CountryListView> {
 
     _filteredList = <Country>[];
     _filteredList.addAll(_countryList);
+
+    _searchAutofocus = widget.searchAutofocus;
   }
 
   @override
@@ -86,6 +93,7 @@ class _CountryListViewState extends State<CountryListView> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           child: TextField(
+            autofocus: _searchAutofocus,
             controller: _searchController,
             decoration: widget.countryListTheme?.inputDecoration ??
                 InputDecoration(
@@ -124,6 +132,9 @@ class _CountryListViewState extends State<CountryListView> {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
+          country.nameLocalized = CountryLocalizations.of(context)
+              ?.countryName(countryCode: country.countryCode)
+              ?.replaceAll(RegExp(r"\s+"), " ");
           widget.onSelect(country);
           Navigator.pop(context);
         },
@@ -158,7 +169,7 @@ class _CountryListViewState extends State<CountryListView> {
                 child: Text(
                   CountryLocalizations.of(context)
                           ?.countryName(countryCode: country.countryCode)
-                          ?.replaceAll(RegExp(r"\s+"), "") ??
+                          ?.replaceAll(RegExp(r"\s+"), " ") ??
                       country.name,
                   style: _textStyle,
                 ),

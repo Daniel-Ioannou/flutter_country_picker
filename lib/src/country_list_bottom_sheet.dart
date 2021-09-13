@@ -12,6 +12,7 @@ void showCountryListBottomSheet({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
+  bool searchAutofocus = false,
 }) {
   showModalBottomSheet(
     context: context,
@@ -24,6 +25,7 @@ void showCountryListBottomSheet({
       countryFilter,
       showPhoneCode,
       countryListTheme,
+      searchAutofocus,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -37,6 +39,7 @@ Widget _builder(
   List<String>? countryFilter,
   bool showPhoneCode,
   CountryListThemeData? countryListTheme,
+  bool searchAutofocus,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -70,6 +73,7 @@ Widget _builder(
       countryFilter: countryFilter,
       showPhoneCode: showPhoneCode,
       countryListTheme: countryListTheme,
+      searchAutofocus: searchAutofocus,
     ),
   );
 }
