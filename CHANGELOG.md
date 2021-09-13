@@ -1,3 +1,15 @@
+## [2.0.8] - 13 Sep 2021 
+  * Add support for Arabic localization 
+  * Add support for Croatian localization
+  * Add options to autofocus at search TextField.
+    ```Dart
+    showCountryPicker(
+      context: context,
+      searchAutofocus: true,
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
+
 ## [2.0.7] - 28 Jul 2021 
   * Add support for Turkish localization 
 
