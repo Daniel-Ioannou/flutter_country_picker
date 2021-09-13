@@ -1,4 +1,5 @@
 import 'package:country_picker/src/res/strings/ar.dart';
+import 'package:country_picker/src/res/strings/hr.dart';
 import 'package:flutter/material.dart';
 
 import 'res/strings/cn.dart';
@@ -78,6 +79,8 @@ class CountryLocalizations {
         return np[countryCode];
       case 'ar':
         return ar[countryCode];
+      case 'hr':
+        return hr[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -106,6 +109,7 @@ class _CountryLocalizationsDelegate
       'hi',
       'ne',
       'tr',
+      'hr',
     ].contains(locale.languageCode);
   }
 

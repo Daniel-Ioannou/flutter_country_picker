@@ -18,6 +18,9 @@ class Country {
   ///The country name in English
   final String name;
 
+  ///The country name localized
+  late String? nameLocalized;
+
   ///An example of a telephone number without the phone code
   final String example;
 
@@ -48,6 +51,7 @@ class Country {
     required this.geographic,
     required this.level,
     required this.name,
+    this.nameLocalized = '',
     required this.example,
     required this.displayName,
     required this.displayNameNoCountryCode,

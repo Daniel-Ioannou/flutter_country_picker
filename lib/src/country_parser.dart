@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/res/strings/ar.dart';
+import 'package:country_picker/src/res/strings/hr.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
@@ -198,6 +199,8 @@ class CountryParser {
         return pl;
       case 'tr':
         return tr;
+      case 'hr':
+        return hr;
       case 'ru':
         return ru;
       case 'hi':
@@ -229,6 +232,7 @@ class CountryParser {
       const Locale('ne'),
       const Locale('uk'),
       const Locale('tr'),
+      const Locale('hr'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));

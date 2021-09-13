@@ -30,6 +30,7 @@ export 'src/country_parser.dart';
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
+/// [searchAutofocus] can be used to initially expand virtual keyboard
 void showCountryPicker({
   required BuildContext context,
   required ValueChanged<Country> onSelect,
@@ -38,6 +39,7 @@ void showCountryPicker({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
+  bool searchAutofocus = false,
   // InputDecoration? inputDecoration
 }) {
   assert(exclude == null || countryFilter == null,
@@ -50,5 +52,6 @@ void showCountryPicker({
     countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
     countryListTheme: countryListTheme,
+    searchAutofocus: searchAutofocus,
   );
 }
