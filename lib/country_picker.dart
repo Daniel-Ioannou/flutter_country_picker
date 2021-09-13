@@ -27,10 +27,11 @@ export 'src/country_parser.dart';
 /// [onClosed] callback which is called when CountryPicker is dismiss,
 /// whether a country is selected or not.
 ///
+/// [searchAutofocus] can be used to initially expand virtual keyboard
+///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
-/// [searchAutofocus] can be used to initially expand virtual keyboard
 void showCountryPicker({
   required BuildContext context,
   required ValueChanged<Country> onSelect,
@@ -40,7 +41,6 @@ void showCountryPicker({
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
-  // InputDecoration? inputDecoration
 }) {
   assert(exclude == null || countryFilter == null,
       'Cannot provide both exclude and countryFilter');
