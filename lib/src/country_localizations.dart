@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
+import 'res/strings/et.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
@@ -60,6 +61,8 @@ class CountryLocalizations {
         return gr[countryCode];
       case 'es':
         return es[countryCode];
+      case 'et':
+        return et[countryCode];
       case 'pt':
         return pt[countryCode];
       case 'nb':
@@ -100,6 +103,7 @@ class _CountryLocalizationsDelegate
       'zh',
       'el',
       'es',
+      'et',
       'pl',
       'pt',
       'nb',
