@@ -8,6 +8,7 @@ import 'res/country_codes.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
+import 'res/strings/et.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
@@ -187,6 +188,8 @@ class CountryParser {
         return ar;
       case 'es':
         return es;
+      case 'et':
+        return et;
       case 'pt':
         return pt;
       case 'nb':
@@ -223,6 +226,7 @@ class CountryParser {
       const Locale('ar'),
       const Locale('es'),
       const Locale('el'),
+      const Locale('et'),
       const Locale('nb'),
       const Locale('nn'),
       const Locale('pl'),
