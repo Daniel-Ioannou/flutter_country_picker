@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         const Locale('ar'),
         const Locale('es'),
         const Locale('el'),
+        const Locale('et'),
         const Locale('nb'),
         const Locale('nn'),
         const Locale('pl'),

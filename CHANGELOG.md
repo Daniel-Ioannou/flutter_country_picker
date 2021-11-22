@@ -1,3 +1,6 @@
+## [2.0.9] - 22 Nov 2021 
+  * Add support for Estonian localization 
+    
 ## [2.0.8] - 13 Sep 2021 
   * Add support for Arabic localization 
   * Add support for Croatian localization
