@@ -82,6 +82,8 @@ class CountryLocalizations {
         return np[countryCode];
       case 'ar':
         return ar[countryCode];
+      case 'ku':
+        return ku[countryCode];
       case 'hr':
         return hr[countryCode];
       case 'en':
@@ -100,6 +102,7 @@ class _CountryLocalizationsDelegate
     return [
       'en',
       'ar',
+      'ku',
       'zh',
       'el',
       'es',
