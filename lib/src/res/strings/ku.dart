@@ -1,4 +1,4 @@
-Map<String, String> en = {
+Map<String, String> ku = {
   "AF": "ئەفغانستان",
   "AX": "ئاڵاند",
   "AL": "ئەلبانیا",
