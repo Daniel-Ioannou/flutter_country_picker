@@ -201,7 +201,7 @@ Map<String, String> fr = {
   "SK": "Slovaquie",
   "SI": "Slovénie",
   "SB": "Îles Salomon",
-  "SO": "Somalid",
+  "SO": "Somalie",
   "ZA": "Afrique du Sud",
   "GS": "Géorgie du Sud-et-les îles Sandwich du Sud",
   "KR": "Corée du Sud",
