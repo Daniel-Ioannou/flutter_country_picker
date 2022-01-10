@@ -233,7 +233,7 @@ Map<String, String> tr = {
   "UA": "Ukrayna",
   "AE": "Birleşik Arap Emirlikleri",
   "GB": "Birleşik Krallık",
-  "ABD": "Amerika Birleşik Devletleri",
+  "US": "Amerika Birleşik Devletleri",
   "UY": "Uruguay",
   "UZ": "Özbekistan",
   "VU": "Vanuatu",

@@ -82,6 +82,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              showWorldWide: true,
             );
           },
           child: const Text('Show country picker'),

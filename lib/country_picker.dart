@@ -41,6 +41,7 @@ void showCountryPicker({
   bool showPhoneCode = false,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
+  bool showWorldWide = false,
 }) {
   assert(exclude == null || countryFilter == null,
       'Cannot provide both exclude and countryFilter');
@@ -53,5 +54,6 @@ void showCountryPicker({
     showPhoneCode: showPhoneCode,
     countryListTheme: countryListTheme,
     searchAutofocus: searchAutofocus,
+    showWorldWide: showWorldWide,
   );
 }

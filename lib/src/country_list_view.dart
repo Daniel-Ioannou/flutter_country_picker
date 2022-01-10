@@ -31,6 +31,9 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for initially expanding virtual keyboard
   final bool searchAutofocus;
 
+  /// An optional argument for showing "World Wide" option at the beginning of the list
+  final bool showWorldWide;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -39,6 +42,7 @@ class CountryListView extends StatefulWidget {
     this.showPhoneCode = false,
     this.countryListTheme,
     this.searchAutofocus = false,
+    this.showWorldWide = false,
   })  : assert(exclude == null || countryFilter == null,
             'Cannot provide both exclude and countryFilter'),
         super(key: key);
@@ -76,6 +80,9 @@ class _CountryListViewState extends State<CountryListView> {
     }
 
     _filteredList = <Country>[];
+    if (widget.showWorldWide) {
+      _filteredList.add(Country.worldWide);
+    }
     _filteredList.addAll(_countryList);
 
     _searchAutofocus = widget.searchAutofocus;
@@ -158,7 +165,7 @@ class _CountryListViewState extends State<CountryListView> {
                 SizedBox(
                   width: 45,
                   child: Text(
-                    '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                    (country.countryCode == Country.worldWide.countryCode) ? "" : '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
                     style: _textStyle,
                   ),
                 ),

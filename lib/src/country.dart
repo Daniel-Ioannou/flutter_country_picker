@@ -6,6 +6,20 @@ import 'country_localizations.dart';
 ///The country Model that has all the country
 ///information needed from the [country_picker]
 class Country {
+  static Country worldWide = Country(
+    phoneCode: "",
+    countryCode: "WW",
+    e164Sc: -1,
+    geographic: false,
+    level: -1,
+    name: "World Wide",
+    example: "",
+    displayName: "World Wide (WW)",
+    fullExampleWithPlusSign: "",
+    displayNameNoCountryCode: "World Wide (WW)",
+    e164Key: "",
+  );
+
   ///The country phone code
   final String phoneCode;
 
