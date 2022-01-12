@@ -1,5 +1,6 @@
 import 'package:country_picker/src/res/strings/ar.dart';
 import 'package:country_picker/src/res/strings/hr.dart';
+import 'package:country_picker/src/res/strings/fr.dart';
 import 'package:flutter/material.dart';
 
 import 'res/strings/cn.dart';
@@ -86,6 +87,8 @@ class CountryLocalizations {
         return ku[countryCode];
       case 'hr':
         return hr[countryCode];
+      case 'fr':
+        return fr[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -117,6 +120,7 @@ class _CountryLocalizationsDelegate
       'ne',
       'tr',
       'hr',
+      'fr',
     ].contains(locale.languageCode);
   }
 
