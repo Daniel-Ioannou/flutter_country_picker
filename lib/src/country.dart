@@ -13,7 +13,6 @@ class Country {
     geographic: false,
     level: -1,
     name: 'World Wide',
-    nameLocalized: 'World Wide',
     example: '',
     displayName: 'World Wide (WW)',
     displayNameNoCountryCode: 'World Wide',
@@ -87,7 +86,7 @@ class Country {
         e164Key = json['e164_key'];
 
   static Country parse(String country) {
-    if (country == '') {
+    if (country == worldWide.countryCode) {
       return worldWide;
     } else {
       return CountryParser.parse(country);
@@ -95,7 +94,7 @@ class Country {
   }
 
   static Country? tryParse(String country) {
-    if (country == '') {
+    if (country == worldWide.countryCode) {
       return worldWide;
     } else {
       return CountryParser.tryParse(country);

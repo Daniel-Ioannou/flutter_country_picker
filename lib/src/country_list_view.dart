@@ -151,7 +151,18 @@ class _CountryListViewState extends State<CountryListView> {
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Row(
             children: <Widget>[
-              if (country.countryCode != Country.worldWide.countryCode)
+              if (country.countryCode == Country.worldWide.countryCode)
+                Row(
+                  children: [
+                    const SizedBox(width: 23),
+                    Image(
+                      image: AssetImage('worldwide.png'.imagePath),
+                      width: 27,
+                    ),
+                    const SizedBox(width: 15),
+                  ],
+                )
+              else
                 Row(
                   children: [
                     const SizedBox(width: 20),
@@ -179,17 +190,6 @@ class _CountryListViewState extends State<CountryListView> {
                       const SizedBox(width: 5),
                     ] else
                       const SizedBox(width: 15),
-                  ],
-                )
-              else
-                Row(
-                  children: [
-                    const SizedBox(width: 23),
-                    Image(
-                      image: AssetImage('worldwide.png'.imagePath),
-                      width: 27,
-                    ),
-                    const SizedBox(width: 15),
                   ],
                 ),
               Expanded(
