@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:country_picker/src/extensions.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
@@ -56,6 +57,7 @@ class _CountryListViewState extends State<CountryListView> {
   late List<Country> _filteredList;
   late TextEditingController _searchController;
   late bool _searchAutofocus;
+
   @override
   void initState() {
     super.initState();
@@ -168,7 +170,9 @@ class _CountryListViewState extends State<CountryListView> {
                       SizedBox(
                         width: 45,
                         child: Text(
-                          (country.countryCode == Country.worldWide.countryCode) ? "" : '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                          (country.countryCode == Country.worldWide.countryCode)
+                              ? ''
+                              : '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
                           style: _textStyle,
                         ),
                       ),
@@ -179,13 +183,13 @@ class _CountryListViewState extends State<CountryListView> {
                 )
               else
                 Row(
-                  children: const [
-                    SizedBox(width: 23),
+                  children: [
+                    const SizedBox(width: 23),
                     Image(
-                      image: AssetImage('images/worldwide.png'),
+                      image: AssetImage('worldwide.png'.imagePath),
                       width: 27,
                     ),
-                    SizedBox(width: 15),
+                    const SizedBox(width: 15),
                   ],
                 ),
               Expanded(
