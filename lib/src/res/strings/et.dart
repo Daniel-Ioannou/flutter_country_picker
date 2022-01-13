@@ -244,6 +244,7 @@ Map<String, String> et = {
   "VE": "Venezuela",
   "VN": "Vietnam",
   "WF": "Wallis ja Futuna",
+  "WW": "Kogu Maailmas",
   "ZW": "Zimbabwe",
   "search": "Otsi",
 };
