@@ -7,7 +7,9 @@ linter:
     prefer_initializing_formals: false
     avoid_escaping_inner_quotes: false
     avoid_classes_with_only_static_members: false
-
+    always_use_package_imports: false
+    prefer_single_quotes: false
+    library_private_types_in_public_api: false
 
 analyzer:
   strong-mode:

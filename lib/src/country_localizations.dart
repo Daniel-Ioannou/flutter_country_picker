@@ -1,13 +1,14 @@
-import 'package:country_picker/src/res/strings/ar.dart';
-import 'package:country_picker/src/res/strings/hr.dart';
-import 'package:country_picker/src/res/strings/fr.dart';
 import 'package:flutter/material.dart';
 
+import 'res/strings/ar.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
+import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
+import 'res/strings/hr.dart';
+import 'res/strings/ku.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
