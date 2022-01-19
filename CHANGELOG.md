@@ -1,3 +1,7 @@
+## [2.0.10] - 19 Jan 2022
+  * Add support for French localization
+  * Add support for Kurdish localization
+
 ## [2.0.9] - 22 Nov 2021 
   * Add support for Estonian localization 
     
