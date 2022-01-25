@@ -48,8 +48,10 @@ class Country {
   final String displayNameNoCountryCode;
   final String e164Key;
 
-  @Deprecated('The modern term is displayNameNoCountryCode. '
-      'This feature was deprecated after v1.0.6.')
+  @Deprecated(
+    'The modern term is displayNameNoCountryCode. '
+    'This feature was deprecated after v1.0.6.',
+  )
   String get displayNameNoE164Cc => displayNameNoCountryCode;
 
   String? getTranslatedName(BuildContext context) {
@@ -139,5 +141,5 @@ class Country {
   }
 
   @override
-  int get hashCode => super.hashCode;
+  int get hashCode => countryCode.hashCode;
 }

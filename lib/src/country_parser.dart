@@ -1,24 +1,25 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:country_picker/src/res/strings/ar.dart';
-import 'package:country_picker/src/res/strings/hr.dart';
 import 'package:flutter/material.dart';
 
-import 'country.dart';
 import 'res/country_codes.dart';
+import 'res/strings/ar.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
+import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
+import 'res/strings/hr.dart';
+import 'res/strings/ku.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
 import 'res/strings/ru.dart';
+import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
-import 'res/strings/tr.dart';
 
 /// Used to parse simple string representations of countries, commonly used in
 /// databases and other forms of storage, to a Country object.
@@ -186,6 +187,8 @@ class CountryParser {
         return gr;
       case 'ar':
         return ar;
+      case 'ku':
+        return ku;
       case 'es':
         return es;
       case 'et':
@@ -209,6 +212,8 @@ class CountryParser {
       case 'hi':
       case 'ne':
         return np;
+      case 'fr':
+        return fr;
       case 'en':
       default:
         return en;
@@ -224,9 +229,11 @@ class CountryParser {
     return <Locale>[
       const Locale('en'),
       const Locale('ar'),
+      const Locale('ku'),
       const Locale('es'),
       const Locale('el'),
       const Locale('et'),
+      const Locale('fr'),
       const Locale('nb'),
       const Locale('nn'),
       const Locale('pl'),

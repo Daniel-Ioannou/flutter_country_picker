@@ -2,7 +2,6 @@ import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/extensions.dart';
 import 'package:flutter/material.dart';
 
-import 'country.dart';
 import 'res/country_codes.dart';
 import 'utils.dart';
 
@@ -43,9 +42,10 @@ class CountryListView extends StatefulWidget {
     this.showPhoneCode = false,
     this.countryListTheme,
     this.searchAutofocus = false,
-    this.showWorldWide = false,
-  })  : assert(exclude == null || countryFilter == null,
-            'Cannot provide both exclude and countryFilter'),
+  })  : assert(
+          exclude == null || countryFilter == null,
+          'Cannot provide both exclude and countryFilter',
+        ),
         super(key: key);
 
   @override
@@ -74,11 +74,14 @@ class _CountryListViewState extends State<CountryListView> {
 
     if (widget.exclude != null) {
       _countryList.removeWhere(
-          (element) => widget.exclude!.contains(element.countryCode));
+        (element) => widget.exclude!.contains(element.countryCode),
+      );
     }
+
     if (widget.countryFilter != null) {
       _countryList.removeWhere(
-          (element) => !widget.countryFilter!.contains(element.countryCode));
+        (element) => !widget.countryFilter!.contains(element.countryCode),
+      );
     }
 
     _filteredList = <Country>[];
@@ -224,5 +227,5 @@ class _CountryListViewState extends State<CountryListView> {
     setState(() => _filteredList = _searchResult);
   }
 
-  get _defaultTextStyle => const TextStyle(fontSize: 16);
+  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
 }

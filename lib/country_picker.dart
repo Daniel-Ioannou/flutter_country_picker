@@ -43,8 +43,10 @@ void showCountryPicker({
   bool searchAutofocus = false,
   bool showWorldWide = false,
 }) {
-  assert(exclude == null || countryFilter == null,
-      'Cannot provide both exclude and countryFilter');
+  assert(
+    exclude == null || countryFilter == null,
+    'Cannot provide both exclude and countryFilter',
+  );
   showCountryListBottomSheet(
     context: context,
     onSelect: onSelect,
