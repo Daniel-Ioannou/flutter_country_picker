@@ -241,6 +241,7 @@ Map<String, String> nn = {
   "VE": "Venezuela",
   "VN": "Vietnam",
   "WF": "Wallis og Futuna",
+  "WW": "Verdensomspennende",
   "EH": "Vest-Sahara",
   "YE": "Jemen",
   "ZM": "Zambia",
