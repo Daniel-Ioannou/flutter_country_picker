@@ -42,6 +42,7 @@ class CountryListView extends StatefulWidget {
     this.showPhoneCode = false,
     this.countryListTheme,
     this.searchAutofocus = false,
+    this.showWorldWide = false,
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
