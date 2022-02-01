@@ -1,3 +1,15 @@
+## [2.0.11] - 01 Feb 2022
+  * Fix Eswatini name
+  * Fix Italy code at Turkish localization
+  * Add optional argument for showing "World Wide" option at the beginning of the list
+    ```Dart
+    showCountryPicker(
+      context: context,
+      showWorldWide: true,
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
+
 ## [2.0.10] - 19 Jan 2022
   * Add support for French localization
   * Add support for Kurdish localization
