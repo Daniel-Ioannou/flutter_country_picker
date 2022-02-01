@@ -923,6 +923,19 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "372-EE-0"
   },
   {
+    "e164_cc": "268",
+    "iso2_cc": "SZ",
+    "e164_sc": 0,
+    "geographic": true,
+    "level": 1,
+    "name": "Eswatini",
+    "example": "76123456",
+    "display_name": "Eswatini (SZ) [+268]",
+    "full_example_with_plus_sign": "+26876123456",
+    "display_name_no_e164_cc": "Eswatini (SZ)",
+    "e164_key": "268-SZ-0"
+  },
+  {
     "e164_cc": "251",
     "iso2_cc": "ET",
     "e164_sc": 0,
@@ -2781,19 +2794,6 @@ final List<Map<String, dynamic>> countryCodes = [
     "full_example_with_plus_sign": "+4741234567",
     "display_name_no_e164_cc": "Svalbard and Jan Mayen (SJ)",
     "e164_key": "47-SJ-0"
-  },
-  {
-    "e164_cc": "268",
-    "iso2_cc": "SZ",
-    "e164_sc": 0,
-    "geographic": true,
-    "level": 1,
-    "name": "Swaziland",
-    "example": "76123456",
-    "display_name": "Swaziland (SZ) [+268]",
-    "full_example_with_plus_sign": "+26876123456",
-    "display_name_no_e164_cc": "Swaziland (SZ)",
-    "e164_key": "268-SZ-0"
   },
   {
     "e164_cc": "46",

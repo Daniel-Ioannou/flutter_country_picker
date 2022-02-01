@@ -140,7 +140,7 @@ class CountryParser {
   /// Returns the country code that matches the given [name] for any of the
   /// [locales].
   ///
-  /// Throws an [ArgumentError] if no matching element is found.
+  /// Throws an [ArgumentError] if no matching element is found.
   static String _nameToCodeFromGivenLocales(String name, List<Locale> locales) {
     String? code;
 

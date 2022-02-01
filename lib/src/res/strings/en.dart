@@ -211,7 +211,7 @@ Map<String, String> en = {
   "SD": "Sudan",
   "SR": "Suriname",
   "SJ": "Svalbard and Jan Mayen",
-  "SZ": "Swaziland",
+  "SZ": "Eswatini",
   "SE": "Sweden",
   "CH": "Switzerland",
   "SY": "Syria",
