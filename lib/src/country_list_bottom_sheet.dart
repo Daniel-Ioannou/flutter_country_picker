@@ -65,6 +65,7 @@ Widget _builder(
       );
 
   return Container(
+    margin: const EdgeInsets.only(top: 50.0),
     height: height,
     decoration: BoxDecoration(
       color: _backgroundColor,
