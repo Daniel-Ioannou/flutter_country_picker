@@ -50,7 +50,7 @@ class Country {
 
   @Deprecated(
     'The modern term is displayNameNoCountryCode. '
-    'This feature was deprecated after v1.0.6.',
+        'This feature was deprecated after v1.0.6.',
   )
   String get displayNameNoE164Cc => displayNameNoCountryCode;
 
@@ -119,14 +119,30 @@ class Country {
     return data;
   }
 
-  bool startsWith(String query, CountryLocalizations? localizations) =>
-      name.toLowerCase().startsWith(query.toLowerCase()) ||
-      countryCode.toLowerCase().startsWith(query.toLowerCase()) ||
-      (localizations
-              ?.countryName(countryCode: countryCode)
-              ?.toLowerCase()
-              .startsWith(query.toLowerCase()) ??
-          false);
+  bool startsWith(String query, CountryLocalizations? localizations) {
+    if(query.startsWith("+")){
+      final String queryWithoutPlusSign = query.replaceAll("+", "").trim();
+      return
+        phoneCode.startsWith(queryWithoutPlusSign.toLowerCase()) ||
+            name.toLowerCase().startsWith(queryWithoutPlusSign.toLowerCase()) ||
+            countryCode.toLowerCase().startsWith(queryWithoutPlusSign.toLowerCase()) ||
+            (localizations
+                ?.countryName(countryCode: countryCode)
+                ?.toLowerCase()
+                .startsWith(queryWithoutPlusSign.toLowerCase()) ??
+                false);
+    }else{
+      return
+        phoneCode.startsWith(query.toLowerCase()) ||
+            name.toLowerCase().startsWith(query.toLowerCase()) ||
+            countryCode.toLowerCase().startsWith(query.toLowerCase()) ||
+            (localizations
+                ?.countryName(countryCode: countryCode)
+                ?.toLowerCase()
+                .startsWith(query.toLowerCase()) ??
+                false);
+    }
+  }
 
   @override
   String toString() => 'Country(countryCode: $countryCode, name: $name)';
