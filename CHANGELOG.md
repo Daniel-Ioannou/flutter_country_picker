@@ -1,3 +1,6 @@
+## [2.0.12] - 28 Feb 2022
+  * Update example android gradle
+  * Fix Kurdish translation for Curaçao name
 ## [2.0.11] - 01 Feb 2022
   * Fix Eswatini name
   * Fix Italy code at Turkish localization
