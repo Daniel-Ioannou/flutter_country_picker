@@ -1,4 +1,5 @@
 import 'package:country_picker/src/country_parser.dart';
+import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'country_localizations.dart';
@@ -142,4 +143,10 @@ class Country {
 
   @override
   int get hashCode => countryCode.hashCode;
+
+  /// provides country flag as emoji.
+  /// Can be displayed using
+  ///
+  ///```Text(country.flagEmoji)```
+  String get flagEmoji => Utils.countryCodeToEmoji(countryCode);
 }
