@@ -1,3 +1,15 @@
+## [2.0.13] - 05 Apr 2022
+  * Add getter for flag emoji in `Country` model
+  * Add option for bottom sheet height.
+    ```Dart
+    showCountryPicker(
+      context: context,
+      countryListTheme: CountryListThemeData(
+       bottomSheetHeight: 500, // Optional. Country list modal height
+      ),
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
 ## [2.0.12] - 28 Feb 2022
   * Update example android gradle
   * Fix Kurdish translation for Curaçao name
