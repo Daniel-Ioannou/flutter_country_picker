@@ -37,6 +37,6 @@ class CountryListThemeData {
     this.flagSize,
     this.inputDecoration,
     this.borderRadius,
-    this.bottomSheetHeight
+    this.bottomSheetHeight,
   });
 }
