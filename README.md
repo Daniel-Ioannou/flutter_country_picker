@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^2.0.12
+ country_picker: ^2.0.13
  ```
  
  In your dart file, import the library:
@@ -64,6 +64,7 @@ MaterialApp(
       flagSize: 25,
       backgroundColor: Colors.white,
       textStyle: TextStyle(fontSize: 16, color: Colors.blueGrey),
+      bottomSheetHeight: device, // Optional. Country list modal height
       //Optional. Sets the border radius for the bottomsheet.
         borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20.0),
