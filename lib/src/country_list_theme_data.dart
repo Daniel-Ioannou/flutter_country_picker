@@ -26,11 +26,17 @@ class CountryListThemeData {
   /// It defaults to 40 for the top-left and top-right values.
   final BorderRadius? borderRadius;
 
+  ///Country list modal height
+  ///
+  /// By default it's fullscreen
+  final double? bottomSheetHeight;
+
   const CountryListThemeData({
     this.backgroundColor,
     this.textStyle,
     this.flagSize,
     this.inputDecoration,
     this.borderRadius,
+    this.bottomSheetHeight
   });
 }

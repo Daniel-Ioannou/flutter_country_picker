@@ -46,7 +46,7 @@ Widget _builder(
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final height = countryListTheme?.bottomSheetHeight ?? device - (statusBarHeight + (kToolbarHeight / 1.5));
 
   Color? _backgroundColor = countryListTheme?.backgroundColor ??
       Theme.of(context).bottomSheetTheme.backgroundColor;
