@@ -1,4 +1,4 @@
-## [2.0.14] - 05 Apr 2022
+## [2.0.14] - 11 Apr 2022
   * Add support for country search by phone code
     
 ## [2.0.13] - 05 Apr 2022
