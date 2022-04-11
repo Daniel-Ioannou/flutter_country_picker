@@ -120,14 +120,20 @@ class Country {
     return data;
   }
 
-  bool startsWith(String query, CountryLocalizations? localizations) =>
-      name.toLowerCase().startsWith(query.toLowerCase()) ||
-      countryCode.toLowerCase().startsWith(query.toLowerCase()) ||
-      (localizations
-              ?.countryName(countryCode: countryCode)
-              ?.toLowerCase()
-              .startsWith(query.toLowerCase()) ??
-          false);
+  bool startsWith(String query, CountryLocalizations? localizations) {
+    String _query = query;
+    if (query.startsWith("+")) {
+      _query = query.replaceAll("+", "").trim();
+    }
+    return phoneCode.startsWith(_query.toLowerCase()) ||
+        name.toLowerCase().startsWith(_query.toLowerCase()) ||
+        countryCode.toLowerCase().startsWith(_query.toLowerCase()) ||
+        (localizations
+            ?.countryName(countryCode: countryCode)
+            ?.toLowerCase()
+            .startsWith(_query.toLowerCase()) ??
+            false);
+  }
 
   @override
   String toString() => 'Country(countryCode: $countryCode, name: $name)';
