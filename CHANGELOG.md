@@ -1,3 +1,6 @@
+## [2.0.14] - 05 Apr 2022
+  * Add support for country search by phone code
+    
 ## [2.0.13] - 05 Apr 2022
   * Add getter for flag emoji in `Country` model
   * Add option for bottom sheet height.
