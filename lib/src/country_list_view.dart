@@ -1,8 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/extensions.dart';
 import 'package:flutter/material.dart';
-
-import 'res/country_codes.dart';
 import 'utils.dart';
 
 class CountryListView extends StatefulWidget {
@@ -64,8 +62,7 @@ class _CountryListViewState extends State<CountryListView> {
     super.initState();
     _searchController = TextEditingController();
 
-    _countryList =
-        countryCodes.map((country) => Country.from(json: country)).toList();
+    _countryList = countryList;
 
     //Remove duplicates country if not use phone code
     if (!widget.showPhoneCode) {

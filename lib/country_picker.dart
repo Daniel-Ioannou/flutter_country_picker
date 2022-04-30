@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'src/country.dart';
 import 'src/country_list_bottom_sheet.dart';
 import 'src/country_list_theme_data.dart';
+import 'src/res/country_codes.dart';
 
 export 'src/country.dart';
 export 'src/country_list_theme_data.dart';
 export 'src/country_localizations.dart';
 export 'src/country_parser.dart';
+
+List<Country> countryList = countryCodes.map((country) => Country.from(json: country)).toList();
 
 /// Shows a bottom sheet containing a list of countries to select one.
 ///
