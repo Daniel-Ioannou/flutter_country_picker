@@ -1,4 +1,5 @@
 ## [2.0.15] - 02 May 2022
+  * Add support for German localization
   * Add `favorite` option.
     - Can be used to to show the favorite countries at the top of the list.
     - It takes a list of country code(iso2).
