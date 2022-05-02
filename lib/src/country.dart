@@ -129,11 +129,13 @@ class Country {
         name.toLowerCase().startsWith(_query.toLowerCase()) ||
         countryCode.toLowerCase().startsWith(_query.toLowerCase()) ||
         (localizations
-            ?.countryName(countryCode: countryCode)
-            ?.toLowerCase()
-            .startsWith(_query.toLowerCase()) ??
+                ?.countryName(countryCode: countryCode)
+                ?.toLowerCase()
+                .startsWith(_query.toLowerCase()) ??
             false);
   }
+
+  bool get iswWorldWide => countryCode == Country.worldWide.countryCode;
 
   @override
   String toString() => 'Country(countryCode: $countryCode, name: $name)';

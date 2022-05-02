@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
               exclude: <String>['KN', 'MF'],
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
-              showWorldWide: false,
+              showWorldWide: true,
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },

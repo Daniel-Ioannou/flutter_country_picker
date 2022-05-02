@@ -155,47 +155,24 @@ class _CountryListViewState extends State<CountryListView> {
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Row(
             children: <Widget>[
-              if (country.countryCode == Country.worldWide.countryCode)
-                Row(
-                  children: [
-                    const SizedBox(width: 23),
-                    Image(
-                      image: AssetImage('worldwide.png'.imagePath),
-                      width: 27,
-                    ),
+              Row(
+                children: [
+                  const SizedBox(width: 20),
+                  _flagWidget(country),
+                  if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
-                  ],
-                )
-              else
-                Row(
-                  children: [
-                    const SizedBox(width: 20),
                     SizedBox(
-                      // the conditional 50 prevents irregularities caused by the flags in RTL mode
-                      width: isRtl ? 50 : null,
+                      width: 45,
                       child: Text(
-                        Utils.countryCodeToEmoji(country.countryCode),
-                        style: TextStyle(
-                          fontSize: widget.countryListTheme?.flagSize ?? 25,
-                        ),
+                        '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                        style: _textStyle,
                       ),
                     ),
-                    if (widget.showPhoneCode) ...[
-                      const SizedBox(width: 15),
-                      SizedBox(
-                        width: 45,
-                        child: Text(
-                          (country.countryCode == Country.worldWide.countryCode)
-                              ? ''
-                              : '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
-                          style: _textStyle,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                    ] else
-                      const SizedBox(width: 15),
-                  ],
-                ),
+                    const SizedBox(width: 5),
+                  ] else
+                    const SizedBox(width: 15),
+                ],
+              ),
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
@@ -207,6 +184,29 @@ class _CountryListViewState extends State<CountryListView> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _flagWidget(Country country) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
+    if (country.iswWorldWide) {
+      return Image.asset(
+        'worldWide.png'.imagePath,
+        package: 'country_picker',
+        width: 27,
+      );
+    }
+
+    return SizedBox(
+      // the conditional 50 prevents irregularities caused by the flags in RTL mode
+      width: isRtl ? 50 : null,
+      child: Text(
+        Utils.countryCodeToEmoji(country.countryCode),
+        style: TextStyle(
+          fontSize: widget.countryListTheme?.flagSize ?? 25,
         ),
       ),
     );
