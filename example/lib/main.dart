@@ -61,9 +61,9 @@ class HomePage extends StatelessWidget {
               context: context,
               //Optional.  Can be used to exclude(remove) one ore more country from the countries list (optional).
               exclude: <String>['KN', 'MF'],
+              favorite: <String>['SE'],
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
-              showWorldWide: true,
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
