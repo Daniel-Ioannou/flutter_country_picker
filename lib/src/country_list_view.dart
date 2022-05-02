@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/extensions.dart';
 import 'package:flutter/material.dart';
 
+import 'country_service.dart';
 import 'res/country_codes.dart';
 import 'utils.dart';
 
@@ -24,6 +25,10 @@ class CountryListView extends StatefulWidget {
   /// Note: Can't provide both [countryFilter] and [exclude]
   final List<String>? countryFilter;
 
+  /// An optional [favorite] argument can be used to show countries
+  /// at the top of the list. It takes a list of country code(iso2).
+  final List<String>? favorite;
+
   /// An optional argument for customizing the
   /// country list bottom sheet.
   final CountryListThemeData? countryListTheme;
@@ -38,6 +43,7 @@ class CountryListView extends StatefulWidget {
     Key? key,
     required this.onSelect,
     this.exclude,
+    this.favorite,
     this.countryFilter,
     this.showPhoneCode = false,
     this.countryListTheme,
@@ -54,8 +60,11 @@ class CountryListView extends StatefulWidget {
 }
 
 class _CountryListViewState extends State<CountryListView> {
+  final CountryService _countryService = CountryService();
+
   late List<Country> _countryList;
   late List<Country> _filteredList;
+  List<Country>? _favoriteList;
   late TextEditingController _searchController;
   late bool _searchAutofocus;
 
@@ -64,6 +73,8 @@ class _CountryListViewState extends State<CountryListView> {
     super.initState();
     _searchController = TextEditingController();
 
+    _countryList = _countryService.getAll();
+
     _countryList =
         countryCodes.map((country) => Country.from(json: country)).toList();
 
@@ -71,6 +82,10 @@ class _CountryListViewState extends State<CountryListView> {
     if (!widget.showPhoneCode) {
       final ids = _countryList.map((e) => e.countryCode).toSet();
       _countryList.retainWhere((country) => ids.remove(country.countryCode));
+    }
+
+    if (widget.favorite != null) {
+      _favoriteList = _countryService.findCountriesByCode(widget.favorite!);
     }
 
     if (widget.exclude != null) {
@@ -124,9 +139,20 @@ class _CountryListViewState extends State<CountryListView> {
         ),
         Expanded(
           child: ListView(
-            children: _filteredList
-                .map<Widget>((country) => _listRow(country))
-                .toList(),
+            children: [
+              if (_favoriteList != null) ...[
+                ..._favoriteList!
+                    .map<Widget>((currency) => _listRow(currency))
+                    .toList(),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Divider(thickness: 1),
+                ),
+              ],
+              ..._filteredList
+                  .map<Widget>((country) => _listRow(country))
+                  .toList(),
+            ],
           ),
         ),
       ],
@@ -155,47 +181,24 @@ class _CountryListViewState extends State<CountryListView> {
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Row(
             children: <Widget>[
-              if (country.countryCode == Country.worldWide.countryCode)
-                Row(
-                  children: [
-                    const SizedBox(width: 23),
-                    Image(
-                      image: AssetImage('worldwide.png'.imagePath),
-                      width: 27,
-                    ),
+              Row(
+                children: [
+                  const SizedBox(width: 20),
+                  _flagWidget(country),
+                  if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
-                  ],
-                )
-              else
-                Row(
-                  children: [
-                    const SizedBox(width: 20),
                     SizedBox(
-                      // the conditional 50 prevents irregularities caused by the flags in RTL mode
-                      width: isRtl ? 50 : null,
+                      width: 45,
                       child: Text(
-                        Utils.countryCodeToEmoji(country.countryCode),
-                        style: TextStyle(
-                          fontSize: widget.countryListTheme?.flagSize ?? 25,
-                        ),
+                        '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                        style: _textStyle,
                       ),
                     ),
-                    if (widget.showPhoneCode) ...[
-                      const SizedBox(width: 15),
-                      SizedBox(
-                        width: 45,
-                        child: Text(
-                          (country.countryCode == Country.worldWide.countryCode)
-                              ? ''
-                              : '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
-                          style: _textStyle,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                    ] else
-                      const SizedBox(width: 15),
-                  ],
-                ),
+                    const SizedBox(width: 5),
+                  ] else
+                    const SizedBox(width: 15),
+                ],
+              ),
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
@@ -207,6 +210,29 @@ class _CountryListViewState extends State<CountryListView> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _flagWidget(Country country) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
+    if (country.iswWorldWide) {
+      return Image.asset(
+        'worldWide.png'.imagePath,
+        package: 'country_picker',
+        width: 27,
+      );
+    }
+
+    return SizedBox(
+      // the conditional 50 prevents irregularities caused by the flags in RTL mode
+      width: isRtl ? 50 : null,
+      child: Text(
+        Utils.countryCodeToEmoji(country.countryCode),
+        style: TextStyle(
+          fontSize: widget.countryListTheme?.flagSize ?? 25,
         ),
       ),
     );

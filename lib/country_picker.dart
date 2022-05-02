@@ -10,6 +10,7 @@ export 'src/country.dart';
 export 'src/country_list_theme_data.dart';
 export 'src/country_localizations.dart';
 export 'src/country_parser.dart';
+export 'src/country_service.dart';
 
 /// Shows a bottom sheet containing a list of countries to select one.
 ///
@@ -17,8 +18,15 @@ export 'src/country_parser.dart';
 /// The function called with parameter the country that the user has selected.
 /// If the user cancels the bottom sheet, the function is not call.
 ///
-/// An optional [exclude] argument can be used to exclude(remove) one ore more
-/// country from the countries list. It takes a list of country code(iso2).
+///  An optional [exclude] argument can be used to exclude(remove) one ore more
+///  country from the countries list. It takes a list of country code(iso2).
+///
+/// An optional [countryFilter] argument can be used to filter the
+/// list of countries. It takes a list of country code(iso2).
+/// Note: Can't provide both [countryFilter] and [exclude]
+///
+/// An optional [favorite] argument can be used to show countries
+/// at the top of the list. It takes a list of country code(iso2).
 ///
 /// An optional [showPhoneCode] argument can be used to show phone code.
 ///
@@ -36,6 +44,7 @@ void showCountryPicker({
   required BuildContext context,
   required ValueChanged<Country> onSelect,
   VoidCallback? onClosed,
+  List<String>? favorite,
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
@@ -52,6 +61,7 @@ void showCountryPicker({
     onSelect: onSelect,
     onClosed: onClosed,
     exclude: exclude,
+    favorite: favorite,
     countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
     countryListTheme: countryListTheme,

@@ -8,6 +8,7 @@ void showCountryListBottomSheet({
   required BuildContext context,
   required ValueChanged<Country> onSelect,
   VoidCallback? onClosed,
+  List<String>? favorite,
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
@@ -22,6 +23,7 @@ void showCountryListBottomSheet({
     builder: (_) => _builder(
       context,
       onSelect,
+      favorite,
       exclude,
       countryFilter,
       showPhoneCode,
@@ -37,6 +39,7 @@ void showCountryListBottomSheet({
 Widget _builder(
   BuildContext context,
   ValueChanged<Country> onSelect,
+  List<String>? favorite,
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode,
@@ -74,6 +77,7 @@ Widget _builder(
     child: CountryListView(
       onSelect: onSelect,
       exclude: exclude,
+      favorite: favorite,
       countryFilter: countryFilter,
       showPhoneCode: showPhoneCode,
       countryListTheme: countryListTheme,

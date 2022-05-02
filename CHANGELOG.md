@@ -1,3 +1,20 @@
+## [2.0.15] - 02 May 2022
+  * Add support for German localization
+  * Add `favorite` option.
+    - Can be used to to show the favorite countries at the top of the list.
+    - It takes a list of country code(iso2).
+      ```Dart
+      showCountryPicker(
+        context: context,
+        favorite: <String>['SE', 'MC'],
+        onSelect: (Country country) {
+          print('Select country: ${country.displayName}');
+        },
+      );
+      ```
+  * Implemented Country Service
+  * Fix package assets
+
 ## [2.0.14] - 11 Apr 2022
   * Add support for country search by phone code
     
