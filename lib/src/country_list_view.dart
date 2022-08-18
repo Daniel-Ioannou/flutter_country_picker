@@ -20,6 +20,11 @@ class CountryListView extends StatefulWidget {
   /// Note: Can't provide both [exclude] and [countryFilter]
   final List<String>? exclude;
 
+  /// An options [include] argument can be used to include(add) one ore more
+  /// country from the countries list. It takes a list of country code(iso2).
+  /// Note: Can't provide both [include] and [exclude]
+  final List<String>? include;
+
   /// An optional [countryFilter] argument can be used to filter the
   /// list of countries. It takes a list of country code(iso2).
   /// Note: Can't provide both [countryFilter] and [exclude]
@@ -43,6 +48,7 @@ class CountryListView extends StatefulWidget {
     Key? key,
     required this.onSelect,
     this.exclude,
+    this.include,
     this.favorite,
     this.countryFilter,
     this.showPhoneCode = false,
@@ -52,6 +58,14 @@ class CountryListView extends StatefulWidget {
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
+        ),
+        assert(
+          include == null || exclude == null,
+          'Cannot provide both include and exclude',
+        ),
+        assert(
+          include == null || countryFilter == null,
+          'Cannot provide both include and countryFilter',
         ),
         super(key: key);
 
@@ -91,6 +105,12 @@ class _CountryListViewState extends State<CountryListView> {
     if (widget.exclude != null) {
       _countryList.removeWhere(
         (element) => widget.exclude!.contains(element.countryCode),
+      );
+    }
+
+    if (widget.include != null) {
+      _countryList.retainWhere(
+        (element) => widget.include!.contains(element.countryCode),
       );
     }
 
