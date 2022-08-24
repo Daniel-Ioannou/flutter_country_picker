@@ -12,6 +12,8 @@ import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
 import 'res/strings/ku.dart';
+import 'res/strings/lt.dart';
+import 'res/strings/lv.dart';
 import 'res/strings/nb.dart';
 import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
@@ -217,6 +219,10 @@ class CountryParser {
         return fr;
       case 'de':
         return de;
+      case 'lv':
+        return lv;
+      case 'lt':
+        return lt;
       case 'en':
       default:
         return en;
@@ -248,6 +254,8 @@ class CountryParser {
       const Locale('tr'),
       const Locale('hr'),
       const Locale('de'),
+      const Locale('lv'),
+      const Locale('lv'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));
