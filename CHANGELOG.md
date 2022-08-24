@@ -1,3 +1,7 @@
+## 2.0.16
+  * Add support for Latvian localization
+  * Add support for Lithuanian localization
+
 ## 2.0.15
   * Add support for German localization
   * Add `favorite` option.
