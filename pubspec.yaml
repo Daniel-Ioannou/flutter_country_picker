@@ -15,8 +15,6 @@ dependencies:
   collection: ^1.15.0
 
 flutter:
-  assets:
-    - lib/src/res/assets/
 
 dev_dependencies:
   flutter_test:
