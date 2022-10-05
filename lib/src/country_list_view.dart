@@ -1,7 +1,9 @@
-import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/src/extensions.dart';
 import 'package:flutter/material.dart';
 
+import 'country.dart';
+import 'country_list_theme_data.dart';
+import 'country_localizations.dart';
 import 'country_service.dart';
 import 'res/country_codes.dart';
 import 'utils.dart';
