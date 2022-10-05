@@ -1,4 +1,3 @@
-import 'package:country_picker/src/extensions.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
@@ -219,20 +218,13 @@ class _CountryListViewState extends State<CountryListView> {
 
   Widget _flagWidget(Country country) {
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
-
-    if (country.iswWorldWide) {
-      return Image.asset(
-        'worldWide.png'.imagePath,
-        package: 'country_picker',
-        width: 27,
-      );
-    }
-
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
       width: isRtl ? 50 : null,
       child: Text(
-        Utils.countryCodeToEmoji(country.countryCode),
+        country.iswWorldWide
+            ? '\uD83C\uDF0D'
+            : Utils.countryCodeToEmoji(country.countryCode),
         style: TextStyle(
           fontSize: widget.countryListTheme?.flagSize ?? 25,
         ),

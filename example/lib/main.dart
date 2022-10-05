@@ -34,8 +34,12 @@ class MyApp extends StatelessWidget {
         const Locale('lv'),
         const Locale('lt'),
         const Locale('ku'),
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+        const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+        const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
       localizationsDelegates: [
         CountryLocalizations.delegate,
@@ -65,6 +69,7 @@ class HomePage extends StatelessWidget {
               favorite: <String>['SE'],
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
+              showWorldWide: true,
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
