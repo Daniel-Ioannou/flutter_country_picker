@@ -40,6 +40,9 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for showing "World Wide" option at the beginning of the list
   final bool showWorldWide;
 
+  /// An optional argument for hiding the search bar
+  final bool showSearch;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -50,6 +53,7 @@ class CountryListView extends StatefulWidget {
     this.countryListTheme,
     this.searchAutofocus = false,
     this.showWorldWide = false,
+    this.showSearch = true,
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
@@ -119,6 +123,7 @@ class _CountryListViewState extends State<CountryListView> {
     return Column(
       children: <Widget>[
         const SizedBox(height: 12),
+        if (widget.showSearch)
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           child: TextField(
