@@ -124,6 +124,8 @@ class _CountryListViewState extends State<CountryListView> {
           child: TextField(
             autofocus: _searchAutofocus,
             controller: _searchController,
+            style:
+                widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
             decoration: widget.countryListTheme?.inputDecoration ??
                 InputDecoration(
                   labelText: searchLabel,
