@@ -51,6 +51,7 @@ void showCountryPicker({
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
+  bool showSearch = true,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -67,5 +68,6 @@ void showCountryPicker({
     countryListTheme: countryListTheme,
     searchAutofocus: searchAutofocus,
     showWorldWide: showWorldWide,
+    showSearch: showSearch,
   );
 }
