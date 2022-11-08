@@ -123,12 +123,14 @@ class _CountryListViewState extends State<CountryListView> {
     return Column(
       children: <Widget>[
         const SizedBox(height: 12),
-        if (widget.showSearch)
+                if (widget.showSearch)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             child: TextField(
               autofocus: _searchAutofocus,
               controller: _searchController,
+              style:
+                widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
               decoration: widget.countryListTheme?.inputDecoration ??
                   InputDecoration(
                     labelText: searchLabel,

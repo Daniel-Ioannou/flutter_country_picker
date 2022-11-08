@@ -11,6 +11,11 @@ class CountryListThemeData {
   /// If null, the style will be set to [TextStyle(fontSize: 16)]
   final TextStyle? textStyle;
 
+  ///The style to use for search box text.
+  ///
+  /// If null, the style will be set to [TextStyle(fontSize: 16)]
+  final TextStyle? searchTextStyle;
+
   ///The flag size.
   ///
   /// If null, set to 25
@@ -34,6 +39,7 @@ class CountryListThemeData {
   const CountryListThemeData({
     this.backgroundColor,
     this.textStyle,
+    this.searchTextStyle,
     this.flagSize,
     this.inputDecoration,
     this.borderRadius,
