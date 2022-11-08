@@ -1,3 +1,27 @@
+## 2.0.17
+  * Add option to hide search bar
+    ```Dart
+      showCountryPicker(
+        context: context,
+        showSearch: false,
+        onSelect: (Country country) => print('Select country: ${country.displayName}'),
+      );
+    ```
+  * Add `searchTextStyle`
+    ```Dart
+      showCountryPicker(
+        context: context,
+        countryListTheme: CountryListThemeData(
+          searchTextStyle: TextStyle( // Optional. Styles the text in the search field
+            color: Colors.blue,
+            fontSize: 18,
+          ),
+        ),
+        onSelect: (Country country) => print('Select country: ${country.displayName}'),
+      );
+    ```
+  * Removed the need of `worldwide.png` and changed to '🌍' emoji 
+
 ## 2.0.16
   * Add support for Latvian localization
   * Add support for Lithuanian localization
