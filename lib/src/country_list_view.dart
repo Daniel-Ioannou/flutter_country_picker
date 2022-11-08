@@ -40,6 +40,9 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for showing "World Wide" option at the beginning of the list
   final bool showWorldWide;
 
+  /// An optional argument for hiding the search bar
+  final bool showSearch;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -50,6 +53,7 @@ class CountryListView extends StatefulWidget {
     this.countryListTheme,
     this.searchAutofocus = false,
     this.showWorldWide = false,
+    this.showSearch = true,
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
@@ -119,27 +123,28 @@ class _CountryListViewState extends State<CountryListView> {
     return Column(
       children: <Widget>[
         const SizedBox(height: 12),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-          child: TextField(
-            autofocus: _searchAutofocus,
-            controller: _searchController,
-            style:
+                if (widget.showSearch)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child: TextField(
+              autofocus: _searchAutofocus,
+              controller: _searchController,
+              style:
                 widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
-            decoration: widget.countryListTheme?.inputDecoration ??
-                InputDecoration(
-                  labelText: searchLabel,
-                  hintText: searchLabel,
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: const Color(0xFF8C98A8).withOpacity(0.2),
+              decoration: widget.countryListTheme?.inputDecoration ??
+                  InputDecoration(
+                    labelText: searchLabel,
+                    hintText: searchLabel,
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color(0xFF8C98A8).withOpacity(0.2),
+                      ),
                     ),
                   ),
-                ),
-            onChanged: _filterSearchResults,
+              onChanged: _filterSearchResults,
+            ),
           ),
-        ),
         Expanded(
           child: ListView(
             children: [
