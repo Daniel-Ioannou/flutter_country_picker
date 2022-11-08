@@ -37,6 +37,8 @@ export 'src/country_service.dart';
 ///
 /// [searchAutofocus] can be used to initially expand virtual keyboard
 ///
+/// An optional [showSearch] argument can be used to show/hide the search bar.
+///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.

@@ -124,25 +124,25 @@ class _CountryListViewState extends State<CountryListView> {
       children: <Widget>[
         const SizedBox(height: 12),
         if (widget.showSearch)
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-          child: TextField(
-            autofocus: _searchAutofocus,
-            controller: _searchController,
-            decoration: widget.countryListTheme?.inputDecoration ??
-                InputDecoration(
-                  labelText: searchLabel,
-                  hintText: searchLabel,
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: const Color(0xFF8C98A8).withOpacity(0.2),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child: TextField(
+              autofocus: _searchAutofocus,
+              controller: _searchController,
+              decoration: widget.countryListTheme?.inputDecoration ??
+                  InputDecoration(
+                    labelText: searchLabel,
+                    hintText: searchLabel,
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color(0xFF8C98A8).withOpacity(0.2),
+                      ),
                     ),
                   ),
-                ),
-            onChanged: _filterSearchResults,
+              onChanged: _filterSearchResults,
+            ),
           ),
-        ),
         Expanded(
           child: ListView(
             children: [
