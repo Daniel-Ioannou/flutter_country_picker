@@ -120,50 +120,52 @@ class _CountryListViewState extends State<CountryListView> {
         CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
             'Search';
 
-    return Column(
-      children: <Widget>[
-        const SizedBox(height: 12),
-        if (widget.showSearch)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-            child: TextField(
-              autofocus: _searchAutofocus,
-              controller: _searchController,
-              style:
-                  widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
-              decoration: widget.countryListTheme?.inputDecoration ??
-                  InputDecoration(
-                    labelText: searchLabel,
-                    hintText: searchLabel,
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: const Color(0xFF8C98A8).withOpacity(0.2),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          const SizedBox(height: 12),
+          if (widget.showSearch)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              child: TextField(
+                autofocus: _searchAutofocus,
+                controller: _searchController,
+                style:
+                    widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+                decoration: widget.countryListTheme?.inputDecoration ??
+                    InputDecoration(
+                      labelText: searchLabel,
+                      hintText: searchLabel,
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: const Color(0xFF8C98A8).withOpacity(0.2),
+                        ),
                       ),
                     ),
+                onChanged: _filterSearchResults,
+              ),
+            ),
+          Expanded(
+            child: ListView(
+              children: [
+                if (_favoriteList != null) ...[
+                  ..._favoriteList!
+                      .map<Widget>((currency) => _listRow(currency))
+                      .toList(),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(thickness: 1),
                   ),
-              onChanged: _filterSearchResults,
+                ],
+                ..._filteredList
+                    .map<Widget>((country) => _listRow(country))
+                    .toList(),
+              ],
             ),
           ),
-        Expanded(
-          child: ListView(
-            children: [
-              if (_favoriteList != null) ...[
-                ..._favoriteList!
-                    .map<Widget>((currency) => _listRow(currency))
-                    .toList(),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(thickness: 1),
-                ),
-              ],
-              ..._filteredList
-                  .map<Widget>((country) => _listRow(country))
-                  .toList(),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

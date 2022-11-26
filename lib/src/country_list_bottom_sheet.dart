@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
@@ -17,9 +18,8 @@ void showCountryListBottomSheet({
   bool showWorldWide = false,
   bool showSearch = true,
 }) {
-  showModalBottomSheet(
+  showCupertinoModalBottomSheet(
     context: context,
-    isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: (context) => _builder(
       context,

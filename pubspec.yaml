@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   collection: ^1.15.0
+  modal_bottom_sheet: ^2.1.2
 
 flutter:
 
