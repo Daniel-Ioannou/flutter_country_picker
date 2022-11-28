@@ -147,21 +147,24 @@ class _CountryListViewState extends State<CountryListView> {
               ),
             ),
           Expanded(
-            child: ListView(
-              children: [
-                if (_favoriteList != null) ...[
-                  ..._favoriteList!
-                      .map<Widget>((currency) => _listRow(currency))
+            child: ScrollConfiguration(
+              behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
+              child: ListView(
+                children: [
+                  if (_favoriteList != null) ...[
+                    ..._favoriteList!
+                        .map<Widget>((currency) => _listRow(currency))
+                        .toList(),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Divider(thickness: 1),
+                    ),
+                  ],
+                  ..._filteredList
+                      .map<Widget>((country) => _listRow(country))
                       .toList(),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Divider(thickness: 1),
-                  ),
                 ],
-                ..._filteredList
-                    .map<Widget>((country) => _listRow(country))
-                    .toList(),
-              ],
+              ),
             ),
           ),
         ],
