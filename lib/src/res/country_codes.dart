@@ -20,11 +20,11 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_sc": 0,
     "geographic": true,
     "level": 3,
-    "name": "\u00c5land Islands",
+    "name": "Åland Islands",
     "example": "412345678",
-    "display_name": "\u00c5land Islands (AX) [+358]",
+    "display_name": "Åland Islands (AX) [+358]",
     "full_example_with_plus_sign": "+358412345678",
-    "display_name_no_e164_cc": "\u00c5land Islands (AX)",
+    "display_name_no_e164_cc": "Åland Islands (AX)",
     "e164_key": "358-AX-0"
   },
   {
@@ -762,11 +762,11 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_sc": 0,
     "geographic": true,
     "level": 1,
-    "name": "C\u00f4te d'Ivoire",
+    "name": "Côte d'Ivoire",
     "example": "01234567",
-    "display_name": "C\u00f4te d'Ivoire (CI) [+225]",
+    "display_name": "Côte d'Ivoire (CI) [+225]",
     "full_example_with_plus_sign": "+22501234567",
-    "display_name_no_e164_cc": "C\u00f4te d'Ivoire (CI)",
+    "display_name_no_e164_cc": "Côte d'Ivoire (CI)",
     "e164_key": "225-CI-0"
   },
   {
@@ -804,11 +804,11 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_sc": 0,
     "geographic": true,
     "level": 1,
-    "name": "Cura\u00e7ao",
+    "name": "Curaçao",
     "example": "95181234",
-    "display_name": "Cura\u00e7ao (CW) [+599]",
+    "display_name": "Curaçao (CW) [+599]",
     "full_example_with_plus_sign": "+59995181234",
-    "display_name_no_e164_cc": "Cura\u00e7ao (CW)",
+    "display_name_no_e164_cc": "Curaçao (CW)",
     "e164_key": "599-CW-0"
   },
   {
@@ -2540,11 +2540,11 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_sc": 0,
     "geographic": true,
     "level": 1,
-    "name": "R\u00e9union",
+    "name": "Réunion",
     "example": "692123456",
-    "display_name": "R\u00e9union (RE) [+262]",
+    "display_name": "Réunion (RE) [+262]",
     "full_example_with_plus_sign": "+262692123456",
-    "display_name_no_e164_cc": "R\u00e9union (RE)",
+    "display_name_no_e164_cc": "Réunion (RE)",
     "e164_key": "262-RE-0"
   },
   {
@@ -2596,11 +2596,11 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_sc": 0,
     "geographic": true,
     "level": 2,
-    "name": "Saint Barth\u00e9lemy",
+    "name": "Saint Barthélemy",
     "example": "690221234",
-    "display_name": "Saint Barth\u00e9lemy (BL) [+590]",
+    "display_name": "Saint Barthélemy (BL) [+590]",
     "full_example_with_plus_sign": "+590690221234",
-    "display_name_no_e164_cc": "Saint Barth\u00e9lemy (BL)",
+    "display_name_no_e164_cc": "Saint Barthélemy (BL)",
     "e164_key": "590-BL-0"
   },
   {
@@ -2722,11 +2722,11 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_sc": 0,
     "geographic": true,
     "level": 1,
-    "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+    "name": "São Tomé and Príncipe",
     "example": "9812345",
-    "display_name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe (ST) [+239]",
+    "display_name": "São Tomé and Príncipe (ST) [+239]",
     "full_example_with_plus_sign": "+2399812345",
-    "display_name_no_e164_cc": "S\u00e3o Tom\u00e9 and Pr\u00edncipe (ST)",
+    "display_name_no_e164_cc": "São Tomé and Príncipe (ST)",
     "e164_key": "239-ST-0"
   },
   {
