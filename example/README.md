@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^2.0.17
+ country_picker: ^2.0.18
  ```
  
  In your dart file, import the library:
