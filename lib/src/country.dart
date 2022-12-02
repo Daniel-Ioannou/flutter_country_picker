@@ -13,7 +13,6 @@ class Country {
     e164Sc: -1,
     geographic: false,
     level: -1,
-    icao9303: '',
     name: 'World Wide',
     example: '',
     displayName: 'World Wide (WW)',
@@ -30,9 +29,6 @@ class Country {
   final bool geographic;
   final int level;
 
-  ///The Norm ICAO 9303 Nationality code for official documents
-  final String icao9303;
-  
   ///The country name in English
   final String name;
 
@@ -70,7 +66,6 @@ class Country {
     required this.e164Sc,
     required this.geographic,
     required this.level,
-    required this.icao9303,
     required this.name,
     this.nameLocalized = '',
     required this.example,
@@ -86,7 +81,6 @@ class Country {
         e164Sc = json['e164_sc'],
         geographic = json['geographic'],
         level = json['level'],
-        icao9303 = json['icao9303'],
         name = json['name'],
         example = json['example'],
         displayName = json['display_name'],
@@ -117,7 +111,6 @@ class Country {
     data['e164_sc'] = e164Sc;
     data['geographic'] = geographic;
     data['level'] = level;
-    data['icao9303'] = icao9303;
     data['name'] = name;
     data['example'] = example;
     data['display_name'] = displayName;
