@@ -1652,34 +1652,6 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "383-XK-0"
   },
   {
-    "e164_cc": "381",
-    "iso2_cc": "XK",
-    "icao9303": "RKS",
-    "e164_sc": 0,
-    "geographic": true,
-    "level": 2,
-    "name": "Kosovo",
-    "example": "",
-    "display_name": "Kosovo (XK) [+381]",
-    "full_example_with_plus_sign": null,
-    "display_name_no_e164_cc": "Kosovo (XK)",
-    "e164_key": "381-XK-0"
-  },
-  {
-    "e164_cc": "386",
-    "iso2_cc": "XK",
-    "icao9303": "RKS",
-    "e164_sc": 0,
-    "geographic": true,
-    "level": 2,
-    "name": "Kosovo",
-    "example": "",
-    "display_name": "Kosovo (XK) [+386]",
-    "full_example_with_plus_sign": null,
-    "display_name_no_e164_cc": "Kosovo (XK)",
-    "e164_key": "386-XK-0"
-  },
-  {
     "e164_cc": "965",
     "iso2_cc": "KW",
     "icao9303": "KWT",
