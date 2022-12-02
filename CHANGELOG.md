@@ -1,3 +1,7 @@
+## 2.0.18
+  * Fix Hindi Translations
+  * Removed old country codes for Kosovo (+381 & +386)
+
 ## 2.0.17
   * Add option to hide search bar
     ```Dart
