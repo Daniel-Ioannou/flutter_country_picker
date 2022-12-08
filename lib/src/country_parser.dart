@@ -15,6 +15,7 @@ import 'res/strings/ku.dart';
 import 'res/strings/lt.dart';
 import 'res/strings/lv.dart';
 import 'res/strings/nb.dart';
+import 'res/strings/nl.dart';
 import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
@@ -76,8 +77,7 @@ class CountryParser {
   }) {
     final String countryNameLower = countryName.toLowerCase();
 
-    final CountryLocalizations? localizations =
-        context != null ? CountryLocalizations.of(context) : null;
+    final CountryLocalizations? localizations = context != null ? CountryLocalizations.of(context) : null;
 
     final String languageCode = _anyLocalizedNameToCode(
       countryNameLower,
@@ -223,6 +223,8 @@ class CountryParser {
         return lv;
       case 'lt':
         return lt;
+      case 'nl':
+        return nl;
       case 'en':
       default:
         return en;
@@ -256,6 +258,7 @@ class CountryParser {
       const Locale('de'),
       const Locale('lv'),
       const Locale('lv'),
+      const Locale('nl'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));
