@@ -77,7 +77,8 @@ class CountryParser {
   }) {
     final String countryNameLower = countryName.toLowerCase();
 
-    final CountryLocalizations? localizations = context != null ? CountryLocalizations.of(context) : null;
+    final CountryLocalizations? localizations =
+        context != null ? CountryLocalizations.of(context) : null;
 
     final String languageCode = _anyLocalizedNameToCode(
       countryNameLower,
