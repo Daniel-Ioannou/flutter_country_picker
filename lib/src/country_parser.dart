@@ -49,12 +49,30 @@ class CountryParser {
     return _getFromCode(countryCode.toUpperCase());
   }
 
+  /// Returns a single country if it matches the given [phoneCode] (e164_cc).
+  ///
+  /// Throws a [StateError] if no matching element is found.
+  static Country parsePhoneCode(String phoneCode) {
+    return _getFromPhoneCode(phoneCode);
+  }
+
   /// Returns a single country that matches the given [countryCode] (iso2_cc).
   ///
   /// Returns null if no matching element is found.
   static Country? tryParseCountryCode(String countryCode) {
     try {
       return parseCountryCode(countryCode);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Returns a single country that matches the given [phoneCode] (e164_cc).
+  ///
+  /// Returns null if no matching element is found.
+  static Country? tryParsePhoneCode(String phoneCode) {
+    try {
+      return parsePhoneCode(phoneCode);
     } catch (_) {
       return null;
     }
@@ -102,6 +120,15 @@ class CountryParser {
     } catch (_) {
       return null;
     }
+  }
+
+  /// Returns a country that matches the [countryCode] (e164_cc).
+  static Country _getFromPhoneCode(String phoneCode) {
+    return Country.from(
+      json: countryCodes.singleWhere(
+        (Map<String, dynamic> c) => c['e164_cc'] == phoneCode,
+      ),
+    );
   }
 
   /// Returns a country that matches the [countryCode] (iso2_cc).
