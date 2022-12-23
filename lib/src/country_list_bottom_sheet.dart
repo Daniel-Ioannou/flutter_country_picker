@@ -17,10 +17,11 @@ void showCountryListBottomSheet({
   bool searchAutofocus = false,
   bool showWorldWide = false,
   bool showSearch = true,
+
 }) {
-  showCupertinoModalBottomSheet(
+  showModalBottomSheet(
     context: context,
-    backgroundColor: Colors.transparent,
+    isScrollControlled: true,
     builder: (context) => _builder(
       context,
       onSelect,
@@ -72,21 +73,35 @@ Widget _builder(
       );
 
   return Container(
-    height: height,
+    padding: const EdgeInsets.only(top: 44),
     decoration: BoxDecoration(
       color: _backgroundColor,
       borderRadius: _borderRadius,
     ),
-    child: CountryListView(
-      onSelect: onSelect,
-      exclude: exclude,
-      favorite: favorite,
-      countryFilter: countryFilter,
-      showPhoneCode: showPhoneCode,
-      countryListTheme: countryListTheme,
-      searchAutofocus: searchAutofocus,
-      showWorldWide: showWorldWide,
-      showSearch: showSearch,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        InkWell(
+          onTap: () => Navigator.of(context).pop(),
+          child: const Padding(
+            padding: EdgeInsets.only(left: 18),
+            child: Icon(Icons.close_rounded, size: 25,),
+          ),
+        ),
+        Expanded(
+          child: CountryListView(
+            onSelect: onSelect,
+            exclude: exclude,
+            favorite: favorite,
+            countryFilter: countryFilter,
+            showPhoneCode: showPhoneCode,
+            countryListTheme: countryListTheme,
+            searchAutofocus: searchAutofocus,
+            showWorldWide: showWorldWide,
+            showSearch: showSearch,
+          ),
+        )
+      ],
     ),
   );
 }

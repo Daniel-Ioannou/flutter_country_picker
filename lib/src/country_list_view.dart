@@ -121,12 +121,13 @@ class _CountryListViewState extends State<CountryListView> {
             'Search';
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
           const SizedBox(height: 12),
           if (widget.showSearch)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
                 autofocus: _searchAutofocus,
                 controller: _searchController,
@@ -144,6 +145,9 @@ class _CountryListViewState extends State<CountryListView> {
                       ),
                     ),
                 onChanged: _filterSearchResults,
+                cursorColor: Colors.black,
+                cursorWidth: 0.75,
+                maxLines: 1,
               ),
             ),
           Expanded(
