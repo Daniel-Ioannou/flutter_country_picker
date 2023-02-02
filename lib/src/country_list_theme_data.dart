@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CountryListThemeData {
   /// The country bottom sheet's background color.
@@ -36,6 +37,12 @@ class CountryListThemeData {
   /// By default it's fullscreen
   final double? bottomSheetHeight;
 
+  /// the padding of the bottom sheet
+  final EdgeInsets? padding;
+
+  /// the margin of the bottom sheet
+  final EdgeInsets? margin;
+
   const CountryListThemeData({
     this.backgroundColor,
     this.textStyle,
@@ -44,5 +51,7 @@ class CountryListThemeData {
     this.inputDecoration,
     this.borderRadius,
     this.bottomSheetHeight,
+    this.padding,
+    this.margin,
   });
 }
