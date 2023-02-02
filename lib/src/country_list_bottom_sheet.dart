@@ -16,11 +16,13 @@ void showCountryListBottomSheet({
   bool searchAutofocus = false,
   bool showWorldWide = false,
   bool showSearch = true,
+  bool useSafeArea = false,
 }) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    useSafeArea: useSafeArea,
     builder: (context) => _builder(
       context,
       onSelect,
