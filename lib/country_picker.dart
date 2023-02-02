@@ -55,6 +55,8 @@ void showCountryPicker({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
+  EdgeInsets? padding,
+  EdgeInsets? margin,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -73,5 +75,7 @@ void showCountryPicker({
     showWorldWide: showWorldWide,
     showSearch: showSearch,
     useSafeArea: useSafeArea,
+    padding: padding,
+    margin: margin,
   );
 }
