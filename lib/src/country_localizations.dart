@@ -21,6 +21,7 @@ import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
 import 'res/strings/lv.dart';
 import 'res/strings/lt.dart';
+import 'res/strings/nl.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -99,6 +100,8 @@ class CountryLocalizations {
         return lv[countryCode];
       case 'lt':
         return lt[countryCode];
+      case 'nl':
+        return nl[countryCode];
 
       case 'en':
       default:
@@ -135,6 +138,7 @@ class _CountryLocalizationsDelegate
       'de',
       'lt',
       'lv',
+      'nl',
     ].contains(locale.languageCode);
   }
 

@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         const Locale('lv'),
         const Locale('lt'),
         const Locale('ku'),
+        const Locale('nl'),
         const Locale.fromSubtags(
             languageCode: 'zh',
             scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
