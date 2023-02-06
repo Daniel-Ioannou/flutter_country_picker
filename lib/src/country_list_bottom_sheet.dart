@@ -19,9 +19,8 @@ void showCountryListBottomSheet({
   bool showSearch = true,
 
 }) {
-  showModalBottomSheet(
+  showMaterialModalBottomSheet(
     context: context,
-    isScrollControlled: true,
     builder: (context) => _builder(
       context,
       onSelect,
@@ -51,10 +50,6 @@ Widget _builder(
   bool showWorldWide,
   bool showSearch,
 ) {
-  final device = MediaQuery.of(context).size.height;
-  final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
 
   Color? _backgroundColor = countryListTheme?.backgroundColor ??
       Theme.of(context).bottomSheetTheme.backgroundColor;

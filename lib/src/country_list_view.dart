@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
@@ -153,21 +154,27 @@ class _CountryListViewState extends State<CountryListView> {
           Expanded(
             child: ScrollConfiguration(
               behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
-              child: ListView(
-                children: [
-                  if (_favoriteList != null) ...[
-                    ..._favoriteList!
-                        .map<Widget>((currency) => _listRow(currency))
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView(
+                  physics: const ClampingScrollPhysics(),
+                  controller: ModalScrollController.of(context),
+                  children: [
+                    if (_favoriteList != null) ...[
+                      ..._favoriteList!
+                          .map<Widget>((currency) => _listRow(currency))
+                          .toList(),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Divider(thickness: 1),
+                      ),
+                    ],
+                    ..._filteredList
+                        .map<Widget>((country) => _listRow(country))
                         .toList(),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Divider(thickness: 1),
-                    ),
                   ],
-                  ..._filteredList
-                      .map<Widget>((country) => _listRow(country))
-                      .toList(),
-                ],
+                ),
               ),
             ),
           ),
