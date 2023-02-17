@@ -9,8 +9,12 @@ import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
+import 'res/strings/it.dart';
 import 'res/strings/ku.dart';
+import 'res/strings/lt.dart';
+import 'res/strings/lv.dart';
 import 'res/strings/nb.dart';
+import 'res/strings/nl.dart';
 import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
@@ -19,9 +23,6 @@ import 'res/strings/ru.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
-import 'res/strings/lv.dart';
-import 'res/strings/lt.dart';
-import 'res/strings/nl.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -49,8 +50,7 @@ class CountryLocalizations {
 
   /// A [LocalizationsDelegate] that uses [_CountryLocalizationsDelegate.load]
   /// to create an instance of this class.
-  static const LocalizationsDelegate<CountryLocalizations> delegate =
-      _CountryLocalizationsDelegate();
+  static const LocalizationsDelegate<CountryLocalizations> delegate = _CountryLocalizationsDelegate();
 
   /// The localized country name for the given country code.
   String? countryName({required String countryCode}) {
@@ -102,7 +102,8 @@ class CountryLocalizations {
         return lt[countryCode];
       case 'nl':
         return nl[countryCode];
-
+      case 'it':
+        return it[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -110,8 +111,7 @@ class CountryLocalizations {
   }
 }
 
-class _CountryLocalizationsDelegate
-    extends LocalizationsDelegate<CountryLocalizations> {
+class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocalizations> {
   const _CountryLocalizationsDelegate();
 
   @override
@@ -139,6 +139,7 @@ class _CountryLocalizationsDelegate
       'lt',
       'lv',
       'nl',
+      'it',
     ].contains(locale.languageCode);
   }
 
