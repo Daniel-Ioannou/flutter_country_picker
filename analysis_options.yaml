@@ -9,7 +9,7 @@ linter:
     avoid_classes_with_only_static_members: false
     always_use_package_imports: false
     prefer_single_quotes: false
-    library_private_types_in_public_api: false
+    no_leading_underscores_for_local_identifiers: false
 
 analyzer:
   strong-mode:
