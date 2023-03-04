@@ -147,7 +147,7 @@ Map<String, String> fr = {
   "MN": "Mongolie",
   "ME": "Monténégro",
   "MS": "Montserrat",
-  "MA": "Moroc",
+  "MA": "Maroc",
   "MZ": "Mozambique",
   "MM": "Birmanie (Myanmar)",
   "NA": "Namibie",
