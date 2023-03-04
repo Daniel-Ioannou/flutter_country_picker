@@ -11,6 +11,7 @@ import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
+import 'res/strings/it.dart';
 import 'res/strings/ku.dart';
 import 'res/strings/lt.dart';
 import 'res/strings/lv.dart';
@@ -253,6 +254,8 @@ class CountryParser {
         return lt;
       case 'nl':
         return nl;
+      case 'it':
+        return it;
       case 'en':
       default:
         return en;
