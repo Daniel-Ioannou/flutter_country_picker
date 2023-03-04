@@ -1,3 +1,8 @@
+## 2.0.20
+  * Add support for Italian localization
+  * Fix French Translations
+  * UI filling fix
+
 ## 2.0.19
   * Add support for Dutch localization
   * Add `parsePhoneCode` and `tryParsePhoneCode`
