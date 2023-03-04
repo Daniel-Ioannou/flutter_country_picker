@@ -61,7 +61,7 @@ class CountryListView extends StatefulWidget {
         super(key: key);
 
   @override
-  _CountryListViewState createState() => _CountryListViewState();
+  State<CountryListView> createState() => _CountryListViewState();
 }
 
 class _CountryListViewState extends State<CountryListView> {
