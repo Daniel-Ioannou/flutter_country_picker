@@ -22,7 +22,6 @@ void showCountryListBottomSheet({
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    useSafeArea: useSafeArea,
     builder: (context) => _builder(
       context,
       onSelect,
@@ -54,11 +53,9 @@ Widget _builder(
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final height = countryListTheme?.bottomSheetHeight ?? device - (statusBarHeight + (kToolbarHeight / 1.5));
 
-  Color? _backgroundColor = countryListTheme?.backgroundColor ??
-      Theme.of(context).bottomSheetTheme.backgroundColor;
+  Color? _backgroundColor = countryListTheme?.backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
       _backgroundColor = Colors.white;
