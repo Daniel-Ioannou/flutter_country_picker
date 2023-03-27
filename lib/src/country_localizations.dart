@@ -10,6 +10,7 @@ import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
 import 'res/strings/it.dart';
+import 'res/strings/ko.dart';
 import 'res/strings/ku.dart';
 import 'res/strings/lt.dart';
 import 'res/strings/lv.dart';
@@ -104,6 +105,8 @@ class CountryLocalizations {
         return nl[countryCode];
       case 'it':
         return it[countryCode];
+      case 'ko':
+        return ko[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -140,6 +143,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'lv',
       'nl',
       'it',
+      'ko',
     ].contains(locale.languageCode);
   }
 
