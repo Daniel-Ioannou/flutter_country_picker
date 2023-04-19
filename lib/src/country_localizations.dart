@@ -9,6 +9,7 @@ import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
+import 'res/strings/id.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
 import 'res/strings/ko.dart';
@@ -110,6 +111,8 @@ class CountryLocalizations {
         return ko[countryCode];
       case 'ja':
         return ja[countryCode];
+      case 'id':
+        return id[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -148,6 +151,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'it',
       'ko',
       'ja',
+      'id',
     ].contains(locale.languageCode);
   }
 
