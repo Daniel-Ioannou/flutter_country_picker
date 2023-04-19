@@ -11,7 +11,7 @@ Map<String, String> id = {
   "AR": 'Argentina',
   "AM": 'Armenia',
   "AW": 'Aruba',
-  "AC": '升天岛',
+  "AC": 'Ascension Island',
   "AU": 'Australia',
   "AT": 'Austria',
   "AZ": 'Azerbaijan',
