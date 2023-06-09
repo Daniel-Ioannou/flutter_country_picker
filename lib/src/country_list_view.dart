@@ -149,7 +149,7 @@ class _CountryListViewState extends State<CountryListView> {
           child: ListView(
             children: [
               if (_favoriteList != null) ...[
-                ..._favoriteList!
+                ..._favoriteFilteredList!
                     .map<Widget>((currency) => _listRow(currency))
                     .toList(),
                 const Padding(
@@ -158,6 +158,7 @@ class _CountryListViewState extends State<CountryListView> {
                 ),
               ],
               ..._filteredList
+                  .where((e) => !(_favoriteFilteredList?.contains(e) ?? false))
                   .map<Widget>((country) => _listRow(country))
                   .toList(),
             ],
@@ -166,6 +167,15 @@ class _CountryListViewState extends State<CountryListView> {
       ],
     );
   }
+
+  List<Country>? get _favoriteFilteredList => _favoriteList
+      ?.where(
+        (c) => c.startsWith(
+          _searchController.text,
+          CountryLocalizations.of(context),
+        ),
+      )
+      .toList();
 
   Widget _listRow(Country country) {
     final TextStyle _textStyle =
