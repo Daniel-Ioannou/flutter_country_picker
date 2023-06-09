@@ -144,6 +144,8 @@ class HomePage extends StatelessWidget {
                         color: Colors.blue,
                         fontSize: 18,
                       ),
+                      height: 300,
+                      weight: 300,
                     ),
                     dialogMode: true,
                   );

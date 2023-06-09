@@ -34,13 +34,15 @@ class CountryListThemeData {
   ///Country list modal height
   ///
   /// By default it's fullscreen
-  final double? bottomSheetHeight;
+  final double? height;
 
   /// the padding of the bottom sheet
   final EdgeInsets? padding;
 
   /// the margin of the bottom sheet
   final EdgeInsets? margin;
+
+  final double? weight;
 
   const CountryListThemeData({
     this.backgroundColor,
@@ -49,8 +51,9 @@ class CountryListThemeData {
     this.flagSize,
     this.inputDecoration,
     this.borderRadius,
-    this.bottomSheetHeight,
+    this.height,
     this.padding,
-    this.margin,
+    this.margin, 
+    this.weight,
   });
 }
