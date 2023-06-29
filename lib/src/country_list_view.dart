@@ -202,7 +202,7 @@ class _CountryListViewState extends State<CountryListView> {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  _flagWidget(country),
+                  _flagWidget(country, _textStyle),
                   if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
                     SizedBox(
@@ -233,7 +233,7 @@ class _CountryListViewState extends State<CountryListView> {
     );
   }
 
-  Widget _flagWidget(Country country) {
+  Widget _flagWidget(Country country, TextStyle textStyle) {
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
@@ -242,7 +242,7 @@ class _CountryListViewState extends State<CountryListView> {
         country.iswWorldWide
             ? '\uD83C\uDF0D'
             : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
+        style: textStyle.copyWith(
           fontSize: widget.countryListTheme?.flagSize ?? 25,
         ),
       ),
