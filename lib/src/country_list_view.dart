@@ -149,7 +149,7 @@ class _CountryListViewState extends State<CountryListView> {
           child: ListView(
             children: [
               if (_favoriteList != null) ...[
-                ..._favoriteList!
+                ..._favoriteFilteredList!
                     .map<Widget>((currency) => _listRow(currency))
                     .toList(),
                 const Padding(
@@ -158,6 +158,7 @@ class _CountryListViewState extends State<CountryListView> {
                 ),
               ],
               ..._filteredList
+                  .where((e) => !(_favoriteFilteredList?.contains(e) ?? false))
                   .map<Widget>((country) => _listRow(country))
                   .toList(),
             ],
@@ -166,6 +167,15 @@ class _CountryListViewState extends State<CountryListView> {
       ],
     );
   }
+
+  List<Country>? get _favoriteFilteredList => _favoriteList
+      ?.where(
+        (c) => c.startsWith(
+          _searchController.text,
+          CountryLocalizations.of(context),
+        ),
+      )
+      .toList();
 
   Widget _listRow(Country country) {
     final TextStyle _textStyle =
@@ -192,7 +202,7 @@ class _CountryListViewState extends State<CountryListView> {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  _flagWidget(country),
+                  _flagWidget(country, _textStyle),
                   if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
                     SizedBox(
@@ -223,7 +233,7 @@ class _CountryListViewState extends State<CountryListView> {
     );
   }
 
-  Widget _flagWidget(Country country) {
+  Widget _flagWidget(Country country, TextStyle textStyle) {
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
@@ -232,7 +242,7 @@ class _CountryListViewState extends State<CountryListView> {
         country.iswWorldWide
             ? '\uD83C\uDF0D'
             : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
+        style: textStyle.copyWith(
           fontSize: widget.countryListTheme?.flagSize ?? 25,
         ),
       ),

@@ -17,27 +17,71 @@ void showCountryListBottomSheet({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
+  bool dialogMode = false,
 }) {
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    useSafeArea: useSafeArea,
-    builder: (context) => _builder(
-      context,
-      onSelect,
-      favorite,
-      exclude,
-      countryFilter,
-      showPhoneCode,
-      countryListTheme,
-      searchAutofocus,
-      showWorldWide,
-      showSearch,
-    ),
-  ).whenComplete(() {
-    if (onClosed != null) onClosed();
-  });
+  if (dialogMode) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(
+          child: SizedBox(
+            height: getHeight(context, countryListTheme),
+            width: getWeight(context, countryListTheme),
+            child: Material(
+              color: Colors.transparent,
+              child: _builder(
+                context,
+                onSelect,
+                favorite,
+                exclude,
+                countryFilter,
+                showPhoneCode,
+                countryListTheme,
+                searchAutofocus,
+                showWorldWide,
+                showSearch,
+              ),
+            ),
+          ),
+        );
+      },
+    ).whenComplete(() {
+      if (onClosed != null) onClosed();
+    });
+  } else {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      useSafeArea: useSafeArea,
+      builder: (context) => _builder(
+        context,
+        onSelect,
+        favorite,
+        exclude,
+        countryFilter,
+        showPhoneCode,
+        countryListTheme,
+        searchAutofocus,
+        showWorldWide,
+        showSearch,
+      ),
+    ).whenComplete(() {
+      if (onClosed != null) onClosed();
+    });
+  }
+}
+
+double getHeight(BuildContext context, CountryListThemeData? countryListTheme) {
+  final device = MediaQuery.of(context).size.height;
+  final statusBarHeight = MediaQuery.of(context).padding.top;
+  final height = countryListTheme?.height ??
+      device - (statusBarHeight + (kToolbarHeight / 1.5));
+  return height;
+}
+
+double getWeight(BuildContext context, CountryListThemeData? countryListTheme) {
+  return countryListTheme?.weight ?? MediaQuery.of(context).size.width * .7;
 }
 
 Widget _builder(
@@ -52,11 +96,6 @@ Widget _builder(
   bool showWorldWide,
   bool showSearch,
 ) {
-  final device = MediaQuery.of(context).size.height;
-  final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
-
   Color? _backgroundColor = countryListTheme?.backgroundColor ??
       Theme.of(context).bottomSheetTheme.backgroundColor;
   if (_backgroundColor == null) {
@@ -74,7 +113,7 @@ Widget _builder(
       );
 
   return Container(
-    height: height,
+    height: getHeight(context, countryListTheme),
     padding: countryListTheme?.padding,
     margin: countryListTheme?.margin,
     decoration: BoxDecoration(
