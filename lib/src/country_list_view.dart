@@ -1,6 +1,6 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:universal_io/io.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
@@ -235,11 +235,12 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _flagWidget(Country country) {
+
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
       width: isRtl ? 50 : null,
-      child: Platform.isWindows ? _flagImage(country) : _emojiText(country),
+      child: kIsWeb || Platform.isWindows ? _flagImage(country) : _emojiText(country),
     );
   }
 
