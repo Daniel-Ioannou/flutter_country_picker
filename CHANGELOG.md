@@ -1,3 +1,9 @@
+## 2.0.21
+  * Add support for Korean localization
+  * Add support for Japanese localization
+  * Add support for Indonesian localization
+  * Fix Windows and web flag
+
 ## 2.0.20
   * Add support for Italian localization
   * Fix French Translations
