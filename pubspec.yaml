@@ -11,7 +11,7 @@ environment:
 
 dependencies:
   collection: ^1.17.0
-  universal_io: ^2.0.5
+  universal_io: ^2.2.2
   flutter:
     sdk: flutter
 
