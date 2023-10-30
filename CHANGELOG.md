@@ -1,3 +1,7 @@
+## 2.0.22
+  * Add support for Czech localization
+  * Fix typos Korean
+
 ## 2.0.21
   * Add support for Korean localization
   * Add support for Japanese localization
