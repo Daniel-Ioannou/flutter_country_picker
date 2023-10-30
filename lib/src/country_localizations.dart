@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
 import 'res/strings/cn.dart';
+import 'res/strings/cs.dart';
 import 'res/strings/de.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
@@ -113,6 +114,8 @@ class CountryLocalizations {
         return ja[countryCode];
       case 'id':
         return id[countryCode];
+      case 'cs':
+        return cs[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -152,6 +155,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'ko',
       'ja',
       'id',
+      'cs',
     ].contains(locale.languageCode);
   }
 
