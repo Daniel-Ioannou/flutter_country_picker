@@ -17,8 +17,10 @@ void showCountryListBottomSheet({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
+  bool useRootNavigator = false,
 }) {
   showModalBottomSheet(
+    useRootNavigator: useRootNavigator,
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
