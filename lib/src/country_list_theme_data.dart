@@ -35,6 +35,7 @@ class CountryListThemeData {
   ///
   /// By default it's fullscreen
   final double? bottomSheetHeight;
+  final double? bottomSheetWidth;
 
   /// the padding of the bottom sheet
   final EdgeInsets? padding;
@@ -50,6 +51,7 @@ class CountryListThemeData {
     this.inputDecoration,
     this.borderRadius,
     this.bottomSheetHeight,
+    this.bottomSheetWidth,
     this.padding,
     this.margin,
   });

@@ -77,11 +77,14 @@ class HomePage extends StatelessWidget {
               // Optional. Sets the theme for the country list picker.
               countryListTheme: CountryListThemeData(
                 // Optional. Sets the border radius for the bottomsheet.
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40.0),
-                  topRight: Radius.circular(40.0),
-                ),
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(15.0),
+                //   topRight: Radius.circular(40.0),
+                // ),
                 // Optional. Styles the search field.
+                bottomSheetHeight: 450,
+                bottomSheetWidth: 450,
+
                 inputDecoration: InputDecoration(
                   labelText: 'Search',
                   hintText: 'Start typing to search',
