@@ -207,9 +207,7 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _flagWidget(Country country) {
-    print(widget.emojiFontFamilyFallback);
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
-    // print(" widget.useFlagImage: " + widget.useFlagImage.toString());
     final flag = ((kIsWeb || Platform.isWindows) && widget.useFlagImage) ? _flagImage(country) : _emojiText(country);
 
     return SizedBox(
