@@ -56,6 +56,7 @@ void showCountryPicker({
   bool showSearch = true,
   bool useSafeArea = false,
   bool useFlagImage = false,
+  List<String>? emojiFontFamilyFallback,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -75,5 +76,6 @@ void showCountryPicker({
     showSearch: showSearch,
     useSafeArea: useSafeArea,
     useFlagImage: useFlagImage,
+    emojiFontFamilyFallback: emojiFontFamilyFallback,
   );
 }

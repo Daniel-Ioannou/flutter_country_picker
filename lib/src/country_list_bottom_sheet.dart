@@ -18,6 +18,7 @@ void showCountryListBottomSheet({
   bool showSearch = true,
   bool useSafeArea = false,
   bool useFlagImage = false,
+  List<String>? emojiFontFamilyFallback,
 }) {
   showModalBottomSheet(
     constraints: BoxConstraints(maxWidth: countryListTheme?.bottomSheetWidth ?? double.infinity),
@@ -37,6 +38,7 @@ void showCountryListBottomSheet({
       showWorldWide,
       showSearch,
       useFlagImage,
+      emojiFontFamilyFallback,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -55,6 +57,7 @@ Widget _builder(
   bool showWorldWide,
   bool showSearch,
   bool useFlagImage,
+  List<String>? emojiFontFamilyFallback,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -95,6 +98,7 @@ Widget _builder(
       showWorldWide: showWorldWide,
       showSearch: showSearch,
       useFlagImage: useFlagImage,
+      emojiFontFamilyFallback: emojiFontFamilyFallback,
     ),
   );
 }

@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
             showCountryPicker(
               context: context,
               useFlagImage: false,
-
+              emojiFontFamilyFallback: ["NotoColorEmoji"],
               //Optional.  Can be used to exclude(remove) one ore more country from the countries list (optional).
               exclude: <String>['KN', 'MF'],
               favorite: <String>['SE'],

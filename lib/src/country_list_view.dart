@@ -52,7 +52,10 @@ class CountryListView extends StatefulWidget {
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
-  const CountryListView({
+  ///Custom emoji fontfamily fallback for flags icons
+  List<String>? emojiFontFamilyFallback;
+
+  CountryListView({
     Key? key,
     required this.onSelect,
     this.exclude,
@@ -65,6 +68,7 @@ class CountryListView extends StatefulWidget {
     this.showSearch = true,
     this.useFlagImage = false,
     this.customFlagBuilder,
+    this.emojiFontFamilyFallback, //const ["NotoColorEmoji"],
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
@@ -176,7 +180,7 @@ class _CountryListViewState extends State<CountryListView> {
         country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
         style: TextStyle(
           fontSize: widget.countryListTheme?.flagSize ?? 20,
-          fontFamilyFallback: const ["NotoColorEmoji"],
+          fontFamilyFallback: widget.emojiFontFamilyFallback,
         ),
       );
 
@@ -203,6 +207,7 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _flagWidget(Country country) {
+    print(widget.emojiFontFamilyFallback);
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     // print(" widget.useFlagImage: " + widget.useFlagImage.toString());
     final flag = ((kIsWeb || Platform.isWindows) && widget.useFlagImage) ? _flagImage(country) : _emojiText(country);
