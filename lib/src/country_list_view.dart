@@ -176,6 +176,7 @@ class _CountryListViewState extends State<CountryListView> {
         country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
         style: TextStyle(
           fontSize: widget.countryListTheme?.flagSize ?? 20,
+          fontFamilyFallback: const ["NotoColorEmoji"],
         ),
       );
 
