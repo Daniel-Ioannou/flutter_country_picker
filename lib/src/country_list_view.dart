@@ -84,45 +84,7 @@ class _CountryListViewState extends State<CountryListView> {
   late TextEditingController _searchController;
   late bool _searchAutofocus;
 
-  @override
-  void initState() {
-    super.initState();
-    _searchController = TextEditingController();
-
-    _countryList = _countryService.getAll();
-
-    _countryList = countryCodes.map((country) => Country.from(json: country)).toList();
-
-    //Remove duplicates country if not use phone code
-    if (!widget.showPhoneCode) {
-      final ids = _countryList.map((e) => e.countryCode).toSet();
-      _countryList.retainWhere((country) => ids.remove(country.countryCode));
-    }
-
-    if (widget.favorite != null) {
-      _favoriteList = _countryService.findCountriesByCode(widget.favorite!);
-    }
-
-    if (widget.exclude != null) {
-      _countryList.removeWhere(
-        (element) => widget.exclude!.contains(element.countryCode),
-      );
-    }
-
-    if (widget.countryFilter != null) {
-      _countryList.removeWhere(
-        (element) => !widget.countryFilter!.contains(element.countryCode),
-      );
-    }
-
-    _filteredList = <Country>[];
-    if (widget.showWorldWide) {
-      _filteredList.add(Country.worldWide);
-    }
-    _filteredList.addAll(_countryList);
-
-    _searchAutofocus = widget.searchAutofocus;
-  }
+  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
 
   @override
   Widget build(BuildContext context) {
@@ -167,6 +129,87 @@ class _CountryListViewState extends State<CountryListView> {
           ),
         ),
       ],
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+
+    _countryList = _countryService.getAll();
+
+    _countryList = countryCodes.map((country) => Country.from(json: country)).toList();
+
+    //Remove duplicates country if not use phone code
+    if (!widget.showPhoneCode) {
+      final ids = _countryList.map((e) => e.countryCode).toSet();
+      _countryList.retainWhere((country) => ids.remove(country.countryCode));
+    }
+
+    if (widget.favorite != null) {
+      _favoriteList = _countryService.findCountriesByCode(widget.favorite!);
+    }
+
+    if (widget.exclude != null) {
+      _countryList.removeWhere(
+        (element) => widget.exclude!.contains(element.countryCode),
+      );
+    }
+
+    if (widget.countryFilter != null) {
+      _countryList.removeWhere(
+        (element) => !widget.countryFilter!.contains(element.countryCode),
+      );
+    }
+
+    _filteredList = <Country>[];
+    if (widget.showWorldWide) {
+      _filteredList.add(Country.worldWide);
+    }
+    _filteredList.addAll(_countryList);
+
+    _searchAutofocus = widget.searchAutofocus;
+  }
+
+  Widget _emojiText(Country country) => Text(
+        country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
+        style: TextStyle(
+          fontSize: widget.countryListTheme?.flagSize ?? 20,
+        ),
+      );
+
+  void _filterSearchResults(String query) {
+    List<Country> _searchResult = <Country>[];
+    final CountryLocalizations? localizations = CountryLocalizations.of(context);
+
+    if (query.isEmpty) {
+      _searchResult.addAll(_countryList);
+    } else {
+      _searchResult = _countryList.where((c) => c.startsWith(query, localizations)).toList();
+    }
+
+    setState(() => _filteredList = _searchResult);
+  }
+
+  Widget _flagImage(Country country) {
+    final String url = "https://www.countryflagicons.com/FLAT/64/${country.countryCode}.png";
+    return Image.network(
+      url,
+      width: widget.countryListTheme?.flagSize ?? 22,
+      errorBuilder: (_, __, ___) => _emojiText(country),
+    );
+  }
+
+  Widget _flagWidget(Country country) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+    // print(" widget.useFlagImage: " + widget.useFlagImage.toString());
+    final flag = ((kIsWeb || Platform.isWindows) && widget.useFlagImage) ? _flagImage(country) : _emojiText(country);
+
+    return SizedBox(
+      // the conditional 50 prevents irregularities caused by the flags in RTL mode
+      width: isRtl ? 50 : null,
+      child: flag,
     );
   }
 
@@ -219,47 +262,4 @@ class _CountryListViewState extends State<CountryListView> {
       ),
     );
   }
-
-  Widget _flagWidget(Country country) {
-    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
-
-    final flag = kIsWeb || Platform.isWindows && widget.useFlagImage ? _flagImage(country) : _emojiText(country);
-
-    return SizedBox(
-      // the conditional 50 prevents irregularities caused by the flags in RTL mode
-      width: isRtl ? 50 : null,
-      child: flag,
-    );
-  }
-
-  Widget _flagImage(Country country) {
-    final String url = "https://www.countryflagicons.com/FLAT/64/${country.countryCode}.png";
-    return Image.network(
-      url,
-      width: widget.countryListTheme?.flagSize ?? 22,
-      errorBuilder: (_, __, ___) => _emojiText(country),
-    );
-  }
-
-  Widget _emojiText(Country country) => Text(
-        country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 20,
-        ),
-      );
-
-  void _filterSearchResults(String query) {
-    List<Country> _searchResult = <Country>[];
-    final CountryLocalizations? localizations = CountryLocalizations.of(context);
-
-    if (query.isEmpty) {
-      _searchResult.addAll(_countryList);
-    } else {
-      _searchResult = _countryList.where((c) => c.startsWith(query, localizations)).toList();
-    }
-
-    setState(() => _filteredList = _searchResult);
-  }
-
-  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
 }
