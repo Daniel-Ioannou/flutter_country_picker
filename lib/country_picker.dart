@@ -52,12 +52,13 @@ void showCountryPicker({
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
+  CustomFlagBuilder? customFlagBuilder,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
-  CustomFlagBuilder? customFlagBuilder,
+  bool useRootNavigator = false,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -71,11 +72,12 @@ void showCountryPicker({
     favorite: favorite,
     countryFilter: countryFilter,
     showPhoneCode: showPhoneCode,
+    customFlagBuilder: customFlagBuilder,
     countryListTheme: countryListTheme,
     searchAutofocus: searchAutofocus,
     showWorldWide: showWorldWide,
     showSearch: showSearch,
     useSafeArea: useSafeArea,
-    customFlagBuilder: customFlagBuilder,
+    useRootNavigator: useRootNavigator,
   );
 }

@@ -12,14 +12,16 @@ void showCountryListBottomSheet({
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
+  CustomFlagBuilder? customFlagBuilder,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
-  CustomFlagBuilder? customFlagBuilder,
+  bool useRootNavigator = false,
 }) {
   showModalBottomSheet(
+    useRootNavigator: useRootNavigator,
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
