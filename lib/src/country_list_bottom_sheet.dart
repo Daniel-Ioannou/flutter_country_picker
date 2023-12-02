@@ -21,11 +21,11 @@ void showCountryListBottomSheet({
   bool useRootNavigator = false,
 }) {
   showModalBottomSheet(
-    useRootNavigator: useRootNavigator,
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     useSafeArea: useSafeArea,
+    useRootNavigator: useRootNavigator,
     builder: (context) => _builder(
       context,
       onSelect,
@@ -37,7 +37,7 @@ void showCountryListBottomSheet({
       searchAutofocus,
       showWorldWide,
       showSearch,
-      customFlagBuilder
+      customFlagBuilder,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();

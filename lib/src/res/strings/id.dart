@@ -246,5 +246,5 @@ Map<String, String> id = {
   "YE": 'Yaman',
   "ZM": 'Zambia',
   "ZW": 'Zimbabwe',
-  "search": 'Mencari'
+  "search": 'Mencari',
 };

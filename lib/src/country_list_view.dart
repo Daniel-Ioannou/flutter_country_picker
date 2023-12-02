@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:universal_io/io.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
@@ -226,7 +224,7 @@ class _CountryListViewState extends State<CountryListView> {
                       country.name,
                   style: _textStyle,
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -241,16 +239,6 @@ class _CountryListViewState extends State<CountryListView> {
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
       width: isRtl ? 50 : null,
       child: _emojiText(country),
-    );
-  }
-
-  Widget _flagImage(Country country) {
-    final String url =
-        "https://www.countryflagicons.com/FLAT/64/${country.countryCode}.png";
-    return Image.network(
-      url,
-      width: widget.countryListTheme?.flagSize ?? 22,
-      errorBuilder: (_, __, ___) => _emojiText(country),
     );
   }
 

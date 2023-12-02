@@ -246,5 +246,5 @@ Map<String, String> ja = {
   "YE": "イエメン",
   "ZM": "ザンビア",
   "ZW": "ジンバブエ",
-  "search": "検索"
+  "search": "検索",
 };
