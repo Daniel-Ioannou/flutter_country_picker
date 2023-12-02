@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'src/country.dart';
 import 'src/country_list_bottom_sheet.dart';
 import 'src/country_list_theme_data.dart';
+import 'src/country_list_view.dart';
 
 export 'src/country.dart';
 export 'src/country_list_theme_data.dart';
+export 'src/country_list_view.dart' show CustomFlagBuilder;
 export 'src/country_localizations.dart';
 export 'src/country_parser.dart';
 export 'src/country_service.dart';
@@ -55,6 +57,7 @@ void showCountryPicker({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
+  CustomFlagBuilder? customFlagBuilder,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -73,5 +76,6 @@ void showCountryPicker({
     showWorldWide: showWorldWide,
     showSearch: showSearch,
     useSafeArea: useSafeArea,
+    customFlagBuilder: customFlagBuilder,
   );
 }
