@@ -240,7 +240,7 @@ class _CountryListViewState extends State<CountryListView> {
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
       width: isRtl ? 50 : null,
-      child: kIsWeb || Platform.isWindows ? _flagImage(country) : _emojiText(country),
+      child: _emojiText(country),
     );
   }
 
