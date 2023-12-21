@@ -9,6 +9,7 @@ import 'res/strings/es.dart';
 import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
+import 'res/strings/he.dart';
 import 'res/strings/hr.dart';
 import 'res/strings/id.dart';
 import 'res/strings/it.dart';
@@ -73,6 +74,8 @@ class CountryLocalizations {
         return es[countryCode];
       case 'et':
         return et[countryCode];
+      case 'he':
+        return he[countryCode];
       case 'pt':
         return pt[countryCode];
       case 'nb':
@@ -136,6 +139,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'el',
       'es',
       'et',
+      'he',
       'pl',
       'pt',
       'nb',
