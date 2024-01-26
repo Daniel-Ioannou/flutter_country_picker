@@ -12,6 +12,7 @@ void showCountryListBottomSheet({
   List<String>? exclude,
   List<String>? countryFilter,
   bool showPhoneCode = false,
+  CustomFlagBuilder? customFlagBuilder,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
@@ -19,6 +20,7 @@ void showCountryListBottomSheet({
   bool useSafeArea = false,
   bool useFlagImage = false,
   List<String>? emojiFontFamilyFallback,
+  bool useRootNavigator = false,
 }) {
   showModalBottomSheet(
     constraints: BoxConstraints(maxWidth: countryListTheme?.bottomSheetWidth ?? double.infinity),
@@ -26,6 +28,7 @@ void showCountryListBottomSheet({
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     useSafeArea: useSafeArea,
+    useRootNavigator: useRootNavigator,
     builder: (context) => _builder(
       context,
       onSelect,
@@ -39,6 +42,7 @@ void showCountryListBottomSheet({
       showSearch,
       useFlagImage,
       emojiFontFamilyFallback,
+      customFlagBuilder,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -58,6 +62,7 @@ Widget _builder(
   bool showSearch,
   bool useFlagImage,
   List<String>? emojiFontFamilyFallback,
+  CustomFlagBuilder? customFlagBuilder,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -99,6 +104,7 @@ Widget _builder(
       showSearch: showSearch,
       useFlagImage: useFlagImage,
       emojiFontFamilyFallback: emojiFontFamilyFallback,
+      customFlagBuilder: customFlagBuilder,
     ),
   );
 }

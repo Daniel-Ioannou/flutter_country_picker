@@ -246,5 +246,5 @@ Map<String, String> ko = {
   "YE": "예멘",
   "ZM": "잠비아",
   "ZW": "짐바브웨",
-  "search": "검색"
+  "search": "검색",
 };

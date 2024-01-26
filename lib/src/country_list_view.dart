@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:universal_io/io.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
@@ -266,4 +264,41 @@ class _CountryListViewState extends State<CountryListView> {
       ),
     );
   }
+
+  Widget _flagWidget(Country country) {
+
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+    return SizedBox(
+      // the conditional 50 prevents irregularities caused by the flags in RTL mode
+      width: isRtl ? 50 : null,
+      child: _emojiText(country),
+    );
+  }
+
+  Widget _emojiText(Country country) => Text(
+        country.iswWorldWide
+            ? '\uD83C\uDF0D'
+            : Utils.countryCodeToEmoji(country.countryCode),
+        style: TextStyle(
+          fontSize: widget.countryListTheme?.flagSize ?? 20,
+        ),
+      );
+
+  void _filterSearchResults(String query) {
+    List<Country> _searchResult = <Country>[];
+    final CountryLocalizations? localizations =
+        CountryLocalizations.of(context);
+
+    if (query.isEmpty) {
+      _searchResult.addAll(_countryList);
+    } else {
+      _searchResult = _countryList
+          .where((c) => c.startsWith(query, localizations))
+          .toList();
+    }
+
+    setState(() => _filteredList = _searchResult);
+  }
+
+  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
 }

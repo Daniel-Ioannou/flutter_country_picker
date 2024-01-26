@@ -1,3 +1,7 @@
+## 2.0.23
+  * Export `CustomFlagBuilder`
+  * Add parameter `useRootNavigator`
+
 ## 2.0.22
   * Add support for Czech localization
   * Fix typos Korean
