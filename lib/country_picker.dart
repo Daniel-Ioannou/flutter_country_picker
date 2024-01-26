@@ -58,6 +58,8 @@ void showCountryPicker({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
+  bool useFlagImage = false,
+  List<String>? emojiFontFamilyFallback,
   bool useRootNavigator = false,
 }) {
   assert(
@@ -78,6 +80,8 @@ void showCountryPicker({
     showWorldWide: showWorldWide,
     showSearch: showSearch,
     useSafeArea: useSafeArea,
+    useFlagImage: useFlagImage,
+    emojiFontFamilyFallback: emojiFontFamilyFallback,
     useRootNavigator: useRootNavigator,
   );
 }

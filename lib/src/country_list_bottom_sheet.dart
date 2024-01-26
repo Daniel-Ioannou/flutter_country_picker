@@ -18,9 +18,12 @@ void showCountryListBottomSheet({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
+  bool useFlagImage = false,
+  List<String>? emojiFontFamilyFallback,
   bool useRootNavigator = false,
 }) {
   showModalBottomSheet(
+    constraints: BoxConstraints(maxWidth: countryListTheme?.bottomSheetWidth ?? double.infinity),
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -37,6 +40,8 @@ void showCountryListBottomSheet({
       searchAutofocus,
       showWorldWide,
       showSearch,
+      useFlagImage,
+      emojiFontFamilyFallback,
       customFlagBuilder,
     ),
   ).whenComplete(() {
@@ -55,15 +60,15 @@ Widget _builder(
   bool searchAutofocus,
   bool showWorldWide,
   bool showSearch,
+  bool useFlagImage,
+  List<String>? emojiFontFamilyFallback,
   CustomFlagBuilder? customFlagBuilder,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
-
-  Color? _backgroundColor = countryListTheme?.backgroundColor ??
-      Theme.of(context).bottomSheetTheme.backgroundColor;
+  final height = countryListTheme?.bottomSheetHeight ?? device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final width = countryListTheme?.bottomSheetWidth ?? MediaQuery.of(context).size.width * 0.5;
+  Color? _backgroundColor = countryListTheme?.backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
       _backgroundColor = Colors.white;
@@ -74,12 +79,13 @@ Widget _builder(
 
   final BorderRadius _borderRadius = countryListTheme?.borderRadius ??
       const BorderRadius.only(
-        topLeft: Radius.circular(40.0),
-        topRight: Radius.circular(40.0),
+        topLeft: Radius.circular(15.0),
+        topRight: Radius.circular(15.0),
       );
 
   return Container(
     height: height,
+    width: width,
     padding: countryListTheme?.padding,
     margin: countryListTheme?.margin,
     decoration: BoxDecoration(
@@ -96,6 +102,8 @@ Widget _builder(
       searchAutofocus: searchAutofocus,
       showWorldWide: showWorldWide,
       showSearch: showSearch,
+      useFlagImage: useFlagImage,
+      emojiFontFamilyFallback: emojiFontFamilyFallback,
       customFlagBuilder: customFlagBuilder,
     ),
   );
