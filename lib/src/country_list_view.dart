@@ -45,15 +45,13 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for hiding the search bar
   final bool showSearch;
 
-  final bool useFlagImage;
+  ///Custom emoji fontfamily fallback for flags icons
+  final List<String>? emojiFontFamilyFallback;
 
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
-  ///Custom emoji fontfamily fallback for flags icons
-  List<String>? emojiFontFamilyFallback;
-
-  CountryListView({
+  const CountryListView({
     Key? key,
     required this.onSelect,
     this.exclude,
@@ -64,13 +62,12 @@ class CountryListView extends StatefulWidget {
     this.searchAutofocus = false,
     this.showWorldWide = false,
     this.showSearch = true,
-    this.useFlagImage = false,
     this.customFlagBuilder,
-    this.emojiFontFamilyFallback, //const ["NotoColorEmoji"],
+    this.emojiFontFamilyFallback,
   })  : assert(
-          exclude == null || countryFilter == null,
-          'Cannot provide both exclude and countryFilter',
-        ),
+  exclude == null || countryFilter == null,
+  'Cannot provide both exclude and countryFilter',
+  ),
         super(key: key);
 
   @override
@@ -86,11 +83,52 @@ class _CountryListViewState extends State<CountryListView> {
   late TextEditingController _searchController;
   late bool _searchAutofocus;
 
-  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+
+    _countryList = _countryService.getAll();
+
+    _countryList =
+        countryCodes.map((country) => Country.from(json: country)).toList();
+
+    //Remove duplicates country if not use phone code
+    if (!widget.showPhoneCode) {
+      final ids = _countryList.map((e) => e.countryCode).toSet();
+      _countryList.retainWhere((country) => ids.remove(country.countryCode));
+    }
+
+    if (widget.favorite != null) {
+      _favoriteList = _countryService.findCountriesByCode(widget.favorite!);
+    }
+
+    if (widget.exclude != null) {
+      _countryList.removeWhere(
+            (element) => widget.exclude!.contains(element.countryCode),
+      );
+    }
+
+    if (widget.countryFilter != null) {
+      _countryList.removeWhere(
+            (element) => !widget.countryFilter!.contains(element.countryCode),
+      );
+    }
+
+    _filteredList = <Country>[];
+    if (widget.showWorldWide) {
+      _filteredList.add(Country.worldWide);
+    }
+    _filteredList.addAll(_countryList);
+
+    _searchAutofocus = widget.searchAutofocus;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final String searchLabel = CountryLocalizations.of(context)?.countryName(countryCode: 'search') ?? 'Search';
+    final String searchLabel =
+        CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
+            'Search';
 
     return Column(
       children: <Widget>[
@@ -101,7 +139,8 @@ class _CountryListViewState extends State<CountryListView> {
             child: TextField(
               autofocus: _searchAutofocus,
               controller: _searchController,
-              style: widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+              style:
+              widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
               decoration: widget.countryListTheme?.inputDecoration ??
                   InputDecoration(
                     labelText: searchLabel,
@@ -120,13 +159,17 @@ class _CountryListViewState extends State<CountryListView> {
           child: ListView(
             children: [
               if (_favoriteList != null) ...[
-                ..._favoriteList!.map<Widget>((currency) => _listRow(currency)).toList(),
+                ..._favoriteList!
+                    .map<Widget>((currency) => _listRow(currency))
+                    .toList(),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Divider(thickness: 1),
                 ),
               ],
-              ..._filteredList.map<Widget>((country) => _listRow(country)).toList(),
+              ..._filteredList
+                  .map<Widget>((country) => _listRow(country))
+                  .toList(),
             ],
           ),
         ),
@@ -134,89 +177,9 @@ class _CountryListViewState extends State<CountryListView> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _searchController = TextEditingController();
-
-    _countryList = _countryService.getAll();
-
-    _countryList = countryCodes.map((country) => Country.from(json: country)).toList();
-
-    //Remove duplicates country if not use phone code
-    if (!widget.showPhoneCode) {
-      final ids = _countryList.map((e) => e.countryCode).toSet();
-      _countryList.retainWhere((country) => ids.remove(country.countryCode));
-    }
-
-    if (widget.favorite != null) {
-      _favoriteList = _countryService.findCountriesByCode(widget.favorite!);
-    }
-
-    if (widget.exclude != null) {
-      _countryList.removeWhere(
-        (element) => widget.exclude!.contains(element.countryCode),
-      );
-    }
-
-    if (widget.countryFilter != null) {
-      _countryList.removeWhere(
-        (element) => !widget.countryFilter!.contains(element.countryCode),
-      );
-    }
-
-    _filteredList = <Country>[];
-    if (widget.showWorldWide) {
-      _filteredList.add(Country.worldWide);
-    }
-    _filteredList.addAll(_countryList);
-
-    _searchAutofocus = widget.searchAutofocus;
-  }
-
-  Widget _emojiText(Country country) => Text(
-        country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 20,
-          fontFamilyFallback: widget.emojiFontFamilyFallback,
-        ),
-      );
-
-  void _filterSearchResults(String query) {
-    List<Country> _searchResult = <Country>[];
-    final CountryLocalizations? localizations = CountryLocalizations.of(context);
-
-    if (query.isEmpty) {
-      _searchResult.addAll(_countryList);
-    } else {
-      _searchResult = _countryList.where((c) => c.startsWith(query, localizations)).toList();
-    }
-
-    setState(() => _filteredList = _searchResult);
-  }
-
-  Widget _flagImage(Country country) {
-    final String url = "https://www.countryflagicons.com/FLAT/64/${country.countryCode}.png";
-    return Image.network(
-      url,
-      width: widget.countryListTheme?.flagSize ?? 22,
-      errorBuilder: (_, __, ___) => _emojiText(country),
-    );
-  }
-
-  Widget _flagWidget(Country country) {
-    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
-    final flag = ((kIsWeb || Platform.isWindows) && widget.useFlagImage) ? _flagImage(country) : _emojiText(country);
-
-    return SizedBox(
-      // the conditional 50 prevents irregularities caused by the flags in RTL mode
-      width: isRtl ? 50 : null,
-      child: flag,
-    );
-  }
-
   Widget _listRow(Country country) {
-    final TextStyle _textStyle = widget.countryListTheme?.textStyle ?? _defaultTextStyle;
+    final TextStyle _textStyle =
+        widget.countryListTheme?.textStyle ?? _defaultTextStyle;
 
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
@@ -226,7 +189,9 @@ class _CountryListViewState extends State<CountryListView> {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          country.nameLocalized = CountryLocalizations.of(context)?.countryName(countryCode: country.countryCode)?.replaceAll(RegExp(r"\s+"), " ");
+          country.nameLocalized = CountryLocalizations.of(context)
+              ?.countryName(countryCode: country.countryCode)
+              ?.replaceAll(RegExp(r"\s+"), " ");
           widget.onSelect(country);
           Navigator.pop(context);
         },
@@ -237,7 +202,10 @@ class _CountryListViewState extends State<CountryListView> {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  if (widget.customFlagBuilder == null) _flagWidget(country) else widget.customFlagBuilder!(country),
+                  if (widget.customFlagBuilder == null)
+                    _flagWidget(country)
+                  else
+                    widget.customFlagBuilder!(country),
                   if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
                     SizedBox(
@@ -254,7 +222,10 @@ class _CountryListViewState extends State<CountryListView> {
               ),
               Expanded(
                 child: Text(
-                  CountryLocalizations.of(context)?.countryName(countryCode: country.countryCode)?.replaceAll(RegExp(r"\s+"), " ") ?? country.name,
+                  CountryLocalizations.of(context)
+                      ?.countryName(countryCode: country.countryCode)
+                      ?.replaceAll(RegExp(r"\s+"), " ") ??
+                      country.name,
                   style: _textStyle,
                 ),
               ),
@@ -266,7 +237,6 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _flagWidget(Country country) {
-
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
@@ -276,18 +246,19 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _emojiText(Country country) => Text(
-        country.iswWorldWide
-            ? '\uD83C\uDF0D'
-            : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 20,
-        ),
-      );
+    country.iswWorldWide
+        ? '\uD83C\uDF0D'
+        : Utils.countryCodeToEmoji(country.countryCode),
+    style: TextStyle(
+      fontSize: widget.countryListTheme?.flagSize ?? 25,
+      fontFamilyFallback: widget.emojiFontFamilyFallback,
+    ),
+  );
 
   void _filterSearchResults(String query) {
     List<Country> _searchResult = <Country>[];
     final CountryLocalizations? localizations =
-        CountryLocalizations.of(context);
+    CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);

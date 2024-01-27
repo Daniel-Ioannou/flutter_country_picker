@@ -10,7 +10,7 @@ environment:
   sdk: '>=2.12.0 <4.0.0'
 
 dependencies:
-  collection: ^1.17.2
+  collection: ^1.18.0
   universal_io: ^2.2.2
   flutter:
     sdk: flutter

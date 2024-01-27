@@ -35,6 +35,10 @@ class CountryListThemeData {
   ///
   /// By default it's fullscreen
   final double? bottomSheetHeight;
+
+  ///Country list modal Width
+  ///
+  /// By default it's fullscreen
   final double? bottomSheetWidth;
 
   /// the padding of the bottom sheet
