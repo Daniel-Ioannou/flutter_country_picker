@@ -45,9 +45,6 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for hiding the search bar
   final bool showSearch;
 
-  ///Custom emoji fontfamily fallback for flags icons
-  final List<String>? emojiFontFamilyFallback;
-
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
@@ -63,7 +60,6 @@ class CountryListView extends StatefulWidget {
     this.showWorldWide = false,
     this.showSearch = true,
     this.customFlagBuilder,
-    this.emojiFontFamilyFallback,
   })  : assert(
   exclude == null || countryFilter == null,
   'Cannot provide both exclude and countryFilter',
@@ -251,7 +247,7 @@ class _CountryListViewState extends State<CountryListView> {
         : Utils.countryCodeToEmoji(country.countryCode),
     style: TextStyle(
       fontSize: widget.countryListTheme?.flagSize ?? 25,
-      fontFamilyFallback: widget.emojiFontFamilyFallback,
+      fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
     ),
   );
 
