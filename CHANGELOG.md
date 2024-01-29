@@ -1,3 +1,16 @@
+## 2.0.24
+  * Add option for bottom sheet Width.
+    ```Dart
+    showCountryPicker(
+      context: context,
+      countryListTheme: CountryListThemeData(
+       bottomSheetWidth: 500, // Optional. Country list modal Width
+      ),
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
+  * Add `emojiFontFamilyFallback`
+    
 ## 2.0.23
   * Export `CustomFlagBuilder`
   * Add parameter `useRootNavigator`
