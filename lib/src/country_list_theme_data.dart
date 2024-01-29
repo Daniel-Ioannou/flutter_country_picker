@@ -21,6 +21,9 @@ class CountryListThemeData {
   /// If null, set to 25
   final double? flagSize;
 
+  ///Custom emoji font family fallback for flags icons
+  final List<String>? emojiFontFamilyFallback;
+
   ///The decoration used for the search field
   ///
   /// It defaults to a basic outline-bordered input decoration
@@ -58,5 +61,6 @@ class CountryListThemeData {
     this.bottomSheetWidth,
     this.padding,
     this.margin,
+    this.emojiFontFamilyFallback,
   });
 }

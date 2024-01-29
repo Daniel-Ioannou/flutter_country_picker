@@ -18,7 +18,6 @@ void showCountryListBottomSheet({
   bool showWorldWide = false,
   bool showSearch = true,
   bool useSafeArea = false,
-  List<String>? emojiFontFamilyFallback,
   bool useRootNavigator = false,
 }) {
   showModalBottomSheet(
@@ -38,7 +37,6 @@ void showCountryListBottomSheet({
       searchAutofocus,
       showWorldWide,
       showSearch,
-      emojiFontFamilyFallback,
       customFlagBuilder,
     ),
   ).whenComplete(() {
@@ -57,7 +55,6 @@ Widget _builder(
   bool searchAutofocus,
   bool showWorldWide,
   bool showSearch,
-  List<String>? emojiFontFamilyFallback,
   CustomFlagBuilder? customFlagBuilder,
 ) {
   final device = MediaQuery.of(context).size.height;
@@ -100,7 +97,6 @@ Widget _builder(
       searchAutofocus: searchAutofocus,
       showWorldWide: showWorldWide,
       showSearch: showSearch,
-      emojiFontFamilyFallback: emojiFontFamilyFallback,
       customFlagBuilder: customFlagBuilder,
     ),
   );
