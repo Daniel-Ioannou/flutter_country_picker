@@ -10,6 +10,7 @@ import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
+import 'res/strings/ht.dart';
 import 'res/strings/id.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
@@ -96,6 +97,8 @@ class CountryLocalizations {
         return ku[countryCode];
       case 'hr':
         return hr[countryCode];
+      case 'ht':
+        return ht[countryCode];
       case 'fr':
         return fr[countryCode];
       case 'de':
@@ -146,6 +149,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'ne',
       'tr',
       'hr',
+      'ht',
       'fr',
       'de',
       'lt',
