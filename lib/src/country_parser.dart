@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'res/country_codes.dart';
 import 'res/strings/ar.dart';
+import 'res/strings/bg.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
 import 'res/strings/de.dart';
@@ -226,6 +227,8 @@ class CountryParser {
         return gr;
       case 'ar':
         return ar;
+      case 'bg':
+        return bg;
       case 'ku':
         return ku;
       case 'es':
@@ -292,6 +295,7 @@ class CountryParser {
     return <Locale>[
       const Locale('en'),
       const Locale('ar'),
+      const Locale('bg'),
       const Locale('ku'),
       const Locale('es'),
       const Locale('el'),

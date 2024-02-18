@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
+import 'res/strings/bg.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
 import 'res/strings/de.dart';
@@ -99,6 +100,8 @@ class CountryLocalizations {
         return np[countryCode];
       case 'ar':
         return ar[countryCode];
+      case 'bg':
+        return bg[countryCode];
       case 'ku':
         return ku[countryCode];
       case 'hr':
@@ -140,6 +143,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
     return [
       'en',
       'ar',
+      'bg',
       'ku',
       'zh',
       'el',
