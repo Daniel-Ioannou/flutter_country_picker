@@ -27,6 +27,7 @@ import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
 import 'res/strings/ru.dart';
+import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
@@ -248,6 +249,8 @@ class CountryParser {
         return ht;
       case 'ru':
         return ru;
+      case 'sk':
+        return sk;
       case 'hi':
       case 'ne':
         return np;
@@ -296,6 +299,7 @@ class CountryParser {
       const Locale('pl'),
       const Locale('pt'),
       const Locale('ru'),
+      const Locale('sk'),
       const Locale('hi'),
       const Locale('ne'),
       const Locale('uk'),
