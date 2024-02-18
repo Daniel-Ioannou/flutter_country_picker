@@ -24,6 +24,7 @@ import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
+import 'res/strings/ro.dart';
 import 'res/strings/ru.dart';
 import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
@@ -87,6 +88,8 @@ class CountryLocalizations {
         return pl[countryCode];
       case 'tr':
         return tr[countryCode];
+      case 'ro':
+        return ro[countryCode];
       case 'ru':
         return ru[countryCode];
       case 'sk':
@@ -146,6 +149,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'pt',
       'nb',
       'nn',
+      'ro',
       'ru',
       'sk',
       'uk',
