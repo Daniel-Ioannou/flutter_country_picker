@@ -59,11 +59,11 @@ Widget _builder(
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final height = countryListTheme?.bottomSheetHeight ?? device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final width = countryListTheme?.bottomSheetWidth;
 
-  Color? _backgroundColor = countryListTheme?.backgroundColor ??
-      Theme.of(context).bottomSheetTheme.backgroundColor;
+  Color? _backgroundColor = countryListTheme?.backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
+
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
       _backgroundColor = Colors.white;
@@ -80,6 +80,7 @@ Widget _builder(
 
   return Container(
     height: height,
+    width: width,
     padding: countryListTheme?.padding,
     margin: countryListTheme?.margin,
     decoration: BoxDecoration(

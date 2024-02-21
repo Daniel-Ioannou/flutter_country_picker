@@ -61,9 +61,9 @@ class CountryListView extends StatefulWidget {
     this.showSearch = true,
     this.customFlagBuilder,
   })  : assert(
-          exclude == null || countryFilter == null,
-          'Cannot provide both exclude and countryFilter',
-        ),
+  exclude == null || countryFilter == null,
+  'Cannot provide both exclude and countryFilter',
+  ),
         super(key: key);
 
   @override
@@ -101,13 +101,13 @@ class _CountryListViewState extends State<CountryListView> {
 
     if (widget.exclude != null) {
       _countryList.removeWhere(
-        (element) => widget.exclude!.contains(element.countryCode),
+            (element) => widget.exclude!.contains(element.countryCode),
       );
     }
 
     if (widget.countryFilter != null) {
       _countryList.removeWhere(
-        (element) => !widget.countryFilter!.contains(element.countryCode),
+            (element) => !widget.countryFilter!.contains(element.countryCode),
       );
     }
 
@@ -136,7 +136,7 @@ class _CountryListViewState extends State<CountryListView> {
               autofocus: _searchAutofocus,
               controller: _searchController,
               style:
-                  widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+              widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
               decoration: widget.countryListTheme?.inputDecoration ??
                   InputDecoration(
                     labelText: searchLabel,
@@ -219,8 +219,8 @@ class _CountryListViewState extends State<CountryListView> {
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
-                          ?.countryName(countryCode: country.countryCode)
-                          ?.replaceAll(RegExp(r"\s+"), " ") ??
+                      ?.countryName(countryCode: country.countryCode)
+                      ?.replaceAll(RegExp(r"\s+"), " ") ??
                       country.name,
                   style: _textStyle,
                 ),
@@ -233,7 +233,6 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _flagWidget(Country country) {
-
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
@@ -243,18 +242,19 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _emojiText(Country country) => Text(
-        country.iswWorldWide
-            ? '\uD83C\uDF0D'
-            : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 20,
-        ),
-      );
+    country.iswWorldWide
+        ? '\uD83C\uDF0D'
+        : Utils.countryCodeToEmoji(country.countryCode),
+    style: TextStyle(
+      fontSize: widget.countryListTheme?.flagSize ?? 25,
+      fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
+    ),
+  );
 
   void _filterSearchResults(String query) {
     List<Country> _searchResult = <Country>[];
     final CountryLocalizations? localizations =
-        CountryLocalizations.of(context);
+    CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
