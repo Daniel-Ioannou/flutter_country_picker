@@ -1,3 +1,10 @@
+## 2.0.25
+  * Add support for Haitian Creole (HT) localization
+  * Add support for Slovak (SK) localization
+  * Add support for Bulgarian (BG) localization
+  * Add support for Romanian (RO) localization
+  * Add support for Catala (CA) localization
+  * Add support for Hebrew (HE) localization
 ## 2.0.24
   * Add option for bottom sheet Width.
     ```Dart
