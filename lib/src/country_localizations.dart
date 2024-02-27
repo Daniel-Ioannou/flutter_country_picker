@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
+import 'res/strings/bg.dart';
 import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
@@ -12,6 +13,7 @@ import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/he.dart';
 import 'res/strings/hr.dart';
+import 'res/strings/ht.dart';
 import 'res/strings/id.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
@@ -25,7 +27,9 @@ import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
+import 'res/strings/ro.dart';
 import 'res/strings/ru.dart';
+import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
@@ -90,17 +94,25 @@ class CountryLocalizations {
         return pl[countryCode];
       case 'tr':
         return tr[countryCode];
+      case 'ro':
+        return ro[countryCode];
       case 'ru':
         return ru[countryCode];
+      case 'sk':
+        return sk[countryCode];
       case 'hi':
       case 'ne':
         return np[countryCode];
       case 'ar':
         return ar[countryCode];
+      case 'bg':
+        return bg[countryCode];
       case 'ku':
         return ku[countryCode];
       case 'hr':
         return hr[countryCode];
+      case 'ht':
+        return ht[countryCode];
       case 'fr':
         return fr[countryCode];
       case 'de':
@@ -139,6 +151,7 @@ class _CountryLocalizationsDelegate
     return [
       'en',
       'ar',
+      'bg',
       'ku',
       'zh',
       'el',
@@ -149,12 +162,15 @@ class _CountryLocalizationsDelegate
       'pt',
       'nb',
       'nn',
+      'ro',
       'ru',
+      'sk',
       'uk',
       'hi',
       'ne',
       'tr',
       'hr',
+      'ht',
       'fr',
       'de',
       'lt',
