@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'res/country_codes.dart';
 import 'res/strings/ar.dart';
 import 'res/strings/bg.dart';
+import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
 import 'res/strings/de.dart';
@@ -280,6 +281,8 @@ class CountryParser {
         return ko;
       case 'cs':
         return cs;
+      case 'ca':
+        return ca;
       case 'en':
       default:
         return en;
@@ -322,6 +325,7 @@ class CountryParser {
       const Locale('ja'),
       const Locale('ko'),
       const Locale('cs'),
+      const Locale('ca'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));

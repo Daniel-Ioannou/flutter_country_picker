@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
 import 'res/strings/bg.dart';
+import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
 import 'res/strings/de.dart';
@@ -10,6 +11,7 @@ import 'res/strings/es.dart';
 import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
+import 'res/strings/he.dart';
 import 'res/strings/hr.dart';
 import 'res/strings/ht.dart';
 import 'res/strings/id.dart';
@@ -58,7 +60,8 @@ class CountryLocalizations {
 
   /// A [LocalizationsDelegate] that uses [_CountryLocalizationsDelegate.load]
   /// to create an instance of this class.
-  static const LocalizationsDelegate<CountryLocalizations> delegate = _CountryLocalizationsDelegate();
+  static const LocalizationsDelegate<CountryLocalizations> delegate =
+      _CountryLocalizationsDelegate();
 
   /// The localized country name for the given country code.
   String? countryName({required String countryCode}) {
@@ -77,6 +80,8 @@ class CountryLocalizations {
         return es[countryCode];
       case 'et':
         return et[countryCode];
+      case 'he':
+        return he[countryCode];
       case 'pt':
         return pt[countryCode];
       case 'nb':
@@ -128,6 +133,8 @@ class CountryLocalizations {
         return id[countryCode];
       case 'cs':
         return cs[countryCode];
+      case 'ca':
+        return ca[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -135,7 +142,8 @@ class CountryLocalizations {
   }
 }
 
-class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocalizations> {
+class _CountryLocalizationsDelegate
+    extends LocalizationsDelegate<CountryLocalizations> {
   const _CountryLocalizationsDelegate();
 
   @override
@@ -149,6 +157,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'el',
       'es',
       'et',
+      'he',
       'pl',
       'pt',
       'nb',
@@ -172,6 +181,7 @@ class _CountryLocalizationsDelegate extends LocalizationsDelegate<CountryLocaliz
       'ja',
       'id',
       'cs',
+      'ca'
     ].contains(locale.languageCode);
   }
 
