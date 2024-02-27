@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'res/country_codes.dart';
 import 'res/strings/ar.dart';
+import 'res/strings/bg.dart';
+import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
 import 'res/strings/de.dart';
@@ -12,6 +14,7 @@ import 'res/strings/et.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
+import 'res/strings/ht.dart';
 import 'res/strings/id.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
@@ -25,7 +28,9 @@ import 'res/strings/nn.dart';
 import 'res/strings/np.dart';
 import 'res/strings/pl.dart';
 import 'res/strings/pt.dart';
+import 'res/strings/ro.dart';
 import 'res/strings/ru.dart';
+import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
@@ -224,6 +229,8 @@ class CountryParser {
         return gr;
       case 'ar':
         return ar;
+      case 'bg':
+        return bg;
       case 'ku':
         return ku;
       case 'es':
@@ -244,8 +251,14 @@ class CountryParser {
         return tr;
       case 'hr':
         return hr;
+      case 'ht':
+        return ht;
+      case 'ro':
+        return ro;
       case 'ru':
         return ru;
+      case 'sk':
+        return sk;
       case 'hi':
       case 'ne':
         return np;
@@ -271,6 +284,8 @@ class CountryParser {
         return cs;
       case 'da':
         return da;
+      case 'ca':
+        return ca;
       case 'en':
       default:
         return en;
@@ -286,6 +301,7 @@ class CountryParser {
     return <Locale>[
       const Locale('en'),
       const Locale('ar'),
+      const Locale('bg'),
       const Locale('ku'),
       const Locale('es'),
       const Locale('el'),
@@ -295,12 +311,15 @@ class CountryParser {
       const Locale('nn'),
       const Locale('pl'),
       const Locale('pt'),
+      const Locale('ro'),
       const Locale('ru'),
+      const Locale('sk'),
       const Locale('hi'),
       const Locale('ne'),
       const Locale('uk'),
       const Locale('tr'),
       const Locale('hr'),
+      const Locale('ht'),
       const Locale('de'),
       const Locale('lv'),
       const Locale('lv'),
@@ -310,6 +329,7 @@ class CountryParser {
       const Locale('ko'),
       const Locale('cs'),
       const Locale('da'),
+      const Locale('ca'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));
