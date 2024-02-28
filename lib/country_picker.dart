@@ -44,6 +44,12 @@ export 'src/country_service.dart';
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
 /// can be safely removed from the tree before the bottom sheet is closed.
+///
+/// An optional [moveAlongWithKeyboard] argument can be used to move bottomSheet
+/// along with keyboard when textfield is focused. It could be useful when
+/// bottomSheet height is smaller than half of the screen. Otherwise it
+/// shouldn't be set. It has a default value of false.
+
 void showCountryPicker({
   required BuildContext context,
   required ValueChanged<Country> onSelect,
@@ -59,6 +65,7 @@ void showCountryPicker({
   bool showSearch = true,
   bool useSafeArea = false,
   bool useRootNavigator = false,
+  bool moveAlongWithKeyboard = false,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -79,5 +86,6 @@ void showCountryPicker({
     showSearch: showSearch,
     useSafeArea: useSafeArea,
     useRootNavigator: useRootNavigator,
+    moveAlongWithKeyboard: moveAlongWithKeyboard,
   );
 }
