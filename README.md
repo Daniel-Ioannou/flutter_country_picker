@@ -2,24 +2,26 @@
 
 [![pub package](https://img.shields.io/pub/v/country_picker.svg)](https://pub.dev/packages/country_picker)
 
-A flutter package to select a country from a list of countries. 
+A flutter package to select a country from a list of countries.
 
 <img height="600" alt="n1" src="https://raw.githubusercontent.com/Daniel-Ioannou/flutter_country_picker/master/assets/ReadMe%20Screenshot.png">
 
 ## Getting Started
 
- Add the package to your pubspec.yaml:
+Add the package to your pubspec.yaml:
 
- ```yaml
- country_picker: ^2.0.25
- ```
- 
- In your dart file, import the library:
+```yaml
+country_picker: ^2.0.25
+```
 
- ```Dart
- import 'package:country_picker/country_picker.dart';
- ``` 
-  Show country picker using `showCountryPicker`:
+In your dart file, import the library:
+
+```Dart
+import 'package:country_picker/country_picker.dart';
+```
+
+Show country picker using `showCountryPicker`:
+
 ```Dart
 showCountryPicker(
   context: context,
@@ -30,8 +32,10 @@ showCountryPicker(
 );
 ```
 
-### For localization: 
+### For localization:
+
 Add the `CountryLocalizations.delegate` in the list of your app delegates.
+
 ```Dart
 MaterialApp(
       supportedLocales: [
@@ -51,14 +55,15 @@ MaterialApp(
 ```
 
 ### Parameters:
-* `onSelect`: Called when a country is selected. The country picker passes the new value to the callback (required)
-* `onClosed`: Called when CountryPicker is dismissed, whether a country is selected or not (optional).
-* `showPhoneCode`: Can be used to show phone code before the country name.
-* `searchAutofocus` Can be used to initially expand virtual keyboard
-* `showSearch` Can be used to show/hide the search bar.
-* `showWorldWide` An optional argument for showing "World Wide" option at the beginning of the list
-* `favorite` Can be used to show the favorite countries at the top of the list (optional).
-* `countryListTheme`: Can be used to customize the country list's bottom sheet and widgets that lie within it. (optional). 
+
+- `onSelect`: Called when a country is selected. The country picker passes the new value to the callback (required)
+- `onClosed`: Called when CountryPicker is dismissed, whether a country is selected or not (optional).
+- `showPhoneCode`: Can be used to show phone code before the country name.
+- `searchAutofocus` Can be used to initially expand virtual keyboard
+- `showSearch` Can be used to show/hide the search bar.
+- `showWorldWide` An optional argument for showing "World Wide" option at the beginning of the list
+- `favorite` Can be used to show the favorite countries at the top of the list (optional).
+- `countryListTheme`: Can be used to customize the country list's bottom sheet and widgets that lie within it. (optional).
   ```Dart
   showCountryPicker(
     context: context,
@@ -87,7 +92,7 @@ MaterialApp(
     onSelect: (Country country) => print('Select country: ${country.displayName}'),
   );
   ```
-* `exclude`: Can be used to exclude(remove) one or more country from the countries list (optional). 
+- `exclude`: Can be used to exclude(remove) one or more country from the countries list (optional).
   ```Dart
   showCountryPicker(
     context: context,
@@ -95,10 +100,49 @@ MaterialApp(
     onSelect: (Country country) => print('Select country: ${country.displayName}'),
   );
   ```
-* `countryFilter`: Can be used to filter the countries list (optional). 
-  - It takes a list of country code(iso2). 
+- `countryFilter`: Can be used to filter the countries list (optional).
+  - It takes a list of country code(iso2).
   - Can't provide both exclude and countryFilter
 
+### CountryService:
+
+Starting from v2.0.15 `CountryService` was implemented.
+
+- `getAll`: Return list with all countries.
+
+  ```Dart
+    List<Country> countries = CountryService().getAll();
+  ```
+
+- `findByCode`: Returns the first country that match the given code.
+
+  ```Dart
+  Country? country = CountryService().findByCode("IT");
+  ```
+
+- `findByName`: Returns the first country that mach the given name.
+
+  ```Dart
+  Country? country = CountryService().findByName("Italy");
+  ```
+
+- `findByPhoneCode`: Returns the first country that mach the given phone code.
+
+  ```Dart
+  List<Country> countries = CountryService().findByPhoneCode(39);
+  ```
+
+- `findCountriesByCode`: Returns a list with all the countries that mach the given codes list.
+
+  ```Dart
+  List<Country> countries = CountryService().findCountriesByCode(["IT","TN"]);
+  ```
+
+- `findCountriesByPhoneCodes`: Returns a list with all the countries that mach the given codes list.
+  ```Dart
+  List<Country> countries = CountryService().findCountriesByPhoneCodes(['39', '216']);
+  ```
 
 ## Contributions
+
 Contributions of any kind are more than welcome! Feel free to fork and improve country_code_picker in any way you want, make a pull request, or open an issue.
