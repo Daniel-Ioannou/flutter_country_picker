@@ -1,3 +1,18 @@
+## 2.0.26
+  * Fix Turkish localization
+  * Add `moveAlongWithKeyboard`: An optionalargument can be used to move bottomSheet along with keyboard when textfield is focused. It could be useful when bottomSheet height is smaller than half of the screen. Otherwise it shouldn't be set. It has a default value of false.
+    ```Dart
+    showCountryPicker(
+      context: context,
+      moveAlongWithKeyboard: true,
+      countryListTheme: CountryListThemeData(
+       bottomSheetHeight: 500,
+      ),
+      onSelect: (Country country) => print('Select country: ${country.displayName}'),
+    );
+    ```
+
+
 ## 2.0.25
   * Add support for Haitian Creole (HT) localization
   * Add support for Slovak (SK) localization
@@ -24,7 +39,7 @@
 
 ## 2.0.22
   * Add support for Czech localization
-  * Fix typos Korean
+  *  typos Korean
 
 ## 2.0.21
   * Add support for Korean localization
@@ -88,7 +103,7 @@
       );
       ```
   * Implemented Country Service
-  * Fix package assets
+  *  package assets
 
 ## 2.0.14
   * Add support for country search by phone code
@@ -107,10 +122,10 @@
     ```
 ## 2.0.12
   * Update example android gradle
-  * Fix Kurdish translation for Curaçao name
+  *  Kurdish translation for Curaçao name
 ## 2.0.11
-  * Fix Eswatini name
-  * Fix Italy code at Turkish localization
+  *  Eswatini name
+  *  Italy code at Turkish localization
   * Add optional argument for showing "World Wide" option at the beginning of the list
     ```Dart
     showCountryPicker(
@@ -160,7 +175,7 @@
         inputDecoration: InputDecoration(
           labelText: 'Search',
           hintText: 'Start typing to search',
-          prefixIcon: const Icon(Icons.search),
+          preIcon: const Icon(Icons.search),
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: const Color(0xFF8C98A8).withOpacity(0.2),
