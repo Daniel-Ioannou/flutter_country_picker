@@ -80,6 +80,8 @@ class HomePage extends StatelessWidget {
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
+              // Optional. Sheet moves when keyboard opens.
+              moveAlongWithKeyboard: false,
               // Optional. Sets the theme for the country list picker.
               countryListTheme: CountryListThemeData(
                 // Optional. Sets the border radius for the bottomsheet.
