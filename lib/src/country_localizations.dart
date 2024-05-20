@@ -181,7 +181,7 @@ class _CountryLocalizationsDelegate
       'ja',
       'id',
       'cs',
-      'ca'
+      'ca',
     ].contains(locale.languageCode);
   }
 
