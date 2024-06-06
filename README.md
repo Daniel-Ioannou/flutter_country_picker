@@ -1,4 +1,4 @@
-# Country picker
+# Country picker (WITHOUT Isreal (JUST PALESTINE))
 
 [![pub package](https://img.shields.io/pub/v/country_picker.svg)](https://pub.dev/packages/country_picker)
 
