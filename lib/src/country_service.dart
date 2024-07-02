@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 
 import 'country.dart';
-import 'res/country_codes.dart';
 
 class CountryService {
   final List<Country> _countries;
