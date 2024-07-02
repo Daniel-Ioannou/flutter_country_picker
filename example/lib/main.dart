@@ -2,9 +2,11 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,60 +15,60 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('ar'),
-        const Locale('es'),
-        const Locale('de'),
-        const Locale('fr'),
-        const Locale('el'),
-        const Locale('et'),
-        const Locale('nb'),
-        const Locale('nn'),
-        const Locale('pl'),
-        const Locale('pt'),
-        const Locale('ru'),
-        const Locale('hi'),
-        const Locale('ne'),
-        const Locale('uk'),
-        const Locale('hr'),
-        const Locale('tr'),
-        const Locale('lv'),
-        const Locale('lt'),
-        const Locale('ku'),
-        const Locale('nl'),
-        const Locale('it'),
-        const Locale('ko'),
-        const Locale('ja'),
-        const Locale('id'),
-        const Locale('cs'),
-        const Locale('ht'),
-        const Locale('sk'),
-        const Locale('ro'),
-        const Locale('bg'),
-        const Locale('ca'),
-        const Locale('he'),
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
-        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+        Locale('es'),
+        Locale('de'),
+        Locale('fr'),
+        Locale('el'),
+        Locale('et'),
+        Locale('nb'),
+        Locale('nn'),
+        Locale('pl'),
+        Locale('pt'),
+        Locale('ru'),
+        Locale('hi'),
+        Locale('ne'),
+        Locale('uk'),
+        Locale('hr'),
+        Locale('tr'),
+        Locale('lv'),
+        Locale('lt'),
+        Locale('ku'),
+        Locale('nl'),
+        Locale('it'),
+        Locale('ko'),
+        Locale('ja'),
+        Locale('id'),
+        Locale('cs'),
+        Locale('ht'),
+        Locale('sk'),
+        Locale('ro'),
+        Locale('bg'),
+        Locale('ca'),
+        Locale('he'),
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
-      localizationsDelegates: [
+      localizationsDelegates: const [
         CountryLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Demo for country picker')),
+      appBar: AppBar(title: const Text('Demo for country picker')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
@@ -78,12 +80,12 @@ class HomePage extends StatelessWidget {
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
               onSelect: (Country country) {
-                print('Select country: ${country.displayName}');
+                debugPrint('Select country: ${country.displayName}');
               },
               // Optional. Sets the theme for the country list picker.
               countryListTheme: CountryListThemeData(
                 // Optional. Sets the border radius for the bottomsheet.
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
                 ),
@@ -99,7 +101,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 // Optional. Styles the text in the search field
-                searchTextStyle: TextStyle(
+                searchTextStyle: const TextStyle(
                   color: Colors.blue,
                   fontSize: 18,
                 ),

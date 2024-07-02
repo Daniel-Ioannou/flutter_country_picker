@@ -12,8 +12,7 @@ class CountryService {
     return _countries;
   }
 
-  // ignore: recursive_getters
-  static List<Map<String, dynamic>> get countryCodes => countryCodes;
+  static final List<Map<String, dynamic>> getCountryCodes = countryCodes;
 
   ///Returns the first country that mach the given code.
   Country? findByCode(String? code) {

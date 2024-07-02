@@ -246,5 +246,5 @@ Map<String, String> sk = {
   "YE": "Jemen",
   "ZM": "Zambia",
   "ZW": "Zimbabwe",
-  "search": "Hľadať"
+  "search": "Hľadať",
 };
