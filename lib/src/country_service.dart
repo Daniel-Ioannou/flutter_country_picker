@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:country_picker/src/res/country_codes.dart';
 
 import 'country.dart';
 
