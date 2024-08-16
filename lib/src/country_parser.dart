@@ -136,8 +136,8 @@ class CountryParser {
   /// Returns a country that matches the [countryCode] (e164_cc).
   static Country _getFromPhoneCode(String phoneCode) {
     return Country.from(
-      json:  countryCodes.firstWhere(
-            (Map<String, dynamic> c) => c['e164_cc'] == phoneCode,
+      json: countryCodes.firstWhere(
+        (Map<String, dynamic> c) => c['e164_cc'] == phoneCode,
       ),
     );
   }
