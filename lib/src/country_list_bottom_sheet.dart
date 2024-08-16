@@ -20,6 +20,7 @@ void showCountryListBottomSheet({
   bool useSafeArea = false,
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
+  Widget header = const SizedBox.shrink(),
 }) {
   showModalBottomSheet(
     context: context,
@@ -27,20 +28,8 @@ void showCountryListBottomSheet({
     backgroundColor: Colors.transparent,
     useSafeArea: useSafeArea,
     useRootNavigator: useRootNavigator,
-    builder: (context) => _builder(
-      context,
-      onSelect,
-      favorite,
-      exclude,
-      countryFilter,
-      showPhoneCode,
-      countryListTheme,
-      searchAutofocus,
-      showWorldWide,
-      showSearch,
-      moveAlongWithKeyboard,
-      customFlagBuilder,
-    ),
+    builder: (context) => _builder(context, onSelect, favorite, exclude, countryFilter, showPhoneCode, countryListTheme,
+        searchAutofocus, showWorldWide, showSearch, moveAlongWithKeyboard, customFlagBuilder, header),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
   });
@@ -59,6 +48,7 @@ Widget _builder(
   bool showSearch,
   bool moveAlongWithKeyboard,
   CustomFlagBuilder? customFlagBuilder,
+  Widget header,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -92,17 +82,27 @@ Widget _builder(
         color: _backgroundColor,
         borderRadius: _borderRadius,
       ),
-      child: CountryListView(
-        onSelect: onSelect,
-        exclude: exclude,
-        favorite: favorite,
-        countryFilter: countryFilter,
-        showPhoneCode: showPhoneCode,
-        countryListTheme: countryListTheme,
-        searchAutofocus: searchAutofocus,
-        showWorldWide: showWorldWide,
-        showSearch: showSearch,
-        customFlagBuilder: customFlagBuilder,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        child: Column(
+          children: [
+            header,
+            Flexible(
+              child: CountryListView(
+                onSelect: onSelect,
+                exclude: exclude,
+                favorite: favorite,
+                countryFilter: countryFilter,
+                showPhoneCode: showPhoneCode,
+                countryListTheme: countryListTheme,
+                searchAutofocus: searchAutofocus,
+                showWorldWide: showWorldWide,
+                showSearch: showSearch,
+                customFlagBuilder: customFlagBuilder,
+              ),
+            ),
+          ],
+        ),
       ),
     ),
   );
