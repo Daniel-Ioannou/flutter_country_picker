@@ -11,7 +11,7 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^2.0.25
+ country_picker: ^2.0.26
  ```
  
  In your dart file, import the library:
@@ -58,6 +58,7 @@ MaterialApp(
 * `showSearch` Can be used to show/hide the search bar.
 * `showWorldWide` An optional argument for showing "World Wide" option at the beginning of the list
 * `favorite` Can be used to show the favorite countries at the top of the list (optional).
+* `moveAlongWithKeyboard` Can be used  to move bottomSheet along with keyboard when textfield is focused (optional).
 * `countryListTheme`: Can be used to customize the country list's bottom sheet and widgets that lie within it. (optional). 
   ```Dart
   showCountryPicker(

@@ -19,6 +19,7 @@ void showCountryListBottomSheet({
   bool showSearch = true,
   bool useSafeArea = false,
   bool useRootNavigator = false,
+  bool moveAlongWithKeyboard = false,
 }) {
   showModalBottomSheet(
     context: context,
@@ -37,6 +38,7 @@ void showCountryListBottomSheet({
       searchAutofocus,
       showWorldWide,
       showSearch,
+      moveAlongWithKeyboard,
       customFlagBuilder,
     ),
   ).whenComplete(() {
@@ -55,6 +57,7 @@ Widget _builder(
   bool searchAutofocus,
   bool showWorldWide,
   bool showSearch,
+  bool moveAlongWithKeyboard,
   CustomFlagBuilder? customFlagBuilder,
 ) {
   final device = MediaQuery.of(context).size.height;
@@ -78,26 +81,29 @@ Widget _builder(
         topRight: Radius.circular(40.0),
       );
 
-  return Container(
-    height: height,
-    width: width,
-    padding: countryListTheme?.padding,
-    margin: countryListTheme?.margin,
-    decoration: BoxDecoration(
-      color: _backgroundColor,
-      borderRadius: _borderRadius,
-    ),
-    child: CountryListView(
-      onSelect: onSelect,
-      exclude: exclude,
-      favorite: favorite,
-      countryFilter: countryFilter,
-      showPhoneCode: showPhoneCode,
-      countryListTheme: countryListTheme,
-      searchAutofocus: searchAutofocus,
-      showWorldWide: showWorldWide,
-      showSearch: showSearch,
-      customFlagBuilder: customFlagBuilder,
+  return Padding(
+    padding: moveAlongWithKeyboard ? MediaQuery.of(context).viewInsets : EdgeInsets.zero,
+    child: Container(
+      height: height,
+      width: width,
+      padding: countryListTheme?.padding,
+      margin: countryListTheme?.margin,
+      decoration: BoxDecoration(
+        color: _backgroundColor,
+        borderRadius: _borderRadius,
+      ),
+      child: CountryListView(
+        onSelect: onSelect,
+        exclude: exclude,
+        favorite: favorite,
+        countryFilter: countryFilter,
+        showPhoneCode: showPhoneCode,
+        countryListTheme: countryListTheme,
+        searchAutofocus: searchAutofocus,
+        showWorldWide: showWorldWide,
+        showSearch: showSearch,
+        customFlagBuilder: customFlagBuilder,
+      ),
     ),
   );
 }
