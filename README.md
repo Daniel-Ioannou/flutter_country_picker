@@ -1,8 +1,8 @@
-# Country picker
+# Country picker (WITHOUT Isreal (JUST PALESTINE))
 
 [![pub package](https://img.shields.io/pub/v/country_picker.svg)](https://pub.dev/packages/country_picker)
 
-A flutter package to select a country from a list of countries. 
+A flutter package to select a country from a list of countries (WITHOUT Isreal (JUST PALESTINE)). 
 
 <img height="600" alt="n1" src="https://raw.githubusercontent.com/Daniel-Ioannou/flutter_country_picker/master/assets/ReadMe%20Screenshot.png">
 
@@ -11,7 +11,9 @@ A flutter package to select a country from a list of countries.
  Add the package to your pubspec.yaml:
 
  ```yaml
- country_picker: ^2.0.26
+   country_picker:
+    git:
+      url: https://github.com/omarabdullah1/flutter_country_picker.git
  ```
  
  In your dart file, import the library:
@@ -58,7 +60,7 @@ MaterialApp(
 * `showSearch` Can be used to show/hide the search bar.
 * `showWorldWide` An optional argument for showing "World Wide" option at the beginning of the list
 * `favorite` Can be used to show the favorite countries at the top of the list (optional).
-* `moveAlongWithKeyboard` Can be used  to move bottomSheet along with keyboard when textfield is focused (optional).
+* `moveAlongWithKeyboard` Can be used  to move bottomSheet along with keyboard when text field is focused (optional).
 * `countryListTheme`: Can be used to customize the country list's bottom sheet and widgets that lie within it. (optional). 
   ```Dart
   showCountryPicker(
