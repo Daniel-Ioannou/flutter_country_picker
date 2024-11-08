@@ -128,7 +128,7 @@ Map<String, String> sk = {
   "LT": "Litva",
   "LU": "Luxembursko",
   "MO": "Macao",
-  "MK": "Macedónia",
+  "MK": "Severné Macedónsko",
   "MG": "Madagaskar",
   "MW": "Malawi",
   "MY": "Malajzia",
