@@ -190,7 +190,7 @@ class _CountryLocalizationsDelegate
       'ca',
       'fa',
       'da',
-      'ca'
+      'ca',
     ].contains(locale.languageCode);
   }
 
