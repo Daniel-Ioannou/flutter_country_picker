@@ -35,6 +35,7 @@ import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
+import 'res/strings/fa.dart';
 import 'res/strings/da.dart';
 
 /// Used to parse simple string representations of countries, commonly used in
@@ -289,6 +290,8 @@ class CountryParser {
         return ca;
       case 'he':
         return he;
+      case 'fa':
+        return fa;
       case 'en':
       default:
         return en;
@@ -334,6 +337,7 @@ class CountryParser {
       const Locale('da'),
       const Locale('ca'),
       const Locale('he'),
+      const Locale('fa'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));
