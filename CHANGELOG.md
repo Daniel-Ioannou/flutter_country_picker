@@ -1,3 +1,15 @@
+## 2.0.27
+* Add support for Persian (FA) localization
+* Add support for Danish (DA) localization
+* Fix Ireland in French localization
+* Fix East Timor in Arabic localization
+* Fix Benin in russian localization
+* Change Macedonia's country name to North Macedonia
+* Add `findByPhoneCode`: Returns a single country if it matches the given phone code.
+    ```Dart
+    var austria =CountryService().findByPhoneCode("43");
+    ```
+
 ## 2.0.26
   * Fix Turkish localization
   * Add `moveAlongWithKeyboard`: An optionalargument can be used to move bottomSheet along with keyboard when textfield is focused. It could be useful when bottomSheet height is smaller than half of the screen. Otherwise it shouldn't be set. It has a default value of false.

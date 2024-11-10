@@ -8,10 +8,12 @@ import 'res/strings/bg.dart';
 import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
+import 'res/strings/da.dart';
 import 'res/strings/de.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
+import 'res/strings/fa.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
@@ -35,8 +37,6 @@ import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
-import 'res/strings/fa.dart';
-import 'res/strings/da.dart';
 
 /// Used to parse simple string representations of countries, commonly used in
 /// databases and other forms of storage, to a Country object.
