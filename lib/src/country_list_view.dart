@@ -265,7 +265,7 @@ class _CountryListViewState extends State<CountryListView> {
     final CountryLocalizations? localizations = CountryLocalizations.of(context);
 
     if (query.isEmpty) {
-      if (_favoriteList != null) {
+      if (_favoriteList!.isNotEmpty) {
         _searchResult.addAll(_countryList);
         _searchResult.addAll(_favoriteList!);
       } else {
