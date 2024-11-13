@@ -268,9 +268,7 @@ class _CountryListViewState extends State<CountryListView> {
       _searchResult.addAll(_countryList);
     } else {
       final Set<Country> searchResultSet = _countryList.where((c) => c.startsWith(query, localizations)).toSet();
-      if (_favoriteList != null) {
-        searchResultSet.addAll(_favoriteList!.where((c) => c.startsWith(query, localizations)).toSet());
-      }
+      searchResultSet.addAll(_favoriteList?.where((c) => c.startsWith(query, localizations)).toSet() ?? {});
       _searchResult = searchResultSet.toList();
     }
 
