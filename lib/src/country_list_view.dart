@@ -84,7 +84,6 @@ class _CountryListViewState extends State<CountryListView> {
   void initState() {
     super.initState();
     _searchController = TextEditingController();
-    _searchController.addListener(_checkSearchText);
 
     _countryList = _countryService.getAll();
 
@@ -123,13 +122,12 @@ class _CountryListViewState extends State<CountryListView> {
 
   @override
   void dispose() {
-    _searchController.removeListener(_checkSearchText);
     _searchController.dispose();
     super.dispose();
   }
 
-  void _checkSearchText() {
-    if (_searchController.text.isNotEmpty) {
+  void _checkSearchText(String searchResult) {
+    if (searchResult.isNotEmpty) {
       setState(() {
         isSearching = true;
       });
@@ -165,7 +163,11 @@ class _CountryListViewState extends State<CountryListView> {
                       ),
                     ),
                   ),
-              onChanged: _filterSearchResults,
+              // onChanged: _filterSearchResults,
+              onChanged: (value) {
+                _filterSearchResults(value);
+                _checkSearchText(value);
+              },
             ),
           ),
         Expanded(
@@ -259,7 +261,6 @@ class _CountryListViewState extends State<CountryListView> {
       );
 
   void _filterSearchResults(String query) {
-    _checkSearchText();
     List<Country> _searchResult = <Country>[];
     final CountryLocalizations? localizations = CountryLocalizations.of(context);
 
