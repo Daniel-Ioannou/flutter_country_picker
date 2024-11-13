@@ -61,9 +61,9 @@ class CountryListView extends StatefulWidget {
     this.showSearch = true,
     this.customFlagBuilder,
   })  : assert(
-  exclude == null || countryFilter == null,
-  'Cannot provide both exclude and countryFilter',
-  ),
+          exclude == null || countryFilter == null,
+          'Cannot provide both exclude and countryFilter',
+        ),
         super(key: key);
 
   @override
@@ -78,16 +78,17 @@ class _CountryListViewState extends State<CountryListView> {
   List<Country>? _favoriteList;
   late TextEditingController _searchController;
   late bool _searchAutofocus;
+  bool isSearching = false;
 
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+    _searchController.addListener(_checkSearchText);
 
     _countryList = _countryService.getAll();
 
-    _countryList =
-        countryCodes.map((country) => Country.from(json: country)).toList();
+    _countryList = countryCodes.map((country) => Country.from(json: country)).toList();
 
     //Remove duplicates country if not use phone code
     if (!widget.showPhoneCode) {
@@ -101,13 +102,13 @@ class _CountryListViewState extends State<CountryListView> {
 
     if (widget.exclude != null) {
       _countryList.removeWhere(
-            (element) => widget.exclude!.contains(element.countryCode),
+        (element) => widget.exclude!.contains(element.countryCode),
       );
     }
 
     if (widget.countryFilter != null) {
       _countryList.removeWhere(
-            (element) => !widget.countryFilter!.contains(element.countryCode),
+        (element) => !widget.countryFilter!.contains(element.countryCode),
       );
     }
 
@@ -121,10 +122,27 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   @override
+  void dispose() {
+    _searchController.removeListener(_checkSearchText);
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _checkSearchText() {
+    if (_searchController.text.isNotEmpty) {
+      setState(() {
+        isSearching = true;
+      });
+    } else {
+      setState(() {
+        isSearching = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final String searchLabel =
-        CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
-            'Search';
+    final String searchLabel = CountryLocalizations.of(context)?.countryName(countryCode: 'search') ?? 'Search';
 
     return Column(
       children: <Widget>[
@@ -135,8 +153,7 @@ class _CountryListViewState extends State<CountryListView> {
             child: TextField(
               autofocus: _searchAutofocus,
               controller: _searchController,
-              style:
-              widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+              style: widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
               decoration: widget.countryListTheme?.inputDecoration ??
                   InputDecoration(
                     labelText: searchLabel,
@@ -154,18 +171,14 @@ class _CountryListViewState extends State<CountryListView> {
         Expanded(
           child: ListView(
             children: [
-              if (_favoriteList != null) ...[
-                ..._favoriteList!
-                    .map<Widget>((currency) => _listRow(currency))
-                    .toList(),
+              if (_favoriteList != null && isSearching == false) ...[
+                ..._favoriteList!.map<Widget>((currency) => _listRow(currency)).toList(),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Divider(thickness: 1),
                 ),
               ],
-              ..._filteredList
-                  .map<Widget>((country) => _listRow(country))
-                  .toList(),
+              ..._filteredList.map<Widget>((country) => _listRow(country)).toList(),
             ],
           ),
         ),
@@ -174,8 +187,7 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _listRow(Country country) {
-    final TextStyle _textStyle =
-        widget.countryListTheme?.textStyle ?? _defaultTextStyle;
+    final TextStyle _textStyle = widget.countryListTheme?.textStyle ?? _defaultTextStyle;
 
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
@@ -198,10 +210,7 @@ class _CountryListViewState extends State<CountryListView> {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  if (widget.customFlagBuilder == null)
-                    _flagWidget(country)
-                  else
-                    widget.customFlagBuilder!(country),
+                  if (widget.customFlagBuilder == null) _flagWidget(country) else widget.customFlagBuilder!(country),
                   if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
                     SizedBox(
@@ -219,8 +228,8 @@ class _CountryListViewState extends State<CountryListView> {
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
-                      ?.countryName(countryCode: country.countryCode)
-                      ?.replaceAll(RegExp(r"\s+"), " ") ??
+                          ?.countryName(countryCode: country.countryCode)
+                          ?.replaceAll(RegExp(r"\s+"), " ") ??
                       country.name,
                   style: _textStyle,
                 ),
@@ -242,26 +251,22 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _emojiText(Country country) => Text(
-    country.iswWorldWide
-        ? '\uD83C\uDF0D'
-        : Utils.countryCodeToEmoji(country.countryCode),
-    style: TextStyle(
-      fontSize: widget.countryListTheme?.flagSize ?? 25,
-      fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
-    ),
-  );
+        country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
+        style: TextStyle(
+          fontSize: widget.countryListTheme?.flagSize ?? 25,
+          fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
+        ),
+      );
 
   void _filterSearchResults(String query) {
+    _checkSearchText();
     List<Country> _searchResult = <Country>[];
-    final CountryLocalizations? localizations =
-    CountryLocalizations.of(context);
+    final CountryLocalizations? localizations = CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
     } else {
-      _searchResult = _countryList
-          .where((c) => c.startsWith(query, localizations))
-          .toList();
+      _searchResult = _countryList.where((c) => c.startsWith(query, localizations)).toList();
     }
 
     setState(() => _filteredList = _searchResult);
