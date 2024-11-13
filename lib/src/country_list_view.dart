@@ -265,14 +265,13 @@ class _CountryListViewState extends State<CountryListView> {
     final CountryLocalizations? localizations = CountryLocalizations.of(context);
 
     if (query.isEmpty) {
-      if (_favoriteList!.isNotEmpty) {
-        _searchResult.addAll(_countryList);
-        _searchResult.addAll(_favoriteList!);
-      } else {
-        _searchResult.addAll(_countryList);
-      }
+      _searchResult.addAll(_countryList);
     } else {
-      _searchResult = _countryList.where((c) => c.startsWith(query, localizations)).toList();
+      final Set<Country> searchResultSet = _countryList.where((c) => c.startsWith(query, localizations)).toSet();
+      if (_favoriteList != null) {
+        searchResultSet.addAll(_favoriteList!.where((c) => c.startsWith(query, localizations)).toSet());
+      }
+      _searchResult = searchResultSet.toList();
     }
 
     setState(() => _filteredList = _searchResult);
