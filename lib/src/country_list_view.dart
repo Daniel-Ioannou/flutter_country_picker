@@ -126,8 +126,8 @@ class _CountryListViewState extends State<CountryListView> {
     super.dispose();
   }
 
-  void _checkSearchText(String searchResult) {
-    if (searchResult.isNotEmpty) {
+  void _checkSearchText(String searchText) {
+    if (searchText.isNotEmpty) {
       setState(() {
         isSearching = true;
       });
@@ -265,7 +265,12 @@ class _CountryListViewState extends State<CountryListView> {
     final CountryLocalizations? localizations = CountryLocalizations.of(context);
 
     if (query.isEmpty) {
-      _searchResult.addAll(_countryList);
+      if (_favoriteList != null) {
+        _searchResult.addAll(_countryList);
+        _searchResult.addAll(_favoriteList!);
+      } else {
+        _searchResult.addAll(_countryList);
+      }
     } else {
       _searchResult = _countryList.where((c) => c.startsWith(query, localizations)).toList();
     }
