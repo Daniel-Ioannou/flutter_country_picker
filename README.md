@@ -10,11 +10,8 @@ A flutter package to select a country from a list of countries (WITHOUT Isreal (
 
  Add the package to your pubspec.yaml:
 
- ```yaml
-   country_picker:
-    git:
-      url: https://github.com/omarabdullah1/flutter_country_picker.git
- ```
+
+ country_picker: ^2.0.27
  
  In your dart file, import the library:
 
