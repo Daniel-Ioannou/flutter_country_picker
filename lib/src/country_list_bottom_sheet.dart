@@ -20,6 +20,7 @@ void showCountryListBottomSheet({
   bool useSafeArea = false,
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
+  String? barrierLabel,
 }) {
   showModalBottomSheet(
     context: context,
@@ -27,6 +28,7 @@ void showCountryListBottomSheet({
     backgroundColor: Colors.transparent,
     useSafeArea: useSafeArea,
     useRootNavigator: useRootNavigator,
+    barrierLabel: barrierLabel,
     builder: (context) => _builder(
       context,
       onSelect,
