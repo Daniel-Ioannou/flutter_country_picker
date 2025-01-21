@@ -52,7 +52,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "213-DZ-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1684",
     "iso2_cc": "AS",
     "e164_sc": 0,
     "geographic": true,
@@ -2301,7 +2301,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "351-PT-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1787",
     "iso2_cc": "PR",
     "e164_sc": 0,
     "geographic": true,
@@ -2314,7 +2314,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "1-PR-787",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1939",
     "iso2_cc": "PR",
     "e164_sc": 0,
     "geographic": true,
