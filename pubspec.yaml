@@ -1,10 +1,10 @@
-name: flutter_country_picker_plus
+name: country_picker
 description: A flutter package to select a country from a list of countries.
 
 version: 2.0.27
 
-homepage: https://github.com/Daniel-Ioannou
-repository: https://github.com/Daniel-Ioannou/flutter_country_picker
+homepage: https://github.com/mathis6787/flutter_country_picker_plus
+repository: https://github.com/mathis6787/flutter_country_picker_plus
 
 environment:
   sdk: '>=2.12.0 <4.0.0'

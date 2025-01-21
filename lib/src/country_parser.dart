@@ -1,5 +1,5 @@
+import 'package:country_picker/src/res/strings/he.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_country_picker_plus/src/res/strings/he.dart';
 
 import '../country_picker.dart';
 import 'res/country_codes.dart';
