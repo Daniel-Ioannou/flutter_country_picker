@@ -1,8 +1,8 @@
-import 'package:country_picker/src/country_parser.dart';
-import 'package:country_picker/src/utils.dart';
 import 'package:flutter/material.dart';
 
+import '../country_picker.dart';
 import 'country_localizations.dart';
+import 'utils.dart';
 
 ///The country Model that has all the country
 ///information needed from the [country_picker]
