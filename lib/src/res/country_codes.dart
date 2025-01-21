@@ -1,3 +1,5 @@
+// Modified list to fix small countries or territories that start with +1 to match the formatting pattern of flutter_multi_parser
+
 final List<Map<String, dynamic>> countryCodes = [
   {
     "e164_cc": "93",
@@ -52,7 +54,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "213-DZ-0",
   },
   {
-    "e164_cc": "1684",
+    "e164_cc": "684",
     "iso2_cc": "AS",
     "e164_sc": 0,
     "geographic": true,
@@ -2313,19 +2315,19 @@ final List<Map<String, dynamic>> countryCodes = [
     "display_name_no_e164_cc": "Puerto Rico (PR)",
     "e164_key": "1-PR-787",
   },
-  {
-    "e164_cc": "1939",
-    "iso2_cc": "PR",
-    "e164_sc": 0,
-    "geographic": true,
-    "level": 2,
-    "name": "Puerto Rico (939)",
-    "example": "9392345678",
-    "display_name": "Puerto Rico (939) [+1939]",
-    "full_example_with_plus_sign": "+19392345678",
-    "display_name_no_e164_cc": "Puerto Rico (939)",
-    "e164_key": "1-PR-939",
-  },
+  // {
+  //   "e164_cc": "1939",
+  //   "iso2_cc": "PR",
+  //   "e164_sc": 0,
+  //   "geographic": true,
+  //   "level": 2,
+  //   "name": "Puerto Rico (939)",
+  //   "example": "9392345678",
+  //   "display_name": "Puerto Rico (939) [+1939]",
+  //   "full_example_with_plus_sign": "+19392345678",
+  //   "display_name_no_e164_cc": "Puerto Rico (939)",
+  //   "e164_key": "1-PR-939",
+  // },
   {
     "e164_cc": "974",
     "iso2_cc": "QA",
