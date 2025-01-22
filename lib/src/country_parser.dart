@@ -138,8 +138,10 @@ class CountryParser {
   /// Returns a country that matches the [countryCode] (e164_cc).
   static Country _getFromPhoneCode(String phoneCode) {
     return Country.from(
-      json: countryCodes.singleWhere(
+      json: countryCodes.firstWhere(
         (Map<String, dynamic> c) => c['e164_cc'] == phoneCode,
+        orElse: () =>
+            throw StateError("No matching country found for $phoneCode"),
       ),
     );
   }
@@ -147,8 +149,10 @@ class CountryParser {
   /// Returns a country that matches the [countryCode] (iso2_cc).
   static Country _getFromCode(String countryCode) {
     return Country.from(
-      json: countryCodes.singleWhere(
+      json: countryCodes.firstWhere(
         (Map<String, dynamic> c) => c['iso2_cc'] == countryCode,
+        orElse: () =>
+            throw StateError("No matching country found for $countryCode"),
       ),
     );
   }
