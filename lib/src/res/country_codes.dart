@@ -2313,7 +2313,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "display_name": "Puerto Rico (PR) [+1787]",
     "full_example_with_plus_sign": "+17872345678",
     "display_name_no_e164_cc": "Puerto Rico (PR)",
-    "e164_key": "1787-PR-0",
+    "e164_key": "1-PR-0",
   },
   {
     "e164_cc": "974",
