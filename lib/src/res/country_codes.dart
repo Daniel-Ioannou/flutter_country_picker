@@ -93,7 +93,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "244-AO-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1264",
     "iso2_cc": "AI",
     "e164_sc": 0,
     "geographic": true,
@@ -106,7 +106,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "1-AI-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1268",
     "iso2_cc": "AG",
     "e164_sc": 0,
     "geographic": true,
@@ -210,7 +210,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "994-AZ-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1242",
     "iso2_cc": "BS",
     "e164_sc": 0,
     "geographic": true,
@@ -249,7 +249,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "880-BD-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1246",
     "iso2_cc": "BB",
     "e164_sc": 0,
     "geographic": true,
@@ -314,7 +314,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "229-BJ-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1441",
     "iso2_cc": "BM",
     "e164_sc": 0,
     "geographic": true,
@@ -405,7 +405,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "246-IO-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1284",
     "iso2_cc": "VG",
     "e164_sc": 0,
     "geographic": true,
@@ -535,7 +535,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "599-BQ-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1345",
     "iso2_cc": "KY",
     "e164_sc": 0,
     "geographic": true,
@@ -808,7 +808,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "253-DJ-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1767",
     "iso2_cc": "DM",
     "e164_sc": 0,
     "geographic": true,
@@ -821,7 +821,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "1-DM-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1809",
     "iso2_cc": "DO",
     "e164_sc": 0,
     "geographic": true,
@@ -1146,7 +1146,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "299-GL-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1473",
     "iso2_cc": "GD",
     "e164_sc": 0,
     "geographic": true,
@@ -1172,7 +1172,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "590-GP-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1671",
     "iso2_cc": "GU",
     "e164_sc": 0,
     "geographic": true,
@@ -1432,7 +1432,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "39-IT-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1876",
     "iso2_cc": "JM",
     "e164_sc": 0,
     "geographic": true,
@@ -1926,7 +1926,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "382-ME-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1664",
     "iso2_cc": "MS",
     "e164_sc": 0,
     "geographic": true,
@@ -2407,7 +2407,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "290-SH-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1869",
     "iso2_cc": "KN",
     "e164_sc": 0,
     "geographic": true,
@@ -2420,7 +2420,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "1-KN-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1758",
     "iso2_cc": "LC",
     "e164_sc": 0,
     "geographic": true,
@@ -2459,7 +2459,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "508-PM-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1784",
     "iso2_cc": "VC",
     "e164_sc": 0,
     "geographic": true,
@@ -2589,7 +2589,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "65-SG-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1721",
     "iso2_cc": "SX",
     "e164_sc": 0,
     "geographic": true,
@@ -2902,7 +2902,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "676-TO-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1868",
     "iso2_cc": "TT",
     "e164_sc": 0,
     "geographic": true,
@@ -2954,7 +2954,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "993-TM-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1649",
     "iso2_cc": "TC",
     "e164_sc": 0,
     "geographic": true,
@@ -2980,7 +2980,7 @@ final List<Map<String, dynamic>> countryCodes = [
     "e164_key": "688-TV-0",
   },
   {
-    "e164_cc": "1",
+    "e164_cc": "1340",
     "iso2_cc": "VI",
     "e164_sc": 0,
     "geographic": true,
