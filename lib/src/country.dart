@@ -76,7 +76,9 @@ class Country {
     required this.displayNameNoCountryCode,
     required this.e164Key,
     this.fullExampleWithPlusSign,
-  });
+  }) {
+    allCountries = countryService.getAll();
+  }
 
   Country.from({required Map<String, dynamic> json})
       : phoneCode = json['e164_cc'],
@@ -89,7 +91,9 @@ class Country {
         displayName = json['display_name'],
         fullExampleWithPlusSign = json['full_example_with_plus_sign'],
         displayNameNoCountryCode = json['display_name_no_e164_cc'],
-        e164Key = json['e164_key'];
+        e164Key = json['e164_key'] {
+    allCountries = CountryService().getAll();
+  }
 
   static Country parse(String country) {
     if (country == worldWide.countryCode) {
