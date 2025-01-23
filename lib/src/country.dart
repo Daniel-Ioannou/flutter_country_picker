@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../country_picker.dart';
-import 'country_localizations.dart';
 import 'utils.dart';
 
 ///The country Model that has all the country
@@ -19,9 +18,6 @@ class Country {
     displayNameNoCountryCode: 'World Wide',
     e164Key: '',
   );
-
-  late List<Country> allCountries;
-  final countryService = CountryService();
 
   ///The country phone code
   final String phoneCode;
