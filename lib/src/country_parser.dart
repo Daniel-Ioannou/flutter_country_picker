@@ -55,6 +55,14 @@ class CountryParser {
     return tryParseCountryCode(country) ?? tryParseCountryName(country);
   }
 
+  // TODO MATHIS
+  /// Returns a single country if [country] matches a country code or name.
+  ///
+  /// returns null if no matching element is found.
+  static Country? tryParsePhone(String phoneCode) {
+    return tryParsePhoneCode(phoneCode);
+  }
+
   /// Returns a single country if it matches the given [countryCode] (iso2_cc).
   ///
   /// Throws a [StateError] if no matching element is found.
