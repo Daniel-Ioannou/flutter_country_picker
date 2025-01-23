@@ -51,8 +51,8 @@ class CountryListThemeData {
   /// the margin of the bottom sheet
   final EdgeInsets? margin;
 
-  const CountryListThemeData(
-    this.countryNameTextStyle, {
+  const CountryListThemeData({
+    this.countryNameTextStyle,
     this.backgroundColor,
     this.textStyle,
     this.searchTextStyle,
