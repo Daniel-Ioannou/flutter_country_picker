@@ -104,14 +104,7 @@ class Country {
   }
 
   static Country? tryParseByPhoneCode(String phoneCode) {
-    // Parcourir la liste des pays pour trouver une correspondance
-    for (final country in CountryService().getAll()) {
-      if (country.phoneCode == phoneCode) {
-        return country;
-      }
-    }
-    // Retourne null si aucun pays ne correspond
-    return null;
+    return CountryParser.tryParsePhoneCode(phoneCode);
   }
 
   Map<String, dynamic> toJson() {
