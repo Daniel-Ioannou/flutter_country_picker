@@ -174,11 +174,12 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _listRow(Country country) {
-    final TextStyle _countryNameStyle = widget.countryListTheme?.textStyle ??
-        const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-        );
+    final TextStyle _countryNameStyle =
+        widget.countryListTheme?.countryNameTextStyle ??
+            const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            );
     final TextStyle _textStyle =
         widget.countryListTheme?.textStyle ?? _defaultTextStyle;
 
