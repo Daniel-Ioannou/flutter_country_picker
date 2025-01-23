@@ -10,6 +10,7 @@ class CountryListThemeData {
   ///
   /// If null, the style will be set to [TextStyle(fontSize: 16)]
   final TextStyle? textStyle;
+  final TextStyle? countryNameTextStyle;
 
   ///The style to use for search box text.
   ///
@@ -50,7 +51,8 @@ class CountryListThemeData {
   /// the margin of the bottom sheet
   final EdgeInsets? margin;
 
-  const CountryListThemeData({
+  const CountryListThemeData(
+    this.countryNameTextStyle, {
     this.backgroundColor,
     this.textStyle,
     this.searchTextStyle,
