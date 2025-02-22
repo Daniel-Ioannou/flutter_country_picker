@@ -246,4 +246,5 @@ Map<String, String> ku = {
   "ZM": "زامبیا",
   "ZW": "زیمبابوێ",
   "search": "گەڕان",
+  "noCountryFound": "هیچ وڵاتێک نەدۆزراوەتەوە.",
 };

@@ -59,6 +59,7 @@ void showCountryPicker({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CustomFlagBuilder? customFlagBuilder,
+  WidgetBuilder? emptySearchPlaceholderBuilder,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
@@ -87,5 +88,6 @@ void showCountryPicker({
     useSafeArea: useSafeArea,
     useRootNavigator: useRootNavigator,
     moveAlongWithKeyboard: moveAlongWithKeyboard,
+    emptySearchPlaceholderBuilder: emptySearchPlaceholderBuilder,
   );
 }

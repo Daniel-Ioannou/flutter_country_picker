@@ -247,4 +247,5 @@ Map<String, String> np = {
   "ZM": "जाम्बिया",
   "ZW": "जिम्बावे",
   "search": "खोजें",
+  "noCountryFound": "कुनै देश भेटिएन।",
 };

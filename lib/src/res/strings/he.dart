@@ -247,4 +247,5 @@ Map<String, String> he = {
   "ZM": "זמביה",
   "ZW": "זימבבואה",
   // "search": "Suchen",
+  "noCountryFound": "לא נמצאה מדינה.",
 };

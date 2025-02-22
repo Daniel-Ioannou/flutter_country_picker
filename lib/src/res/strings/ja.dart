@@ -247,4 +247,5 @@ Map<String, String> ja = {
   "ZM": "ザンビア",
   "ZW": "ジンバブエ",
   "search": "検索",
+  "noCountryFound": "国が見つかりません。",
 };

@@ -247,4 +247,5 @@ Map<String, String> bg = {
   "ZM": "Замбия",
   "ZW": "Зимбабве",
   "search": "Търсене",
+  "noCountryFound": "Няма намерена държава.",
 };

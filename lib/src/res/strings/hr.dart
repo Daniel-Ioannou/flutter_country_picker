@@ -247,4 +247,5 @@ Map<String, String> hr = {
   "ZM": "Zambija",
   "ZW": "Zimbabve",
   "search": "Pretraži",
+  "noCountryFound": "Nije pronađena nijedna država.",
 };

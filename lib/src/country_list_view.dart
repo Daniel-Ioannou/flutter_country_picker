@@ -48,6 +48,9 @@ class CountryListView extends StatefulWidget {
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
+  /// Custom empty search placeholder when no country is found
+  final WidgetBuilder? emptySearchPlaceholderBuilder;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -60,6 +63,7 @@ class CountryListView extends StatefulWidget {
     this.showWorldWide = false,
     this.showSearch = true,
     this.customFlagBuilder,
+    this.emptySearchPlaceholderBuilder,
   })  : assert(
   exclude == null || countryFilter == null,
   'Cannot provide both exclude and countryFilter',
@@ -166,10 +170,29 @@ class _CountryListViewState extends State<CountryListView> {
               ..._filteredList
                   .map<Widget>((country) => _listRow(country))
                   .toList(),
+              if(_filteredList.isEmpty)
+                widget.emptySearchPlaceholderBuilder?.call(context) ?? _defaultEmptySearchPlaceholder(context)
             ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget _defaultEmptySearchPlaceholder(BuildContext context) {
+    return Container(
+      height: 200.0,
+      width: double.infinity,
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.search_off,size: 50.0),
+          const SizedBox(height: 10.0),
+          Text(CountryLocalizations.of(context)
+              ?.countryName(countryCode: "noCountryFound") ?? "No country found."),
+        ],
+      ),
     );
   }
 

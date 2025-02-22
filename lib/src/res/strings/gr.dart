@@ -247,4 +247,5 @@ Map<String, String> gr = {
   "ZM": "Ζάμπια",
   "ZW": "Ζιμπάμπουε",
   "search": "Αναζήτηση",
+  "noCountryFound": "Δεν βρέθηκε χώρα.",
 };

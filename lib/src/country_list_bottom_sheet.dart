@@ -13,6 +13,7 @@ void showCountryListBottomSheet({
   List<String>? countryFilter,
   bool showPhoneCode = false,
   CustomFlagBuilder? customFlagBuilder,
+  WidgetBuilder? emptySearchPlaceholderBuilder,
   CountryListThemeData? countryListTheme,
   bool searchAutofocus = false,
   bool showWorldWide = false,
@@ -40,6 +41,7 @@ void showCountryListBottomSheet({
       showSearch,
       moveAlongWithKeyboard,
       customFlagBuilder,
+      emptySearchPlaceholderBuilder,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -59,6 +61,7 @@ Widget _builder(
   bool showSearch,
   bool moveAlongWithKeyboard,
   CustomFlagBuilder? customFlagBuilder,
+  WidgetBuilder? emptySearchPlaceholderBuilder,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -103,6 +106,7 @@ Widget _builder(
         showWorldWide: showWorldWide,
         showSearch: showSearch,
         customFlagBuilder: customFlagBuilder,
+        emptySearchPlaceholderBuilder: emptySearchPlaceholderBuilder,
       ),
     ),
   );
