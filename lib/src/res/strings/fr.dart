@@ -246,4 +246,5 @@ Map<String, String> fr = {
   "ZM": "Zambie",
   "ZW": "Zimbabwe",
   "search": "Chercher",
+  "noCountryFound": "Aucun pays trouvé.",
 };

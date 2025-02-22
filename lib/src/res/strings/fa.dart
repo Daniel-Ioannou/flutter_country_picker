@@ -247,4 +247,5 @@ Map<String, String> fa = {
   "ZM": "زامبیا",
   "ZW": "زیمبابوه",
   "search": "جستجو",
+  "noCountryFound": "کشوری پیدا نشد",
 };

@@ -247,4 +247,5 @@ Map<String, String> de = {
   "ZM": "Sambia",
   "ZW": "Simbabwe",
   "search": "Suchen",
+  "noCountryFound": "Kein Land gefunden.",
 };

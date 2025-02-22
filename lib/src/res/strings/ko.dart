@@ -247,4 +247,5 @@ Map<String, String> ko = {
   "ZM": "잠비아",
   "ZW": "짐바브웨",
   "search": "검색",
+  "noCountryFound": "국가를 찾을 수 없습니다.",
 };

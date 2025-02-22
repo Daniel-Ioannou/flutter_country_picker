@@ -247,4 +247,5 @@ Map<String, String> cn = {
   "ZM": "赞比亚",
   "ZW": "津巴布韦",
   "search": "查询",
+  "noCountryFound": "未找到任何国家。",
 };

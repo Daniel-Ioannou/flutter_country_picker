@@ -247,4 +247,5 @@ Map<String, String> ro = {
   "ZM": "Zambia",
   "ZW": "Zimbabwe",
   "search": "Căutare",
+  "noCountryFound": "Nu a fost găsită nicio țară.",
 };

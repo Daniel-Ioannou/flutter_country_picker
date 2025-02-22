@@ -247,4 +247,5 @@ Map<String, String> da = {
   "ZM": "Zambia",
   "ZW": "Zimbabwe",
   "search": "Søg",
+  "noCountryFound": "Intet land fundet.",
 };

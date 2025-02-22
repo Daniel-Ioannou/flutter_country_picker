@@ -247,4 +247,5 @@ Map<String, String> tw = {
   "ZM": "尚比亞",
   "ZW": "辛巴威",
   "search": "搜索",
+  "noCountryFound": "找不到國家。",
 };

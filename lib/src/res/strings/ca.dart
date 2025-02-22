@@ -247,4 +247,5 @@ Map<String, String> ca = {
   "ZM": "Zàmbia",
   "ZW": "Zimbabwe",
   "search": "Cerca",
+  "noCountryFound": "No s'ha trobat cap país.",
 };

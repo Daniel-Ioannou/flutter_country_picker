@@ -247,4 +247,5 @@ Map<String, String> lv = {
   "ZM": "Zambija",
   "ZW": "Zimbabve",
   "search": "Meklēt",
+  "noCountryFound": "Nav atrasta neviena valsts.",
 };

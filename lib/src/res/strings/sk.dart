@@ -247,4 +247,5 @@ Map<String, String> sk = {
   "ZM": "Zambia",
   "ZW": "Zimbabwe",
   "search": "Hľadať",
+  "noCountryFound": "Nenašla sa žiadna krajina.",
 };

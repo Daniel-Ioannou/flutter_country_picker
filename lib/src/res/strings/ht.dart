@@ -247,4 +247,5 @@ Map<String, String> ht = {
   "ZM": "Zanbi",
   "ZW": "Zimbabwe",
   "search": "Chèche",
+  "noCountryFound": "Pa gen peyi jwenn.",
 };

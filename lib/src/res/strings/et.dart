@@ -247,4 +247,5 @@ Map<String, String> et = {
   "WW": "Kogu Maailmas",
   "ZW": "Zimbabwe",
   "search": "Otsi",
+  "noCountryFound": "Ühtegi riiki ei leitud.",
 };
