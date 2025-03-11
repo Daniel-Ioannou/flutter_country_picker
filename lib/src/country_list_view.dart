@@ -78,7 +78,7 @@ class _CountryListViewState extends State<CountryListView> {
   List<Country>? _favoriteList;
   late TextEditingController _searchController;
   late bool _searchAutofocus;
-  bool isSearching = false;
+  bool _isSearching = false;
 
   @override
   void initState() {
@@ -87,7 +87,8 @@ class _CountryListViewState extends State<CountryListView> {
 
     _countryList = _countryService.getAll();
 
-    _countryList = countryCodes.map((country) => Country.from(json: country)).toList();
+    _countryList =
+        countryCodes.map((country) => Country.from(json: country)).toList();
 
     //Remove duplicates country if not use phone code
     if (!widget.showPhoneCode) {
@@ -129,18 +130,20 @@ class _CountryListViewState extends State<CountryListView> {
   void _checkSearchText(String searchText) {
     if (searchText.isNotEmpty) {
       setState(() {
-        isSearching = true;
+        _isSearching = true;
       });
     } else {
       setState(() {
-        isSearching = false;
+        _isSearching = false;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final String searchLabel = CountryLocalizations.of(context)?.countryName(countryCode: 'search') ?? 'Search';
+    final String searchLabel =
+        CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
+            'Search';
 
     return Column(
       children: <Widget>[
@@ -150,7 +153,7 @@ class _CountryListViewState extends State<CountryListView> {
             autofocus: _searchAutofocus,
             controller: _searchController,
             style:
-            widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+                widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
             decoration: widget.countryListTheme?.inputDecoration ??
                 InputDecoration(
                   labelText: searchLabel,
@@ -170,7 +173,7 @@ class _CountryListViewState extends State<CountryListView> {
         Expanded(
           child: ListView(
             children: [
-              if (_favoriteList != null && !isSearching) ...[
+              if (_favoriteList != null && !_isSearching) ...[
                 ..._favoriteList!.map<Widget>((currency) => _listRow(currency)),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -186,7 +189,8 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _listRow(Country country) {
-    final TextStyle _textStyle = widget.countryListTheme?.textStyle ?? _defaultTextStyle;
+    final TextStyle _textStyle =
+        widget.countryListTheme?.textStyle ?? _defaultTextStyle;
 
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
@@ -209,7 +213,10 @@ class _CountryListViewState extends State<CountryListView> {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  if (widget.customFlagBuilder == null) _flagWidget(country) else widget.customFlagBuilder!(country),
+                  if (widget.customFlagBuilder == null)
+                    _flagWidget(country)
+                  else
+                    widget.customFlagBuilder!(country),
                   if (widget.showPhoneCode && !country.iswWorldWide) ...[
                     const SizedBox(width: 15),
                     SizedBox(
@@ -250,7 +257,9 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _emojiText(Country country) => Text(
-        country.iswWorldWide ? '\uD83C\uDF0D' : Utils.countryCodeToEmoji(country.countryCode),
+        country.iswWorldWide
+            ? '\uD83C\uDF0D'
+            : Utils.countryCodeToEmoji(country.countryCode),
         style: TextStyle(
           fontSize: widget.countryListTheme?.flagSize ?? 25,
           fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
@@ -259,14 +268,15 @@ class _CountryListViewState extends State<CountryListView> {
 
   void _filterSearchResults(String query) {
     List<Country> _searchResult = <Country>[];
-    final CountryLocalizations? localizations = CountryLocalizations.of(context);
+    final CountryLocalizations? localizations =
+        CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
     } else {
-      final Set<Country> searchResultSet = _countryList.where((c) => c.startsWith(query, localizations)).toSet();
-      searchResultSet.addAll(_favoriteList?.where((c) => c.startsWith(query, localizations)).toSet() ?? {});
-      _searchResult = searchResultSet.toList();
+      _searchResult = _countryList
+          .where((c) => c.startsWith(query, localizations))
+          .toList();
     }
 
     setState(() => _filteredList = _searchResult);
