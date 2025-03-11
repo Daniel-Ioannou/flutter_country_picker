@@ -1,3 +1,4 @@
+/// A flutter package to select a country from a list of countries.
 library country_picker;
 
 import 'package:flutter/material.dart';

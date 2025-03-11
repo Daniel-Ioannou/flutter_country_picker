@@ -142,7 +142,7 @@ class _CountryListViewState extends State<CountryListView> {
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: const Color(0xFF8C98A8).withOpacity(0.2),
+                      color: const Color(0xFF8C98A8).withValues(alpha: 0.2),
                     ),
                   ),
                 ),
@@ -153,16 +153,14 @@ class _CountryListViewState extends State<CountryListView> {
             children: [
               if (_favoriteList != null) ...[
                 ..._favoriteList!
-                    .map<Widget>((currency) => _listRow(currency))
-                    .toList(),
+                    .map<Widget>((currency) => _listRow(currency)),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Divider(thickness: 1),
                 ),
               ],
               ..._filteredList
-                  .map<Widget>((country) => _listRow(country))
-                  .toList(),
+                  .map<Widget>((country) => _listRow(country)),
             ],
           ),
         ),
