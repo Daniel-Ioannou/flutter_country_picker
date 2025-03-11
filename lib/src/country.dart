@@ -84,7 +84,7 @@ class Country {
         name = json['name'] as String,
         example = json['example'] as String,
         displayName = json['display_name'] as String,
-        fullExampleWithPlusSign = json['full_example_with_plus_sign'] as String,
+        fullExampleWithPlusSign = json['full_example_with_plus_sign'] as String?,
         displayNameNoCountryCode = json['display_name_no_e164_cc'] as String,
         e164Key = json['e164_key'] as String;
 
