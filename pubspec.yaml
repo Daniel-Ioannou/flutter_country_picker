@@ -10,14 +10,12 @@ environment:
   sdk: '>=2.12.0 <4.0.0'
 
 dependencies:
-  collection: ^1.18.0
+  collection: ^1.19.1
   universal_io: ^2.2.2
   flutter:
     sdk: flutter
 
-flutter:
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.8.2
+  lint: ^2.8.0
