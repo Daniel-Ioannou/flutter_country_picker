@@ -7,6 +7,7 @@ import 'src/country.dart';
 import 'src/country_list_bottom_sheet.dart';
 import 'src/country_list_theme_data.dart';
 import 'src/country_list_view.dart';
+import 'src/drag_config.dart';
 
 export 'src/country.dart';
 export 'src/country_list_theme_data.dart';
@@ -14,6 +15,7 @@ export 'src/country_list_view.dart' show CustomFlagBuilder;
 export 'src/country_localizations.dart';
 export 'src/country_parser.dart';
 export 'src/country_service.dart';
+export 'src/drag_config.dart';
 
 /// Shows a bottom sheet containing a list of countries to select one.
 ///
@@ -68,6 +70,7 @@ void showCountryPicker({
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
   Widget header = const SizedBox.shrink(),
+  DragConfig? config,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -90,5 +93,6 @@ void showCountryPicker({
     useRootNavigator: useRootNavigator,
     moveAlongWithKeyboard: moveAlongWithKeyboard,
     header: header,
+    config: config,
   );
 }

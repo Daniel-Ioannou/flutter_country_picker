@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'country.dart';
 import 'country_list_theme_data.dart';
 import 'country_list_view.dart';
+import 'drag_config.dart';
 
 void showCountryListBottomSheet({
   required BuildContext context,
@@ -21,12 +22,13 @@ void showCountryListBottomSheet({
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
   Widget header = const SizedBox.shrink(),
+  DragConfig? config,
 }) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    useSafeArea: useSafeArea,
+    useSafeArea: config == null ? useSafeArea : true,
     useRootNavigator: useRootNavigator,
     builder: (context) => _builder(
       context,
@@ -42,6 +44,7 @@ void showCountryListBottomSheet({
       moveAlongWithKeyboard,
       customFlagBuilder,
       header,
+      config: config,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -61,8 +64,9 @@ Widget _builder(
   bool showSearch,
   bool moveAlongWithKeyboard,
   CustomFlagBuilder? customFlagBuilder,
-  Widget header,
-) {
+  Widget header, {
+  DragConfig? config,
+}) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
   final height = countryListTheme?.bottomSheetHeight ??
@@ -86,41 +90,62 @@ Widget _builder(
         topRight: Radius.circular(40.0),
       );
 
-  return Padding(
-    padding: moveAlongWithKeyboard
-        ? MediaQuery.of(context).viewInsets
-        : EdgeInsets.zero,
-    child: Container(
-      height: height,
-      width: width,
-      padding: countryListTheme?.padding,
-      margin: countryListTheme?.margin,
-      decoration: BoxDecoration(
-        color: _backgroundColor,
-        borderRadius: _borderRadius,
-      ),
+  Widget child({ScrollController? scrollController}) {
+    return SingleChildScrollView(
+      controller: scrollController,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        child: Column(
-          children: [
-            header,
-            Flexible(
-              child: CountryListView(
-                onSelect: onSelect,
-                exclude: exclude,
-                favorite: favorite,
-                countryFilter: countryFilter,
-                showPhoneCode: showPhoneCode,
-                countryListTheme: countryListTheme,
-                searchAutofocus: searchAutofocus,
-                showWorldWide: showWorldWide,
-                showSearch: showSearch,
-                customFlagBuilder: customFlagBuilder,
-              ),
+        padding: moveAlongWithKeyboard
+            ? MediaQuery.of(context).viewInsets
+            : EdgeInsets.zero,
+        child: Container(
+          height: height,
+          width: width,
+          padding: countryListTheme?.padding,
+          margin: countryListTheme?.margin,
+          decoration: BoxDecoration(
+            color: _backgroundColor,
+            borderRadius: _borderRadius,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child: Column(
+              children: [
+                header,
+                Flexible(
+                  child: CountryListView(
+                    onSelect: onSelect,
+                    exclude: exclude,
+                    favorite: favorite,
+                    countryFilter: countryFilter,
+                    showPhoneCode: showPhoneCode,
+                    countryListTheme: countryListTheme,
+                    searchAutofocus: searchAutofocus,
+                    showWorldWide: showWorldWide,
+                    showSearch: showSearch,
+                    customFlagBuilder: customFlagBuilder,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
-    ),
+    );
+  }
+
+  if(config == null) return child();
+
+  return DraggableScrollableSheet(
+    initialChildSize: config.initialChildSize,
+    minChildSize: config.minChildSize,
+    maxChildSize: config.maxChildSize,
+    expand: config.expand,
+    snap: config.snap,
+    snapSizes: config.snapSizes,
+    snapAnimationDuration: config.snapAnimationDuration,
+    controller: config.controller,
+    builder: (context, scrollController) {
+      return child(scrollController: scrollController);
+    },
   );
 }
