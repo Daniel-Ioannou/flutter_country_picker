@@ -118,6 +118,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              config: DragConfig(),
             );
           },
           child: const Text('Show country picker'),
