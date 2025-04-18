@@ -76,17 +76,17 @@ class Country {
   });
 
   Country.from({required Map<String, dynamic> json})
-      : phoneCode = json['e164_cc'],
-        countryCode = json['iso2_cc'],
-        e164Sc = json['e164_sc'],
-        geographic = json['geographic'],
-        level = json['level'],
-        name = json['name'],
-        example = json['example'],
-        displayName = json['display_name'],
-        fullExampleWithPlusSign = json['full_example_with_plus_sign'],
-        displayNameNoCountryCode = json['display_name_no_e164_cc'],
-        e164Key = json['e164_key'];
+      : phoneCode = json['e164_cc'] as String,
+        countryCode = json['iso2_cc'] as String,
+        e164Sc = json['e164_sc'] as int,
+        geographic = json['geographic'] as bool,
+        level = json['level'] as int,
+        name = json['name'] as String,
+        example = json['example'] as String,
+        displayName = json['display_name'] as String,
+        fullExampleWithPlusSign = json['full_example_with_plus_sign'] as String?,
+        displayNameNoCountryCode = json['display_name_no_e164_cc'] as String,
+        e164Key = json['e164_key'] as String;
 
   static Country parse(String country) {
     if (country == worldWide.countryCode) {

@@ -5,10 +5,12 @@ import 'res/strings/bg.dart';
 import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
+import 'res/strings/da.dart';
 import 'res/strings/de.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
+import 'res/strings/fa.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/he.dart';
@@ -134,10 +136,14 @@ class CountryLocalizations {
         return id[countryCode];
       case 'cs':
         return cs[countryCode];
+      case 'da':
+        return da[countryCode];
       case 'ca':
         return ca[countryCode];
       case 'hu':
         return hu[countryCode];
+      case 'fa':
+        return fa[countryCode];
       case 'en':
       default:
         return en[countryCode];
@@ -186,6 +192,9 @@ class _CountryLocalizationsDelegate
       'cs',
       'ca',
       'hu',
+      'fa',
+      'da',
+      'ca',
     ].contains(locale.languageCode);
   }
 

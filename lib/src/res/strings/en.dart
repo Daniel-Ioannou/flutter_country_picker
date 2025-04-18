@@ -128,7 +128,7 @@ Map<String, String> en = {
   "LT": "Lithuania",
   "LU": "Luxembourg",
   "MO": "Macau",
-  "MK": "Macedonia",
+  "MK": "North Macedonia",
   "MG": "Madagascar",
   "MW": "Malawi",
   "MY": "Malaysia",
