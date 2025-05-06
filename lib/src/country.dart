@@ -32,8 +32,8 @@ class Country {
   ///The country name in English
   final String name;
 
-  ///The country name localized
-  late String? nameLocalized;
+  ///The country name localized. It will be initialized after the Country object is created.
+  late String nameLocalized;
 
   ///An example of a telephone number without the phone code
   final String example;
@@ -55,9 +55,15 @@ class Country {
   )
   String get displayNameNoE164Cc => displayNameNoCountryCode;
 
-  String? getTranslatedName(BuildContext context) {
-    return CountryLocalizations.of(context)
-        ?.countryName(countryCode: countryCode);
+  /// Initializes the localized name for the country.
+  /// Uses the translated name if available, otherwise falls back to the English name.
+  void initLocalizedName(BuildContext context) {
+    nameLocalized = CountryLocalizations.of(context)?.countryName(countryCode: countryCode)?.replaceAll(RegExp(r"\s+"), " ") ?? name;
+  }
+
+  /// Initializes the localized name for the 'World Wide' static instance.
+  static void initWorldWideLocalizedName(BuildContext context) {
+    worldWide.nameLocalized = CountryLocalizations.of(context)?.countryName(countryCode: worldWide.countryCode)?.replaceAll(RegExp(r"\s+"), " ") ?? worldWide.name;
   }
 
   Country({
@@ -67,7 +73,6 @@ class Country {
     required this.geographic,
     required this.level,
     required this.name,
-    this.nameLocalized = '',
     required this.example,
     required this.displayName,
     required this.displayNameNoCountryCode,
@@ -112,6 +117,7 @@ class Country {
     data['geographic'] = geographic;
     data['level'] = level;
     data['name'] = name;
+    data['nameLocalized'] = nameLocalized;
     data['example'] = example;
     data['display_name'] = displayName;
     data['full_example_with_plus_sign'] = fullExampleWithPlusSign;
@@ -120,41 +126,33 @@ class Country {
     return data;
   }
 
-  bool startsWith(String query, CountryLocalizations? localizations) {
-    String _query = query;
-    if (query.startsWith("+")) {
-      _query = query.replaceAll("+", "").trim();
+  /// Checks if the country's properties (name, code, phone code, localized name) start with the query.
+  /// The [localizations] parameter is no longer used as [nameLocalized] is pre-initialized.
+  bool startsWith(String query, CountryLocalizations? localizations /* not used anymore */) {
+    String lowerCaseQuery = query.toLowerCase();
+    if (lowerCaseQuery.startsWith("+")) {
+      lowerCaseQuery = lowerCaseQuery.replaceAll("+", "").trim();
     }
-    return phoneCode.startsWith(_query.toLowerCase()) ||
-        name.toLowerCase().startsWith(_query.toLowerCase()) ||
-        countryCode.toLowerCase().startsWith(_query.toLowerCase()) ||
-        (localizations
-                ?.countryName(countryCode: countryCode)
-                ?.toLowerCase()
-                .startsWith(_query.toLowerCase()) ??
-            false);
+    if (lowerCaseQuery.isEmpty) return true;
+
+    return phoneCode.startsWith(lowerCaseQuery) || name.toLowerCase().startsWith(lowerCaseQuery) || countryCode.toLowerCase().startsWith(lowerCaseQuery) || nameLocalized.toLowerCase().startsWith(lowerCaseQuery);
   }
 
   bool get iswWorldWide => countryCode == Country.worldWide.countryCode;
 
   @override
-  String toString() => 'Country(countryCode: $countryCode, name: $name)';
+  String toString() => 'Country(countryCode: $countryCode, name: $name, nameLocalized: $nameLocalized)';
 
   @override
   bool operator ==(Object other) {
     if (other is Country) {
       return other.countryCode == countryCode;
     }
-
     return super == other;
   }
 
   @override
   int get hashCode => countryCode.hashCode;
 
-  /// provides country flag as emoji.
-  /// Can be displayed using
-  ///
-  ///```Text(country.flagEmoji)```
   String get flagEmoji => Utils.countryCodeToEmoji(countryCode);
 }

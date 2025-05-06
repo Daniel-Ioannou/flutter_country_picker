@@ -21,6 +21,7 @@ void showCountryListBottomSheet({
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
   Widget header = const SizedBox.shrink(),
+  int Function(Country a, Country b)? countryComparator,
 }) {
   showModalBottomSheet(
     context: context,
@@ -42,6 +43,7 @@ void showCountryListBottomSheet({
       moveAlongWithKeyboard,
       customFlagBuilder,
       header,
+      countryComparator,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -62,15 +64,14 @@ Widget _builder(
   bool moveAlongWithKeyboard,
   CustomFlagBuilder? customFlagBuilder,
   Widget header,
+  int Function(Country a, Country b)? countryComparator,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
-  final height = countryListTheme?.bottomSheetHeight ??
-      device - (statusBarHeight + (kToolbarHeight / 1.5));
+  final height = countryListTheme?.bottomSheetHeight ?? device - (statusBarHeight + (kToolbarHeight / 1.5));
   final width = countryListTheme?.bottomSheetWidth;
 
-  Color? _backgroundColor = countryListTheme?.backgroundColor ??
-      Theme.of(context).bottomSheetTheme.backgroundColor;
+  Color? _backgroundColor = countryListTheme?.backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor;
 
   if (_backgroundColor == null) {
     if (Theme.of(context).brightness == Brightness.light) {
@@ -87,9 +88,7 @@ Widget _builder(
       );
 
   return Padding(
-    padding: moveAlongWithKeyboard
-        ? MediaQuery.of(context).viewInsets
-        : EdgeInsets.zero,
+    padding: moveAlongWithKeyboard ? MediaQuery.of(context).viewInsets : EdgeInsets.zero,
     child: Container(
       height: height,
       width: width,
@@ -116,6 +115,7 @@ Widget _builder(
                 showWorldWide: showWorldWide,
                 showSearch: showSearch,
                 customFlagBuilder: customFlagBuilder,
+                countryComparator: countryComparator,
               ),
             ),
           ],

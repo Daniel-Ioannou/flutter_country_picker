@@ -68,6 +68,7 @@ void showCountryPicker({
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
   Widget header = const SizedBox.shrink(),
+  int Function(Country a, Country b)? countryComparator,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -90,5 +91,6 @@ void showCountryPicker({
     useRootNavigator: useRootNavigator,
     moveAlongWithKeyboard: moveAlongWithKeyboard,
     header: header,
+    countryComparator: countryComparator,
   );
 }
