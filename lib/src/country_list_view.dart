@@ -48,6 +48,16 @@ class CountryListView extends StatefulWidget {
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
+  /// An optional argument for showing favorites as a separate pinned section at the top.
+  /// When true, favorites will be displayed separately and removed from the main list
+  /// to avoid duplication. When false, favorites will be sorted at the beginning of
+  /// the main list.
+  final bool showPinFavorites;
+
+  /// An optional argument for showing a divider after the pinned favorites section.
+  /// Only takes effect when [showPinFavorites] is true.
+  final bool showDivider;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -60,6 +70,8 @@ class CountryListView extends StatefulWidget {
     this.showWorldWide = false,
     this.showSearch = true,
     this.customFlagBuilder,
+    this.showPinFavorites = false,
+    this.showDivider = false,
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
@@ -75,6 +87,7 @@ class _CountryListViewState extends State<CountryListView> {
 
   late List<Country> _countryList;
   late List<Country> _filteredList;
+  List<Country>? _favoriteList;
   late TextEditingController _searchController;
   late bool _searchAutofocus;
 
@@ -94,16 +107,44 @@ class _CountryListViewState extends State<CountryListView> {
       _countryList.retainWhere((country) => ids.remove(country.countryCode));
     }
 
-    // Sort favorites at the beginning if favorites are specified
+    // Handle favorites based on showPinFavorites setting
     if (widget.favorite != null && widget.favorite!.isNotEmpty) {
-      _countryList.sort((a, b) {
-        final bool aIsFavorite = widget.favorite!.contains(a.countryCode);
-        final bool bIsFavorite = widget.favorite!.contains(b.countryCode);
-
-        if (aIsFavorite && !bIsFavorite) return -1;
-        if (!aIsFavorite && bIsFavorite) return 1;
-        return 0; // Keep original order for countries of the same type
-      });
+      if (widget.showPinFavorites) {
+        // Extract favorites for separate pinned section
+        final Set<String> favoriteSet = widget.favorite!.toSet();
+        
+        _favoriteList = [];
+        final List<Country> remainingCountries = [];
+        
+        // Separate favorites from main list to avoid duplication
+        for (final country in _countryList) {
+          if (favoriteSet.contains(country.countryCode)) {
+            _favoriteList!.add(country);
+          } else {
+            remainingCountries.add(country);
+          }
+        }
+        
+        _countryList = remainingCountries;
+      } else {
+        // Move favorites to the beginning - optimal O(n) algorithm
+        final Set<String> favoriteSet = widget.favorite!.toSet();
+        
+        final List<Country> favorites = [];
+        final List<Country> nonFavorites = [];
+        
+        // Single pass through the list - O(n) with O(1) lookup
+        for (final country in _countryList) {
+          if (favoriteSet.contains(country.countryCode)) {
+            favorites.add(country);
+          } else {
+            nonFavorites.add(country);
+          }
+        }
+        
+        // Rebuild list: favorites first, then non-favorites
+        _countryList = [...favorites, ...nonFavorites];
+      }
     }
 
     if (widget.exclude != null) {
@@ -161,16 +202,17 @@ class _CountryListViewState extends State<CountryListView> {
         Expanded(
           child: ListView(
             children: [
-              // Commented out separate favorites section - favorites are now sorted at the beginning of the main list
-              // if (_favoriteList != null) ...[
-              //   ..._favoriteList!
-              //       .map<Widget>((currency) => _listRow(currency))
-              //       .toList(),
-              //   const Padding(
-              //     padding: EdgeInsets.symmetric(horizontal: 20.0),
-              //     child: Divider(thickness: 1),
-              //   ),
-              // ],
+              // Show pinned favorites section if enabled
+              if (widget.showPinFavorites && _favoriteList != null && _favoriteList!.isNotEmpty) ...[
+                ..._favoriteList!
+                    .map<Widget>((country) => _listRow(country))
+                    .toList(),
+                if (widget.showDivider)
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(thickness: 1),
+                  ),
+              ],
               ..._filteredList
                   .map<Widget>((country) => _listRow(country))
                   .toList(),
