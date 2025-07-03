@@ -114,6 +114,8 @@ Widget _builder(
         showWorldWide: showWorldWide,
         showSearch: showSearch,
         customFlagBuilder: customFlagBuilder,
+        showPinFavorites: showPinFavorites,
+        showDivider: showDivider,
       ),
     ),
   );
