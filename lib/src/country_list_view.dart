@@ -48,6 +48,16 @@ class CountryListView extends StatefulWidget {
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
+  /// An optional argument for showing favorites as a separate pinned section at the top.
+  /// When true, favorites will be displayed separately and removed from the main list
+  /// to avoid duplication. When false, favorites will be sorted at the beginning of
+  /// the main list.
+  final bool showPinFavorites;
+
+  /// An optional argument for showing a divider after the pinned favorites section.
+  /// Only takes effect when [showPinFavorites] is true.
+  final bool showPinFavoritesDivider;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -60,10 +70,12 @@ class CountryListView extends StatefulWidget {
     this.showWorldWide = false,
     this.showSearch = true,
     this.customFlagBuilder,
+    this.showPinFavorites = false,
+    this.showPinFavoritesDivider = false,
   })  : assert(
-  exclude == null || countryFilter == null,
-  'Cannot provide both exclude and countryFilter',
-  ),
+          exclude == null || countryFilter == null,
+          'Cannot provide both exclude and countryFilter',
+        ),
         super(key: key);
 
   @override
@@ -95,19 +107,55 @@ class _CountryListViewState extends State<CountryListView> {
       _countryList.retainWhere((country) => ids.remove(country.countryCode));
     }
 
-    if (widget.favorite != null) {
-      _favoriteList = _countryService.findCountriesByCode(widget.favorite!);
+    // Handle favorites based on showPinFavorites setting
+    if (widget.favorite != null && widget.favorite!.isNotEmpty) {
+      if (widget.showPinFavorites) {
+        // Extract favorites for separate pinned section
+        final Set<String> favoriteSet = widget.favorite!.toSet();
+
+        _favoriteList = [];
+        final List<Country> remainingCountries = [];
+
+        // Separate favorites from main list to avoid duplication
+        for (final country in _countryList) {
+          if (favoriteSet.contains(country.countryCode)) {
+            _favoriteList!.add(country);
+          } else {
+            remainingCountries.add(country);
+          }
+        }
+
+        _countryList = remainingCountries;
+      } else {
+        // Move favorites to the beginning - optimal O(n) algorithm
+        final Set<String> favoriteSet = widget.favorite!.toSet();
+
+        final List<Country> favorites = [];
+        final List<Country> nonFavorites = [];
+
+        // Single pass through the list - O(n) with O(1) lookup
+        for (final country in _countryList) {
+          if (favoriteSet.contains(country.countryCode)) {
+            favorites.add(country);
+          } else {
+            nonFavorites.add(country);
+          }
+        }
+
+        // Rebuild list: favorites first, then non-favorites
+        _countryList = [...favorites, ...nonFavorites];
+      }
     }
 
     if (widget.exclude != null) {
       _countryList.removeWhere(
-            (element) => widget.exclude!.contains(element.countryCode),
+        (element) => widget.exclude!.contains(element.countryCode),
       );
     }
 
     if (widget.countryFilter != null) {
       _countryList.removeWhere(
-            (element) => !widget.countryFilter!.contains(element.countryCode),
+        (element) => !widget.countryFilter!.contains(element.countryCode),
       );
     }
 
@@ -136,7 +184,7 @@ class _CountryListViewState extends State<CountryListView> {
               autofocus: _searchAutofocus,
               controller: _searchController,
               style:
-              widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+                  widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
               decoration: widget.countryListTheme?.inputDecoration ??
                   InputDecoration(
                     labelText: searchLabel,
@@ -154,14 +202,18 @@ class _CountryListViewState extends State<CountryListView> {
         Expanded(
           child: ListView(
             children: [
-              if (_favoriteList != null) ...[
+              // Show pinned favorites section if enabled
+              if (widget.showPinFavorites &&
+                  _favoriteList != null &&
+                  _favoriteList!.isNotEmpty) ...[
                 ..._favoriteList!
-                    .map<Widget>((currency) => _listRow(currency))
+                    .map<Widget>((country) => _listRow(country))
                     .toList(),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(thickness: 1),
-                ),
+                if (widget.showPinFavoritesDivider)
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(thickness: 1),
+                  ),
               ],
               ..._filteredList
                   .map<Widget>((country) => _listRow(country))
@@ -219,8 +271,8 @@ class _CountryListViewState extends State<CountryListView> {
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
-                      ?.countryName(countryCode: country.countryCode)
-                      ?.replaceAll(RegExp(r"\s+"), " ") ??
+                          ?.countryName(countryCode: country.countryCode)
+                          ?.replaceAll(RegExp(r"\s+"), " ") ??
                       country.name,
                   style: _textStyle,
                 ),
@@ -242,19 +294,19 @@ class _CountryListViewState extends State<CountryListView> {
   }
 
   Widget _emojiText(Country country) => Text(
-    country.iswWorldWide
-        ? '\uD83C\uDF0D'
-        : Utils.countryCodeToEmoji(country.countryCode),
-    style: TextStyle(
-      fontSize: widget.countryListTheme?.flagSize ?? 25,
-      fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
-    ),
-  );
+        country.iswWorldWide
+            ? '\uD83C\uDF0D'
+            : Utils.countryCodeToEmoji(country.countryCode),
+        style: TextStyle(
+          fontSize: widget.countryListTheme?.flagSize ?? 25,
+          fontFamilyFallback: widget.countryListTheme?.emojiFontFamilyFallback,
+        ),
+      );
 
   void _filterSearchResults(String query) {
     List<Country> _searchResult = <Country>[];
     final CountryLocalizations? localizations =
-    CountryLocalizations.of(context);
+        CountryLocalizations.of(context);
 
     if (query.isEmpty) {
       _searchResult.addAll(_countryList);
