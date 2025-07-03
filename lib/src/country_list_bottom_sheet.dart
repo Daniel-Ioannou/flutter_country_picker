@@ -20,9 +20,8 @@ void showCountryListBottomSheet({
   bool useSafeArea = false,
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
-
-   bool showPinFavorites = false,
-  bool showDivider = false,
+  bool showPinFavorites = false,
+  bool showPinFavoritesDivider = false,
 }) {
   showModalBottomSheet(
     context: context,
@@ -44,7 +43,7 @@ void showCountryListBottomSheet({
       moveAlongWithKeyboard,
       customFlagBuilder,
       showPinFavorites,
-      showDivider,
+      showPinFavoritesDivider,
     ),
   ).whenComplete(() {
     if (onClosed != null) onClosed();
@@ -65,7 +64,7 @@ Widget _builder(
   bool moveAlongWithKeyboard,
   CustomFlagBuilder? customFlagBuilder,
   bool showPinFavorites,
-  bool showDivider,
+  bool showPinFavoritesDivider,
 ) {
   final device = MediaQuery.of(context).size.height;
   final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -115,7 +114,7 @@ Widget _builder(
         showSearch: showSearch,
         customFlagBuilder: customFlagBuilder,
         showPinFavorites: showPinFavorites,
-        showDivider: showDivider,
+        showPinFavoritesDivider: showPinFavoritesDivider,
       ),
     ),
   );

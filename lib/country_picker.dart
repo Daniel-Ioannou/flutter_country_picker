@@ -66,8 +66,8 @@ void showCountryPicker({
   bool useSafeArea = false,
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
-   bool showPinFavorites = false,
-   bool showDivider = false,
+  bool showPinFavorites = false,
+  bool showPinFavoritesDivider = false,
 }) {
   assert(
     exclude == null || countryFilter == null,
@@ -90,6 +90,6 @@ void showCountryPicker({
     useRootNavigator: useRootNavigator,
     moveAlongWithKeyboard: moveAlongWithKeyboard,
     showPinFavorites: showPinFavorites,
-    showDivider: showDivider,
+    showPinFavoritesDivider: showPinFavoritesDivider,
   );
 }

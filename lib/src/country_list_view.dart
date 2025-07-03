@@ -56,7 +56,7 @@ class CountryListView extends StatefulWidget {
 
   /// An optional argument for showing a divider after the pinned favorites section.
   /// Only takes effect when [showPinFavorites] is true.
-  final bool showDivider;
+  final bool showPinFavoritesDivider;
 
   const CountryListView({
     Key? key,
@@ -71,7 +71,7 @@ class CountryListView extends StatefulWidget {
     this.showSearch = true,
     this.customFlagBuilder,
     this.showPinFavorites = false,
-    this.showDivider = false,
+    this.showPinFavoritesDivider = false,
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
@@ -112,10 +112,10 @@ class _CountryListViewState extends State<CountryListView> {
       if (widget.showPinFavorites) {
         // Extract favorites for separate pinned section
         final Set<String> favoriteSet = widget.favorite!.toSet();
-        
+
         _favoriteList = [];
         final List<Country> remainingCountries = [];
-        
+
         // Separate favorites from main list to avoid duplication
         for (final country in _countryList) {
           if (favoriteSet.contains(country.countryCode)) {
@@ -124,15 +124,15 @@ class _CountryListViewState extends State<CountryListView> {
             remainingCountries.add(country);
           }
         }
-        
+
         _countryList = remainingCountries;
       } else {
         // Move favorites to the beginning - optimal O(n) algorithm
         final Set<String> favoriteSet = widget.favorite!.toSet();
-        
+
         final List<Country> favorites = [];
         final List<Country> nonFavorites = [];
-        
+
         // Single pass through the list - O(n) with O(1) lookup
         for (final country in _countryList) {
           if (favoriteSet.contains(country.countryCode)) {
@@ -141,7 +141,7 @@ class _CountryListViewState extends State<CountryListView> {
             nonFavorites.add(country);
           }
         }
-        
+
         // Rebuild list: favorites first, then non-favorites
         _countryList = [...favorites, ...nonFavorites];
       }
@@ -203,11 +203,13 @@ class _CountryListViewState extends State<CountryListView> {
           child: ListView(
             children: [
               // Show pinned favorites section if enabled
-              if (widget.showPinFavorites && _favoriteList != null && _favoriteList!.isNotEmpty) ...[
+              if (widget.showPinFavorites &&
+                  _favoriteList != null &&
+                  _favoriteList!.isNotEmpty) ...[
                 ..._favoriteList!
                     .map<Widget>((country) => _listRow(country))
                     .toList(),
-                if (widget.showDivider)
+                if (widget.showPinFavoritesDivider)
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: Divider(thickness: 1),
