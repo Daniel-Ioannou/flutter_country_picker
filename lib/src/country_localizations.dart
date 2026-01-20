@@ -12,12 +12,15 @@ import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
 import 'res/strings/fa.dart';
+import 'res/strings/fi.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/he.dart';
 import 'res/strings/hr.dart';
 import 'res/strings/ht.dart';
+import 'res/strings/hu.dart';
 import 'res/strings/id.dart';
+import 'res/strings/is.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
 import 'res/strings/km.dart';
@@ -34,6 +37,7 @@ import 'res/strings/pt.dart';
 import 'res/strings/ro.dart';
 import 'res/strings/ru.dart';
 import 'res/strings/sk.dart';
+import 'res/strings/sv.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
@@ -104,6 +108,8 @@ class CountryLocalizations {
         return ru[countryCode];
       case 'sk':
         return sk[countryCode];
+      case 'sv':
+        return sv[countryCode];
       case 'hi':
       case 'ne':
         return np[countryCode];
@@ -145,6 +151,12 @@ class CountryLocalizations {
         return ca[countryCode];
       case 'kk':
         return kz[countryCode];
+      case 'hu':
+        return hu[countryCode];
+      case 'fi':
+        return fi[countryCode];
+      case 'is':
+        return is_[countryCode];
       case 'fa':
         return fa[countryCode];
       case 'en':
@@ -177,6 +189,7 @@ class _CountryLocalizationsDelegate
       'ro',
       'ru',
       'sk',
+      'sv',
       'uk',
       'hi',
       'ne',
@@ -199,6 +212,9 @@ class _CountryLocalizationsDelegate
       'fa',
       'da',
       'ca',
+      'hu',
+      'fi',
+      'is',
     ].contains(locale.languageCode);
   }
 
