@@ -162,7 +162,7 @@ Map<String, String> et = {
   "OM": "Omaan",
   "PG": "Paapua Uus-Guinea",
   "PK": "Pakistan",
-  "PS": "Palestiina",
+  "PS": "Palestiina Omavalitsus",
   "PA": "Panama",
   "PY": "Paraguay",
   "PE": "Peruu",
