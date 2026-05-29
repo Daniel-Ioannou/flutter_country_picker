@@ -143,6 +143,7 @@ Map<String, String> lv = {
   "MX": "Meksika",
   "FM": "Mikronēzija",
   "MD": "Moldova",
+  "MD2": "Piedņestra",
   "MC": "Monako",
   "MN": "Mongolija",
   "ME": "Melnkalne",

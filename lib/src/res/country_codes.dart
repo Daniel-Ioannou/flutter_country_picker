@@ -1884,6 +1884,20 @@ final List<Map<String, dynamic>> countryCodes = [
     "display_name_no_e164_cc": "Moldova (MD)",
     "e164_key": "373-MD-0",
   },
+  // Transnistria — unrecognised state, uses MD2 as custom plate country code
+  {
+    "e164_cc": "373",
+    "iso2_cc": "MD2",
+    "e164_sc": 0,
+    "geographic": true,
+    "level": 1,
+    "name": "Transnistria",
+    "example": "65012345",
+    "display_name": "Transnistria (MD2) [+373]",
+    "full_example_with_plus_sign": "+37365012345",
+    "display_name_no_e164_cc": "Transnistria (MD2)",
+    "e164_key": "373-MD2-0",
+  },
   {
     "e164_cc": "377",
     "iso2_cc": "MC",

@@ -144,6 +144,7 @@ Map<String, String> is_ = {
   "MX": "Mexíkó",
   "FM": "Míkrónesía",
   "MD": "Moldóva",
+  "MD2": "Transnistría",
   "MC": "Mónakó",
   "MN": "Mongólía",
   "ME": "Svartfjallaland",

@@ -143,6 +143,7 @@ Map<String, String> id = {
   "MX": 'Meksiko',
   "FM": 'Mikronesia',
   "MD": 'Moldova',
+  "MD2": 'Transnistria',
   "MC": 'Monako',
   "MN": 'Mongolia',
   "ME": 'Montenegro',

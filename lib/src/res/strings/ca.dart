@@ -143,6 +143,7 @@ Map<String, String> ca = {
   "MX": "Mèxic",
   "FM": "Micronèsia",
   "MD": "Moldàvia",
+  "MD2": "Transnístria",
   "MC": "Mònaco",
   "MN": "Mongòlia",
   "ME": "Montenegro",
