@@ -106,7 +106,6 @@ Map<String, String> es = {
   "IQ": "Irak",
   "IE": "Irlanda",
   "IM": "Isla del hombre",
-  "IL": "Israel",
   "IT": "Italia",
   "JM": "Jamaica",
   "JP": "Japón",

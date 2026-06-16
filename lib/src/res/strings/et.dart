@@ -82,7 +82,6 @@ Map<String, String> et = {
   "HR": "Horvaatia",
   "TL": "Ida-Timor",
   "IE": "Iirimaa",
-  "IL": "Iisrael",
   "IN": "India",
   "ID": "Indoneesia",
   "IQ": "Iraak",

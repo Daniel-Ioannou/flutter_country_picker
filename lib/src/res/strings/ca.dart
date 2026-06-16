@@ -106,7 +106,6 @@ Map<String, String> ca = {
   "IQ": "Iraq",
   "IE": "Irlanda",
   "IM": "Illa de l'home",
-  "IL": "Israel",
   "IT": "Itàlia",
   "JM": "Jamaica",
   "JP": "Japó",
