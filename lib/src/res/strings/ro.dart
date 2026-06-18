@@ -167,7 +167,7 @@ Map<String, String> ro = {
   "OM": "Oman",
   "PK": "Pakistan",
   "PW": "Palau",
-  "PS": "Teritoriile Palestiniene",
+  "PS": "Palestina",
   "PA": "Panama",
   "PG": "Papua Noua Guinee",
   "PY": "Paraguay",
