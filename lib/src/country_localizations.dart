@@ -35,6 +35,7 @@ import 'res/strings/sk.dart';
 import 'res/strings/tr.dart';
 import 'res/strings/tw.dart';
 import 'res/strings/uk.dart';
+import 'res/strings/hu.dart';
 
 class CountryLocalizations {
   final Locale locale;
@@ -139,6 +140,8 @@ class CountryLocalizations {
         return da[countryCode];
       case 'ca':
         return ca[countryCode];
+      case 'hu':
+        return hu[countryCode];
       case 'fa':
         return fa[countryCode];
       case 'en':
@@ -188,6 +191,7 @@ class _CountryLocalizationsDelegate
       'id',
       'cs',
       'ca',
+      'hu',
       'fa',
       'da',
       'ca',
