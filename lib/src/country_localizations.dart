@@ -19,6 +19,7 @@ import 'res/strings/ht.dart';
 import 'res/strings/id.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
+import 'res/strings/km.dart';
 import 'res/strings/ko.dart';
 import 'res/strings/ku.dart';
 import 'res/strings/lt.dart';
@@ -129,6 +130,8 @@ class CountryLocalizations {
         return it[countryCode];
       case 'ko':
         return ko[countryCode];
+      case 'km':
+        return km[countryCode];
       case 'ja':
         return ja[countryCode];
       case 'id':
@@ -184,6 +187,7 @@ class _CountryLocalizationsDelegate
       'nl',
       'it',
       'ko',
+      'km',
       'ja',
       'id',
       'cs',
