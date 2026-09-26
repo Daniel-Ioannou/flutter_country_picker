@@ -13,8 +13,6 @@ class CountryService {
     return _countries;
   }
 
-  static final List<Map<String, dynamic>> getCountryCodes = countryCodes;
-
   ///Returns the first country that match the given code.
   Country? findByCode(String? code) {
     final uppercaseCode = code?.toUpperCase();
