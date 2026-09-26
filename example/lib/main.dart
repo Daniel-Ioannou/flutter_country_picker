@@ -2,9 +2,11 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,24 +53,24 @@ class MyApp extends StatelessWidget {
         const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
         const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
       ],
-      localizationsDelegates: [
+      localizationsDelegates: const [
         CountryLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Demo for country picker')),
+      appBar: AppBar(title: const Text('Demo for country picker')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
@@ -81,14 +83,14 @@ class HomePage extends StatelessWidget {
               showPhoneCode: true,
               showDragHandle: false,
               onSelect: (Country country) {
-                print('Select country: ${country.displayName}');
+                debugPrint('Select country: ${country.displayName}');
               },
               // Optional. Sheet moves when keyboard opens.
               moveAlongWithKeyboard: false,
               // Optional. Sets the theme for the country list picker.
               countryListTheme: CountryListThemeData(
                 // Optional. Sets the border radius for the bottomsheet.
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
                 ),
@@ -104,7 +106,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 // Optional. Styles the text in the search field
-                searchTextStyle: TextStyle(
+                searchTextStyle: const TextStyle(
                   color: Colors.blue,
                   fontSize: 18,
                 ),
