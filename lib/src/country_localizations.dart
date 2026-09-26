@@ -140,7 +140,7 @@ class CountryLocalizations {
         return da[countryCode];
       case 'ca':
         return ca[countryCode];
-      case 'kk': 
+      case 'kk':
         return kz[countryCode];
       case 'fa':
         return fa[countryCode];
