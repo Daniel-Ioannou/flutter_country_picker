@@ -1,3 +1,4 @@
+import 'package:country_picker/src/res/strings/kz.dart';
 import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
@@ -142,6 +143,8 @@ class CountryLocalizations {
         return da[countryCode];
       case 'ca':
         return ca[countryCode];
+      case 'kk':
+        return kz[countryCode];
       case 'fa':
         return fa[countryCode];
       case 'en':
@@ -192,6 +195,7 @@ class _CountryLocalizationsDelegate
       'id',
       'cs',
       'ca',
+      'kk',
       'fa',
       'da',
       'ca',
