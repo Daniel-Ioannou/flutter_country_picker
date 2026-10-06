@@ -167,7 +167,7 @@ Map<String, String> ca = {
   "OM": "Oman",
   "PK": "Pakistan",
   "PW": "Palau",
-  "PS": "Territoris palestins",
+  "PS": "Palestina",
   "PA": "Panamà",
   "PG": "Papua Nova Guinea",
   "PY": "Paraguai",

@@ -167,7 +167,7 @@ Map<String, String> tr = {
   "OM": "Umman",
   "PK": "Pakistan",
   "PW": "Palau",
-  "PS": "Filistin Toprakları",
+  "PS": "Filistin",
   "PA": "Panama",
   "PG": "Papua Yeni Gine",
   "PY": "Paraguay",
