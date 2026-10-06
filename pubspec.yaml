@@ -1,7 +1,7 @@
 name: country_picker
 description: A flutter package to select a country from a list of countries.
 
-version: 2.0.27
+version: 2.0.28
 
 homepage: https://github.com/Daniel-Ioannou
 repository: https://github.com/Daniel-Ioannou/flutter_country_picker
@@ -11,7 +11,7 @@ environment:
 
 dependencies:
   collection: ^1.19.1
-  universal_io: ^2.2.2
+  universal_io: ^2.3.1
   flutter:
     sdk: flutter
 

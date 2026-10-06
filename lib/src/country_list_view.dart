@@ -45,6 +45,8 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for hiding the search bar
   final bool showSearch;
 
+  final Widget header;
+
   /// Custom builder function for flag widget
   final CustomFlagBuilder? customFlagBuilder;
 
@@ -59,6 +61,7 @@ class CountryListView extends StatefulWidget {
     this.searchAutofocus = false,
     this.showWorldWide = false,
     this.showSearch = true,
+    required this.header,
     this.customFlagBuilder,
   })  : assert(
           exclude == null || countryFilter == null,
@@ -148,28 +151,32 @@ class _CountryListViewState extends State<CountryListView> {
     return Column(
       children: <Widget>[
         const SizedBox(height: 12),
-        if (widget.showSearch)
-          TextField(
-            autofocus: _searchAutofocus,
-            controller: _searchController,
-            style:
-                widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
-            decoration: widget.countryListTheme?.inputDecoration ??
-                InputDecoration(
-                  labelText: searchLabel,
-                  hintText: searchLabel,
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: const Color(0xFF8C98A8).withValues(alpha: 0.2),
+        widget.header,
+        Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child:  widget.showSearch
+                ? TextField(
+              autofocus: _searchAutofocus,
+              controller: _searchController,
+              style:
+              widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
+              decoration: widget.countryListTheme?.inputDecoration ??
+                  InputDecoration(
+                    labelText: searchLabel,
+                    hintText: searchLabel,
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color(0xFF8C98A8).withValues(alpha: 0.2),
+                      ),
                     ),
                   ),
-                ),
-            onChanged: (value) {
-              _filterSearchResults(value);
-              _checkSearchText(value);
-            },
-          ),
+              onChanged: (value) {
+                _filterSearchResults(value);
+                _checkSearchText(value);
+              },
+            ) : Container(),
+        ),
         Expanded(
           child: ListView(
             children: [

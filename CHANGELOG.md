@@ -1,3 +1,37 @@
+## 2.0.28
+* Fixed `getFromPhoneCode` failing when multiple countries share the same phone code.
+* Fixed incomplete phone prefix.
+* Add optional `header`. Custom list header above search bar
+    ```Dart
+    showCountryPicker(
+        context: context,
+        header: Padding(
+            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 20.0, right: 20.0),
+            child: const Text(
+               'Select your country',
+               style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+               ),
+            ),
+        ),
+        onSelect: (Country country) {
+            print('Select country: ${country.displayName}');
+        },
+    );
+    ```
+
+* Add an option to show the drag handle
+    ```Dart
+    showCountryPicker(
+        context: context,
+        showDragHandle: true,
+        onSelect: (Country country) {
+            print('Select country: ${country.displayName}');
+        },
+    );
+    ```
+    
 ## 2.0.27
 * Add support for Persian (FA) localization
 * Add support for Danish (DA) localization

@@ -1,3 +1,4 @@
+import 'package:country_picker/src/res/strings/kz.dart';
 import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
@@ -22,6 +23,7 @@ import 'res/strings/id.dart';
 import 'res/strings/is.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
+import 'res/strings/km.dart';
 import 'res/strings/ko.dart';
 import 'res/strings/ku.dart';
 import 'res/strings/lt.dart';
@@ -135,6 +137,8 @@ class CountryLocalizations {
         return it[countryCode];
       case 'ko':
         return ko[countryCode];
+      case 'km':
+        return km[countryCode];
       case 'ja':
         return ja[countryCode];
       case 'id':
@@ -151,6 +155,8 @@ class CountryLocalizations {
         return fi[countryCode];
       case 'is':
         return is_[countryCode];
+      case 'kk':
+        return kz[countryCode];
       case 'fa':
         return fa[countryCode];
       case 'en':
@@ -197,10 +203,12 @@ class _CountryLocalizationsDelegate
       'nl',
       'it',
       'ko',
+      'km',
       'ja',
       'id',
       'cs',
       'ca',
+      'kk',
       'fa',
       'da',
       'ca',

@@ -33,14 +33,16 @@ export 'src/country_service.dart';
 ///
 /// An optional [showPhoneCode] argument can be used to show phone code.
 ///
+/// An optional [showSearch] argument can be used to show/hide the search bar.
+///
+/// An optional [showDragHandle] argument Can be used to show the drag handle.
+///
 /// [countryListTheme] can be used to customizing the country list bottom sheet.
 ///
 /// [onClosed] callback which is called when CountryPicker is dismiss,
 /// whether a country is selected or not.
 ///
 /// [searchAutofocus] can be used to initially expand virtual keyboard
-///
-/// An optional [showSearch] argument can be used to show/hide the search bar.
 ///
 /// The `context` argument is used to look up the [Scaffold] for the bottom
 /// sheet. It is only used when the method is called. Its corresponding widget
@@ -64,6 +66,7 @@ void showCountryPicker({
   bool searchAutofocus = false,
   bool showWorldWide = false,
   bool showSearch = true,
+  bool showDragHandle = true,
   bool useSafeArea = false,
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
@@ -86,6 +89,7 @@ void showCountryPicker({
     searchAutofocus: searchAutofocus,
     showWorldWide: showWorldWide,
     showSearch: showSearch,
+    showDragHandle: showDragHandle,
     useSafeArea: useSafeArea,
     useRootNavigator: useRootNavigator,
     moveAlongWithKeyboard: moveAlongWithKeyboard,
