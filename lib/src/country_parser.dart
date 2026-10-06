@@ -21,6 +21,7 @@ import 'res/strings/ht.dart';
 import 'res/strings/id.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
+import 'res/strings/km.dart';
 import 'res/strings/ko.dart';
 import 'res/strings/ku.dart';
 import 'res/strings/kz.dart';
@@ -293,6 +294,8 @@ class CountryParser {
         return he;
       case 'kk':
         return kz;
+      case 'km':
+        return km;
       case 'fa':
         return fa;
       case 'en':
@@ -341,6 +344,7 @@ class CountryParser {
       const Locale('ca'),
       const Locale('he'),
       const Locale('kk'),
+      const Locale('km'),
       const Locale('fa'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
