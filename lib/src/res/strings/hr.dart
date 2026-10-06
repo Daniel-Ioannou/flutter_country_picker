@@ -143,6 +143,7 @@ Map<String, String> hr = {
   "MX": "Meksiko",
   "FM": "Mikronezija",
   "MD": "Moldavija",
+  "MD2": "Transnistrija",
   "MC": "Monako",
   "MN": "Mongolijaa",
   "ME": "Crna Gora",
