@@ -1,5 +1,4 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:country_picker/src/res/strings/he.dart';
 import 'package:flutter/material.dart';
 
 import 'res/country_codes.dart';
@@ -14,11 +13,15 @@ import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
 import 'res/strings/fa.dart';
+import 'res/strings/fi.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
+import 'res/strings/he.dart';
 import 'res/strings/hr.dart';
 import 'res/strings/ht.dart';
+import 'res/strings/hu.dart';
 import 'res/strings/id.dart';
+import 'res/strings/is.dart';
 import 'res/strings/it.dart';
 import 'res/strings/ja.dart';
 import 'res/strings/km.dart';
@@ -296,6 +299,12 @@ class CountryParser {
         return kz;
       case 'km':
         return km;
+      case 'hu':
+        return hu;
+      case 'fi':
+        return fi;
+      case 'is':
+        return is_;
       case 'fa':
         return fa;
       case 'en':
@@ -334,7 +343,6 @@ class CountryParser {
       const Locale('ht'),
       const Locale('de'),
       const Locale('lv'),
-      const Locale('lv'),
       const Locale('nl'),
       const Locale('id'),
       const Locale('ja'),
@@ -346,6 +354,9 @@ class CountryParser {
       const Locale('kk'),
       const Locale('km'),
       const Locale('fa'),
+      const Locale('hu'),
+      const Locale('fi'),
+      const Locale('is'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));

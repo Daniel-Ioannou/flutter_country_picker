@@ -1,4 +1,3 @@
-import 'package:country_picker/src/res/strings/kz.dart';
 import 'package:flutter/material.dart';
 
 import 'res/strings/ar.dart';
@@ -26,6 +25,7 @@ import 'res/strings/ja.dart';
 import 'res/strings/km.dart';
 import 'res/strings/ko.dart';
 import 'res/strings/ku.dart';
+import 'res/strings/kz.dart';
 import 'res/strings/lt.dart';
 import 'res/strings/lv.dart';
 import 'res/strings/nb.dart';
